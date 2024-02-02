@@ -32,6 +32,11 @@ public class RV_GameManager : MonoBehaviour
         Instance = this;
         SetupPlayers();
     }
+    private void Start()
+    {
+
+        PickACardOnEndTour.PickACard();
+    }
 
     private void Update()
     {
@@ -68,6 +73,7 @@ public class RV_GameManager : MonoBehaviour
        Turn++;
         PickACardOnEndTour.PickACard();
         NextPlayer();
+        PickACardOnEndTour.ActualToDiscard();
     }
 
     public void AddInfluence(int adding)
