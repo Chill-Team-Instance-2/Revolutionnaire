@@ -1139,7 +1139,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Chef de projet: Erwan Gatel\nLead d\xE9veloppeur: Paul Melon\nLead artiste:
-    Charlotte Arbona\nD\xE9veloppeurs: Gabriel Mimouni, Zakaria Dutertre\nSound designer:"
+    Charlotte Arbona\nD\xE9veloppeurs: Gabriel Mimouni, Zakaria Dutertre, Cl\xE9ment
+    Grimard\nSound designer: Paul Melon"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
