@@ -4,6 +4,7 @@ using UnityEngine;
 public class RV_GameManager : MonoBehaviour
 {
     public static RV_GameManager Instance;
+    public RV_PickACardOnEndTour PickACardOnEndTour;
 
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
@@ -65,6 +66,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndTurn()
     {
        Turn++;
+        PickACardOnEndTour.PickACard();
         NextPlayer();
     }
 
