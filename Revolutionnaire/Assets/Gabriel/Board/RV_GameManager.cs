@@ -4,6 +4,7 @@ using UnityEngine;
 public class RV_GameManager : MonoBehaviour
 {
     public static RV_GameManager Instance;
+    public RV_PickACardOnEndTour PickACardOnEndTour;
 
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
@@ -16,13 +17,18 @@ public class RV_GameManager : MonoBehaviour
 
     public int PlayerTurn = 0;
 
-    public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerçant, 2 = intellectuel
+    public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerÃ§ant, 2 = intellectuel
     public List<string> PlayersName = new List<string>();
 
     private void Awake()
     {
         Instance = this;
         SetupPlayers();
+    }
+    private void Start()
+    {
+
+        PickACardOnEndTour.PickACard();
     }
 
     private void Update()
@@ -57,8 +63,10 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        PickACardOnEndTour.PickACard();
         Turn++;
         NextPlayer();
+        PickACardOnEndTour.ActualToDiscard();
     }
 
     public void AddInfluence(int adding)
