@@ -16,14 +16,7 @@ public class RV_GameManager : MonoBehaviour
 
     public int PlayerTurn = 0;
 
-    enum PLAYERCLASS
-    {
-        INTELLECTUEL,
-        MILICE,
-        COMMERCANT
-    }
-
-    public List<int> PlayersClass = new List<int>();
+    public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerçant, 2 = intellectuel
     public List<string> PlayersName = new List<string>();
 
     private void Awake()
@@ -64,7 +57,7 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-       Turn++;
+        Turn++;
         NextPlayer();
     }
 
