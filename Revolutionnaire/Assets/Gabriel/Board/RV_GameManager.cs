@@ -78,9 +78,11 @@ public class RV_GameManager : MonoBehaviour
         PickACardOnEndTour.ActualToDiscard();
     }
 
-    public void AddInfluence(int adding)
+    public int AddInfluence(int adding)
     {
-        InfluencePlayer += adding;
+        int addingInfluence = adding; // + multipliers
+        InfluencePlayer += addingInfluence;
+        return addingInfluence;
     }
 
 
