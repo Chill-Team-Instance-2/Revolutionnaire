@@ -11,6 +11,8 @@ public class RV_Dice_Model : MonoBehaviour
 
     [SerializeField] private AnimationCurve diceCurve;
 
+    public bool IsLaunching = false;
+
     private void Awake()
     {
         baseRotation = transform.rotation;
@@ -28,6 +30,8 @@ public class RV_Dice_Model : MonoBehaviour
         //transform.position = new Vector3(0, 0, baseHeight);
 
         int result = Random.Range(1, 20);
+
+        IsLaunching = true;
         
         StartCoroutine(LaunchingDice(result, diceTime, show, hide));
 
@@ -50,7 +54,10 @@ public class RV_Dice_Model : MonoBehaviour
         {
             yield return new WaitForSeconds(diceTime);
             StartCoroutine(HideDice(1));
+            yield return new WaitForSeconds(1);
         }
+
+        IsLaunching = false;
         yield return null;
     }
 
