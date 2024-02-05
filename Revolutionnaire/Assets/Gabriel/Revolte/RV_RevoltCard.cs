@@ -7,6 +7,7 @@ public class RV_RevoltCard : MonoBehaviour
 {
     public List<int> JetRequirements = new List<int>();
     public List<int> JetInfluences = new List<int>();
+    public List<bool> JetAvailable = new List<bool>();
 
     public List<TextMeshProUGUI> TextRequirements = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> TextInfluences = new List<TextMeshProUGUI>();
@@ -22,20 +23,35 @@ public class RV_RevoltCard : MonoBehaviour
 
     public void Jet(int number)
     {
-        if (!RV_DiceManager.Instance.IsLaunching())
+        if (!RV_DiceManager.Instance.IsLaunching() && JetAvailable[number])
         {
+            JetAvailable[number] = false;
             if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number]))
             {
-                StartCoroutine(ApplySuccessText(number, 2));
+                StartCoroutine(ApplyColorText(number, 2, new Color(0, 0.75f, 0)));
+            }
+            else
+            {
+                StartCoroutine(ApplyColorText(number, 2, new Color(0.75f, 0, 0)));
             }
         }
     }
 
-    public IEnumerator ApplySuccessText(int number, float wait)
+    public IEnumerator ApplyColorText(int number, float wait, Color newColor)
     {
         yield return new WaitForSeconds(wait);
-        TextRequirements[number].color = new Color(0, 0.75f, 0);
-        TextInfluences[number].color = new Color(0, 0.75f, 0);
+        TextRequirements[number].color = newColor;
+        TextInfluences[number].color = newColor;
         yield return null;
+    }
+
+    public void ResetCard()
+    {
+        for (int i = 0; i < JetRequirements.Count; i++)
+        {
+            TextRequirements[i].color = new Color(1, 1, 1);
+            TextInfluences[i].color = new Color(1, 1, 1);
+            JetAvailable[i] = true;
+        }
     }
 }

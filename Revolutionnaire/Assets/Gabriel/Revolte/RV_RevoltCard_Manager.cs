@@ -19,8 +19,12 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         {
             success = true;
             RV_GameManager.Instance.AddInfluence(influenceGain);
+            RV_GameManager.Instance.NextPlayer();
         }
-        RV_GameManager.Instance.NextPlayer();
+        else
+        {
+            RV_GameManager.Instance.EndTurn();
+        }
         return success;
     }
 }
