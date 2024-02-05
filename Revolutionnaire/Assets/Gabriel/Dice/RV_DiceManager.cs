@@ -8,6 +8,8 @@ public class RV_DiceManager : MonoBehaviour
 
     public int DiceResult;
 
+    public float DiceTime = 2;
+
     private void Awake()
     {
         Instance = this;
@@ -15,7 +17,7 @@ public class RV_DiceManager : MonoBehaviour
 
     public int LaunchDice()
     {
-        DiceResult = dice.LaunchDice(true, true);
+        DiceResult = dice.LaunchDice(DiceTime, true, true);
         return DiceResult;
     }
 

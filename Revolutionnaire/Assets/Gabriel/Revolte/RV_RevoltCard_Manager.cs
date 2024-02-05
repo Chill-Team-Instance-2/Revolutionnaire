@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RV_RevoltCard_Manager : MonoBehaviour
@@ -11,20 +12,34 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         Instance = this;
     }
 
-    public bool Jet(int requirement, int influenceGain)
+    public bool Jet(int requirement, int influenceGain, RV_RevoltCard currentCard)
     {
         bool success = false;
         int diceResult = RV_DiceManager.Instance.LaunchDice();
         if (diceResult >= requirement)
         {
             success = true;
-            RV_GameManager.Instance.AddInfluence(influenceGain);
+        }
+        StartCoroutine(JetDelayed(success, influenceGain, currentCard));
+        return success;
+    }
+
+    private IEnumerator JetDelayed(bool success, int influenceGain, RV_RevoltCard currentCard)
+    {
+        yield return new WaitForSeconds(RV_DiceManager.Instance.DiceTime);
+        
+        if (success)
+        {
             RV_GameManager.Instance.NextPlayer();
+            currentCard.PointAdded += RV_GameManager.Instance.AddInfluence(influenceGain);
         }
         else
         {
-            RV_GameManager.Instance.Invoke("EndTurn", 2);
+            yield return new WaitForSeconds(0.5f);
+            RV_GameManager.Instance.EndTurn();
+            RV_GameManager.Instance.InfluencePlayer -= currentCard.PointAdded;
         }
-        return success;
+
+        yield return null;
     }
 }

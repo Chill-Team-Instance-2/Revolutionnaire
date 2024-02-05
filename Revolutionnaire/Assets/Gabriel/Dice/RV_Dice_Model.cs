@@ -13,7 +13,7 @@ public class RV_Dice_Model : MonoBehaviour
 
     public bool IsLaunching = false;
 
-    public float DiceTime = 2;
+    
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class RV_Dice_Model : MonoBehaviour
         LaunchDice();
     }
 
-    public int LaunchDice(bool show = true, bool hide = true)
+    public int LaunchDice(float diceTime = 2, bool show = true, bool hide = true)
     {
         transform.rotation = baseRotation;
         //transform.position = new Vector3(0, 0, baseHeight);
@@ -35,7 +35,7 @@ public class RV_Dice_Model : MonoBehaviour
 
         IsLaunching = true;
         
-        StartCoroutine(LaunchingDice(result, DiceTime, show, hide));
+        StartCoroutine(LaunchingDice(result, diceTime, show, hide));
 
         return result;
     }

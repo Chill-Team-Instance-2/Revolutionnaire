@@ -19,6 +19,8 @@ public class RV_RevoltCard : MonoBehaviour
     public List<TextMeshProUGUI> TextRequirements = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> TextInfluences = new List<TextMeshProUGUI>();
 
+    public int PointAdded = 0;
+
     private void Awake()
     {
         if (spriteBack)
@@ -42,13 +44,13 @@ public class RV_RevoltCard : MonoBehaviour
         if (!RV_DiceManager.Instance.IsLaunching() && JetAvailable[number])
         {
             JetAvailable[number] = false;
-            if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number])) //win
+            if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number], GetComponent<RV_RevoltCard>())) //win
             {
-                StartCoroutine(ApplyColorText(number, 2, new Color(0, 0.75f, 0)));
+                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0, 0.75f, 0)));
             }
             else //jet raté
             {
-                StartCoroutine(ApplyColorText(number, 2, new Color(0.75f, 0, 0)));
+                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0.75f, 0, 0)));
                 DisableAllJet();
             }
         }
@@ -64,6 +66,7 @@ public class RV_RevoltCard : MonoBehaviour
 
     public void ResetCard()
     {
+        PointAdded = 0;
         for (int i = 0; i < JetRequirements.Count; i++)
         {
             TextRequirements[i].color = new Color(1, 1, 1);
