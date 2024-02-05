@@ -1231,6 +1231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d2c199ae0359745af63ef986f8088b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteFront: {fileID: 0}
+  spriteBack: {fileID: 21300000, guid: 5e7f45da77118ab4ab9aaffa8505b527, type: 3}
+  imageFront: {fileID: 1951349544165508433}
+  imageBack: {fileID: 3883257802587715119}
   JetRequirements: 0a0000000700000009000000
   JetInfluences: 060000000300000005000000
   JetAvailable: 010101

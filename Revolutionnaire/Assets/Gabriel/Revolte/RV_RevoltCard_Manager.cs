@@ -23,7 +23,7 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         }
         else
         {
-            RV_GameManager.Instance.EndTurn();
+            RV_GameManager.Instance.Invoke("EndTurn", 2);
         }
         return success;
     }

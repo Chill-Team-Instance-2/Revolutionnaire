@@ -15,7 +15,7 @@ public class RV_DiceManager : MonoBehaviour
 
     public int LaunchDice()
     {
-        DiceResult = dice.LaunchDice(2, true, true);
+        DiceResult = dice.LaunchDice(true, true);
         return DiceResult;
     }
 
