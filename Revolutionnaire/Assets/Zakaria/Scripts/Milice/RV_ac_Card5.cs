@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RV_ac_Card5 : MonoBehaviour
+public class RV_AC_Card5 : MonoBehaviour
 {
     private RV_GameManager gameManager;
     [SerializeField]private CardManager cardManager;

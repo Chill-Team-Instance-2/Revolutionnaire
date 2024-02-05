@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RV_ac_Card4 : MonoBehaviour
+public class RV_AC_Card4 : MonoBehaviour
 {
     private RV_GameManager gameManager;
     private bool CardUsed = false;

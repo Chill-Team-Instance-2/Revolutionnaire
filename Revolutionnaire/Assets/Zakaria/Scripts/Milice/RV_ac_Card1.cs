@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RV_ac_Card1 : MonoBehaviour
+public class RV_AC_Card1 : MonoBehaviour
 {
     private RV_GameManager gameManager;
     private bool CardUsed = false;
