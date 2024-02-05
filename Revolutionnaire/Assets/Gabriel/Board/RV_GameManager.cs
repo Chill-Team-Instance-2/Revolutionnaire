@@ -1,10 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RV_GameManager : MonoBehaviour
 {
     public static RV_GameManager Instance;
     public RV_PickACardOnEndTour PickACardOnEndTour;
+
+    [SerializeField] private Image milicia_Image;
+    [SerializeField] private Image intellectual_Image;
+    [SerializeField] private Image merchant_Image;
+    [SerializeField] private Sprite unselected_Image;
+    [SerializeField] private Sprite selected_Image;
 
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
@@ -33,6 +40,8 @@ public class RV_GameManager : MonoBehaviour
 
     private void Update()
     {
+        ChangeImageColorOnTurn();
+        Debug.Log(PlayerTurn);
         turnPawn.position = Vector3.Lerp(turnPawn.position, turnTiles.GetChild(Turn).position, 8 * Time.deltaTime);
     }
 
@@ -72,5 +81,45 @@ public class RV_GameManager : MonoBehaviour
     public void AddInfluence(int adding)
     {
         InfluencePlayer += adding;
+    }
+
+
+    public void ChangeImageColorOnTurn()
+    {
+        switch (PlayerTurn)
+        {
+            case 0:
+                milicia_Image.sprite = selected_Image;
+                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 1f);
+
+                merchant_Image.sprite = unselected_Image;
+                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
+
+                intellectual_Image.sprite = unselected_Image;
+                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f); 
+                break;
+            case 1:
+                milicia_Image.sprite = unselected_Image;
+                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
+
+                merchant_Image.sprite = selected_Image;
+                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 1f);
+
+                intellectual_Image.sprite = unselected_Image;
+                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f); 
+                break;
+            case 2:
+                milicia_Image.sprite = unselected_Image;
+                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
+
+                merchant_Image.sprite = unselected_Image;
+                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
+
+                intellectual_Image.sprite = selected_Image;
+                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 1f);
+                break;
+            default:
+                break;
+        }
     }
 }
