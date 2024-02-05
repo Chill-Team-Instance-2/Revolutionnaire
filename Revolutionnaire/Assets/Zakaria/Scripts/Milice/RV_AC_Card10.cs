@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RV_AC_Card10 : MonoBehaviour
 {
     private RV_GameManager gameManager;
     [SerializeField] Canvas CanvasBackwardTurn;
+    [SerializeField] Button TurnButton;
     private bool CardUsed = false;
     public void Awake()
     {
@@ -17,12 +19,19 @@ public class RV_AC_Card10 : MonoBehaviour
         {
             case 0:
                 //TODO ; Forcer le jet de dé
+                TurnButton.enabled = false;
+                /* 
+                TODO : chercher carte actuelle et défausser si c'est une action
+                Trouver carte actuelle
+                gameManager.PickACardOnEndTour.PickACard();
+                gameManager.PickACardOnEndTour.ActualToDiscard();
+                */
                 break;
             case 1:
                 CanvasBackwardTurn.enabled = true;
                 break;
             case 2:
-                //TODO : forcer le fait de passer le tour si c'est les intellectuels
+                gameManager.EndTurn();
                 break;
             default:
                 break;

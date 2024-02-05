@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class RV_AC_Card3 : MonoBehaviour
+public class RV_ac_Card3 : MonoBehaviour
 {
     private RV_GameManager gameManager;
+    private int Turn;
     private bool CardUsed = false;
     public void Awake()
     {
@@ -13,7 +14,9 @@ public class RV_AC_Card3 : MonoBehaviour
         switch (gameManager.PlayersClass[gameManager.PlayerTurn])
         {
             case 0:
-                //TODO : Event pendant 4 tours puis event pendant 5 tours quand on aura la possibilité de gérer les tours
+                CardUsed = true;
+                Turn = 0;
+                gameManager.Multiplier -= 0.5f;
                 break;
             case 1:
                 gameManager.PickACardOnEndTour.PickACard();
@@ -21,10 +24,27 @@ public class RV_AC_Card3 : MonoBehaviour
                 //TODO : Redraw (anim)
                 break;
             case 2:
-                //diceManager.diceResult = diceManager.diceResult * 2;
+                RV_DiceManager.Instance.DiceResult = RV_DiceManager.Instance.DiceResult * 2;
                 break;
             default:
                 break;
+        }
+    }
+
+    public void CheckTurn()
+    {
+        if (CardUsed)
+        {
+            if (Turn == 5)
+            {
+                gameManager.Multiplier += 0.5f;
+                gameManager.Multiplier += 1;
+            }
+            else if (Turn == 10)
+            {
+                gameManager.Multiplier -= 1;
+            }
+            Turn++;
         }
     }
     public void EndAction()
@@ -32,6 +52,7 @@ public class RV_AC_Card3 : MonoBehaviour
         switch (gameManager.PlayersClass[gameManager.PlayerTurn])
         {
             case 0:
+                CardUsed = false;
                 break;
             case 1:
                 break;

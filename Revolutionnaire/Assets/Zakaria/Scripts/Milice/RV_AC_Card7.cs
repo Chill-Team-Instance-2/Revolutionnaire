@@ -18,13 +18,21 @@ public class RV_AC_Card7 : MonoBehaviour
                 gameManager.Bonus += 1;
                 break;
             case 1:
-                //TODO : réfléchir à comment faire pour qu'à chaque défaussement les points augmentent
+                CardUsed = true;
                 break;
             case 2:
                 gameManager.Turn -= 1;
                 break;
             default:
                 break;
+        }
+    }
+
+    public void AddWhenEndTurn()
+    {
+        if (CardUsed)
+        {
+            gameManager.InfluencePlayer += 1;
         }
     }
     public void EndAction()

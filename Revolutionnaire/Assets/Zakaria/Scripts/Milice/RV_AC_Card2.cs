@@ -19,9 +19,16 @@ public class RV_AC_Card2 : MonoBehaviour
                 break;
             case 1:
                 //TODO : faire carte commercant
+                                /*
+                 currentcard.ReanableLostJet();
+                 gameManager.InfluencePlayer -= 5;
+                */
                 break;
             case 2:
-                //TODO : faire carte intellectuel
+                //TODO : faire carte intelligence
+                /*
+                 currentcard.ReanableLostJet();
+                */
                 break;
 
             default:

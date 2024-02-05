@@ -23,7 +23,7 @@ public class RV_AC_Card5 : MonoBehaviour
             case 2:
                 if(cardManager.cards.Count >= 3)
                 {
-                    //diceManager.diceResult += 5;
+                    RV_DiceManager.Instance.ResultBonus += 5;
                 }
                 break;
             default:
@@ -39,6 +39,7 @@ public class RV_AC_Card5 : MonoBehaviour
             case 1:
                 break;
             case 2:
+                RV_DiceManager.Instance.ResultBonus -= 5;
                 break;
             default:
                 break;

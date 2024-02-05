@@ -21,8 +21,7 @@ public class RV_AC_Card4 : MonoBehaviour
                 //TODO : remettre la carte de la fausse dans la pioche
                 break;
             case 2:
-                /*
-                if(diceManager.diceResult <= 15) 
+                if(RV_DiceManager.Instance.DiceResult <= 15) 
                 {
                     gameManager.InfluencePlayer += 15;
                 }
@@ -30,7 +29,6 @@ public class RV_AC_Card4 : MonoBehaviour
                 {
                     gameManager.InfluencePlayer -= 10;
                 }
-                */
                 break;
             default:
                 break;

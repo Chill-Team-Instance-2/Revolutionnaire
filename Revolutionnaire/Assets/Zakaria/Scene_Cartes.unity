@@ -946,6 +946,7 @@ GameObject:
   - component: {fileID: 286347143}
   - component: {fileID: 286347142}
   - component: {fileID: 286347144}
+  - component: {fileID: 286347145}
   m_Layer: 0
   m_Name: ACTIONSCARDS (2)
   m_TagString: Action
@@ -1039,6 +1040,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &286347145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286347140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9eab4a660c04fd409efb08caa116d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318314208
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,6 +3499,7 @@ GameObject:
   - component: {fileID: 900916568}
   - component: {fileID: 900916567}
   - component: {fileID: 900916569}
+  - component: {fileID: 900916570}
   m_Layer: 0
   m_Name: ACTIONSCARDS (6)
   m_TagString: Action
@@ -3579,6 +3593,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &900916570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900916565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9439c87708377754d9f1278a7389316b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &926710767
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,17 +4026,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickACardOnEndTour: {fileID: 1449620113}
+  onendturn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 286347145}
+        m_TargetAssemblyTypeName: RV_ac_Card3, Assembly-CSharp
+        m_MethodName: CheckTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 900916570}
+        m_TargetAssemblyTypeName: RV_AC_Card7, Assembly-CSharp
+        m_MethodName: AddWhenEndTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   turnPawn: {fileID: 656360759}
   turnTiles: {fileID: 493499671}
   Turn: 0
   MaxTurn: 15
+  Bonus: 0
+  Multiplier: 0
   InfluencePlayer: 0
   InfluenceKing: 100
   PlayerTurn: 1
-  Multiplier: 0
   PlayersClass: 
   PlayersName: []
-  CardIsActive: 0
 --- !u!4 &1027700631
 Transform:
   m_ObjectHideFlags: 0

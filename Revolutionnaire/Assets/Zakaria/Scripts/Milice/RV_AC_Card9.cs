@@ -15,7 +15,8 @@ public class RV_AC_Card9 : MonoBehaviour
         switch (gameManager.PlayersClass[gameManager.PlayerTurn])
         {
             case 0:
-                //jeter dé
+                StartCoroutine(LaunchDiceComm());
+                
                 //int result = diceManager.diceResult;
                 //result = ((int)System.Math.Floor(result/2));
                 //gameManager.InfluencePlayer = result;
@@ -35,6 +36,19 @@ public class RV_AC_Card9 : MonoBehaviour
                 break;
         }
     }
+
+    private IEnumerator LaunchDiceComm()
+    {
+        int result = RV_DiceManager.Instance.LaunchDice();
+        result = ((int)System.Math.Floor(result / 2f));
+
+        yield return new WaitForSeconds(2);
+
+        RV_GameManager.Instance.InfluencePlayer += result;
+        yield return null;
+    }
+
+
     public void EndAction()
     {
         switch (gameManager.PlayersClass[gameManager.PlayerTurn])

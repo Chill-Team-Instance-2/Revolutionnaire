@@ -20,7 +20,7 @@ public class RV_AC_Card1 : MonoBehaviour
                 break;
             case 1:
                 gameManager.InfluencePlayer -= 2;
-                //diceManager.diceResult += 2;
+                RV_DiceManager.Instance.ResultBonus += 2;
                 break;
             case 2:
                 CanvaOddOrEven.enabled = true;
@@ -33,7 +33,7 @@ public class RV_AC_Card1 : MonoBehaviour
     public void OddOrEvenCheck()
     {
         CanvaOddOrEven.enabled = false;
-        if ((OddOrEven == 0 && diceManager.diceResult % 2 == 0) || (OddOrEven == 1 && diceManager.diceResult % 2 != 0))
+        if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
         {
             gameManager.InfluencePlayer += 6;
         }
@@ -51,6 +51,7 @@ public class RV_AC_Card1 : MonoBehaviour
                 gameManager.Multiplier = gameManager.Multiplier - 1;
                 break;
             case 1:
+                RV_DiceManager.Instance.ResultBonus -= 2;
                 break;
             case 2:
                 break;

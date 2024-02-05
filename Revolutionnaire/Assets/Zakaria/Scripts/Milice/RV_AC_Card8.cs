@@ -22,7 +22,7 @@ public class RV_AC_Card8 : MonoBehaviour
                 //TODO : garder carte dans la pioche pendant un tour
                 break;
             case 2:
-                //diceManager.diceResult = 20;
+                RV_DiceManager.Instance.ResultBonus =+ 200;
                 gameManager.Multiplier = 0.5f;
                 break;
             default:
