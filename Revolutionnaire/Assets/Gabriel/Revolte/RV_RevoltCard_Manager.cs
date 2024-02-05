@@ -47,8 +47,8 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(0.5f);
-            RV_GameManager.Instance.EndTurn();
-            RV_GameManager.Instance.InfluencePlayer -= currentCard.PointAdded;
+            //RV_GameManager.Instance.EndTurn();
+            currentCard.RemoveWonPoints();
         }
 
         yield return null;

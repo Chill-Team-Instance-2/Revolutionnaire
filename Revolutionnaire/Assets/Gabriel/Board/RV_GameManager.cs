@@ -1,23 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class RV_GameManager : MonoBehaviour
 {
     public static RV_GameManager Instance;
     public RV_PickACardOnEndTour PickACardOnEndTour;
-
+    public UnityEvent onendturn;
     [SerializeField] private Image milicia_Image;
     [SerializeField] private Image intellectual_Image;
     [SerializeField] private Image merchant_Image;
     [SerializeField] private Sprite unselected_Image;
     [SerializeField] private Sprite selected_Image;
-
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
 
     public int Turn = 0;
     public int MaxTurn = 15;
+    public int Bonus = 0;
+    public float Multiplier = 0;
 
     public int InfluencePlayer = 0;
     public int InfluenceKing = 100;
@@ -26,6 +28,7 @@ public class RV_GameManager : MonoBehaviour
 
     public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerçant, 2 = intellectuel
     public List<string> PlayersName = new List<string>();
+
 
     private void Awake()
     {
@@ -76,13 +79,14 @@ public class RV_GameManager : MonoBehaviour
         Turn++;
         NextPlayer();
         PickACardOnEndTour.ActualToDiscard();
+        onendturn?.Invoke();
     }
 
-    public int AddInfluence(int adding)
+    public int AddInfluence(float adding)
     {
-        int addingInfluence = adding; // + multipliers
-        InfluencePlayer += addingInfluence;
-        return addingInfluence;
+        adding = (adding - Bonus) * Multiplier;
+        InfluencePlayer += ((int)System.Math.Floor(adding));
+        return InfluencePlayer;
     }
 
 

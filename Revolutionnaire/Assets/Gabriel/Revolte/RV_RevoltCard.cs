@@ -15,6 +15,7 @@ public class RV_RevoltCard : MonoBehaviour
     public List<int> JetRequirements = new List<int>();
     public List<int> JetInfluences = new List<int>();
     public List<bool> JetAvailable = new List<bool>();
+    public List<bool> JetWon = new List<bool>();
 
     public List<TextMeshProUGUI> TextRequirements = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> TextInfluences = new List<TextMeshProUGUI>();
@@ -41,12 +42,13 @@ public class RV_RevoltCard : MonoBehaviour
 
     public void Jet(int number)
     {
-        if (!RV_DiceManager.Instance.IsLaunching() && JetAvailable[number])
+        if (!RV_DiceManager.Instance.IsLaunching() && JetAvailable[number] && !JetWon[number])
         {
             JetAvailable[number] = false;
             if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number], GetComponent<RV_RevoltCard>())) //win
             {
                 StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0, 0.75f, 0)));
+                JetWon[number] = true;
             }
             else //jet raté
             {
@@ -72,6 +74,7 @@ public class RV_RevoltCard : MonoBehaviour
             TextRequirements[i].color = new Color(1, 1, 1);
             TextInfluences[i].color = new Color(1, 1, 1);
             JetAvailable[i] = true;
+            JetWon[i] = false;
         }
     }
 
@@ -81,5 +84,23 @@ public class RV_RevoltCard : MonoBehaviour
         {
             JetAvailable[i] = false;
         }
+    }
+
+    public void ReanableLostJet()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!JetWon[i])
+            {
+                JetAvailable[i] = true;
+                TextRequirements[i].color = new Color(1, 1, 1);
+                TextInfluences[i].color = new Color(1, 1, 1);
+            }
+        }
+    }
+
+    public void RemoveWonPoints()
+    {
+        RV_GameManager.Instance.InfluencePlayer -= PointAdded;
     }
 }
