@@ -14,11 +14,16 @@ public class RV_GameManager : MonoBehaviour
 
     public int InfluencePlayer = 0;
     public int InfluenceKing = 100;
+    public int Bonus = 0;
 
     public int PlayerTurn = 0;
 
+    public float Multiplier;
+
     public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerçant, 2 = intellectuel
     public List<string> PlayersName = new List<string>();
+
+    public bool CardIsActive = false;
 
     private void Awake()
     {
@@ -67,10 +72,14 @@ public class RV_GameManager : MonoBehaviour
         Turn++;
         NextPlayer();
         PickACardOnEndTour.ActualToDiscard();
+        if (CardIsActive)
+        {
+        }
     }
 
-    public void AddInfluence(int adding)
+    public void AddInfluence(float adding)
     {
-        InfluencePlayer += adding;
+        adding = (adding - Bonus) * Multiplier;
+        InfluencePlayer += ((int)System.Math.Floor(adding));
     }
 }
