@@ -32,6 +32,17 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         {
             RV_GameManager.Instance.NextPlayer();
             currentCard.PointAdded += RV_GameManager.Instance.AddInfluence(influenceGain);
+            bool cardCompleted = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (currentCard.JetAvailable[i])
+                    cardCompleted = false;
+            }
+            if (cardCompleted)
+            {
+                yield return new WaitForSeconds(0.5f);
+                RV_GameManager.Instance.EndTurn();
+            }
         }
         else
         {
