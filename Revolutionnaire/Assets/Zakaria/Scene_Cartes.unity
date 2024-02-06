@@ -2901,7 +2901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756318511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1425599683}
+        m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
+        m_MethodName: TakeOdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &756318511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4053,6 +4065,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1425599683}
+        m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
+        m_MethodName: OddOrEvenCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  milicia_Image: {fileID: 0}
+  intellectual_Image: {fileID: 0}
+  merchant_Image: {fileID: 0}
+  unselected_Image: {fileID: 0}
+  selected_Image: {fileID: 0}
   turnPawn: {fileID: 656360759}
   turnTiles: {fileID: 493499671}
   Turn: 0
@@ -4958,6 +4987,7 @@ GameObject:
   - component: {fileID: 1425599681}
   - component: {fileID: 1425599680}
   - component: {fileID: 1425599682}
+  - component: {fileID: 1425599683}
   m_Layer: 0
   m_Name: ACTIONSCARDS
   m_TagString: Action
@@ -5051,6 +5081,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1425599683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425599678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb597f138f910041aa51fdcfa19e6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvaOddOrEven: {fileID: 0}
+  OddOrEven: 0
 --- !u!1 &1430438066
 GameObject:
   m_ObjectHideFlags: 0
@@ -6258,7 +6302,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1801319894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1425599683}
+        m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
+        m_MethodName: TakeEven
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1801319894
 MonoBehaviour:
   m_ObjectHideFlags: 0
