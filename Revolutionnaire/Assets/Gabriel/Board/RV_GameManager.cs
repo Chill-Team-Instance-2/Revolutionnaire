@@ -37,14 +37,12 @@ public class RV_GameManager : MonoBehaviour
     }
     private void Start()
     {
-
         PickACardOnEndTour.PickACard();
     }
 
     private void Update()
     {
         ChangeImageColorOnTurn();
-        Debug.Log(PlayerTurn);
         turnPawn.position = Vector3.Lerp(turnPawn.position, turnTiles.GetChild(Turn).position, 8 * Time.deltaTime);
     }
 
@@ -75,10 +73,10 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        PickACardOnEndTour.ActualToDiscard();
         PickACardOnEndTour.PickACard();
         Turn++;
         NextPlayer();
-        PickACardOnEndTour.ActualToDiscard();
         onendturn?.Invoke();
     }
 
@@ -95,34 +93,43 @@ public class RV_GameManager : MonoBehaviour
         switch (PlayerTurn)
         {
             case 0:
-                milicia_Image.sprite = selected_Image;
-                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 1f);
+                if (milicia_Image && merchant_Image && intellectual_Image)
+                {
+                    milicia_Image.sprite = selected_Image;
+                    milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 1f);
 
-                merchant_Image.sprite = unselected_Image;
-                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
+                    merchant_Image.sprite = unselected_Image;
+                    merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
 
-                intellectual_Image.sprite = unselected_Image;
-                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f); 
+                    intellectual_Image.sprite = unselected_Image;
+                    intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f);
+                }
                 break;
             case 1:
-                milicia_Image.sprite = unselected_Image;
-                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
+                if (milicia_Image && merchant_Image && intellectual_Image)
+                {
+                    milicia_Image.sprite = unselected_Image;
+                    milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
 
-                merchant_Image.sprite = selected_Image;
-                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 1f);
+                    merchant_Image.sprite = selected_Image;
+                    merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 1f);
 
-                intellectual_Image.sprite = unselected_Image;
-                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f); 
+                    intellectual_Image.sprite = unselected_Image;
+                    intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 0.75f);
+                }
                 break;
             case 2:
-                milicia_Image.sprite = unselected_Image;
-                milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
+                if (milicia_Image && merchant_Image && intellectual_Image)
+                {
+                    milicia_Image.sprite = unselected_Image;
+                    milicia_Image.color = new Vector4(milicia_Image.color.r, milicia_Image.color.g, milicia_Image.color.b, 0.75f);
 
-                merchant_Image.sprite = unselected_Image;
-                merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
+                    merchant_Image.sprite = unselected_Image;
+                    merchant_Image.color = new Vector4(merchant_Image.color.r, merchant_Image.color.g, merchant_Image.color.b, 0.75f);
 
-                intellectual_Image.sprite = selected_Image;
-                intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 1f);
+                    intellectual_Image.sprite = selected_Image;
+                    intellectual_Image.color = new Vector4(intellectual_Image.color.r, intellectual_Image.color.g, intellectual_Image.color.b, 1f);
+                }
                 break;
             default:
                 break;

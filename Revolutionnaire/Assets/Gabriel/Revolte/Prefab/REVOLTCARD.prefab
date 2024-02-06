@@ -1238,6 +1238,7 @@ MonoBehaviour:
   JetRequirements: 0a0000000700000009000000
   JetInfluences: 060000000300000005000000
   JetAvailable: 010101
+  JetWon: 000000
   TextRequirements:
   - {fileID: 152989809157040426}
   - {fileID: 4662052262609776036}
@@ -1246,6 +1247,7 @@ MonoBehaviour:
   - {fileID: 2692524763754281679}
   - {fileID: 6643275701900724492}
   - {fileID: 988935853113674382}
+  PointAdded: 0
 --- !u!33 &8387659411285409618
 MeshFilter:
   m_ObjectHideFlags: 0
