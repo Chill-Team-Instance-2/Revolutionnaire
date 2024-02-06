@@ -10,6 +10,9 @@ public class RV_DiceManager : MonoBehaviour
 
     public float DiceTime = 2;
 
+    public float ResultMultiplier = 1;
+    public int ResultBonus = 0;
+
     private void Awake()
     {
         Instance = this;
@@ -18,6 +21,8 @@ public class RV_DiceManager : MonoBehaviour
     public int LaunchDice()
     {
         DiceResult = dice.LaunchDice(DiceTime, true, true);
+        DiceResult = ((int)(DiceResult * ResultMultiplier));
+        DiceResult += ResultBonus;
         return DiceResult;
     }
 
