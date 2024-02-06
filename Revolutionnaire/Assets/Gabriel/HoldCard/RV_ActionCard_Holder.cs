@@ -23,32 +23,42 @@ public class RV_ActionCard_Holder : MonoBehaviour
 
     public void PutCardInHand(GameObject card, int playerId)
     {
+        card.transform.localScale = new Vector3(1, 1, 1);
+        card.transform.localEulerAngles = new Vector3(0, 180, 0);
         switch (playerId)
         {
             case 0:
-                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer1.position));
                 CardsInHandPlayer1.Add(card.transform);
+                Vector3 offset1 = new Vector3(CardsInHandPlayer1.IndexOf(card.transform) * -4f, 0);
+                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer1.position + offset1));
                 break;
             case 1:
-                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer2.position));
                 CardsInHandPlayer2.Add(card.transform);
+                Vector3 offset2 = new Vector3(CardsInHandPlayer2.IndexOf(card.transform) * -4f, 0);
+                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer2.position + offset2));
                 break;
             case 2:
-                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer3.position));
                 CardsInHandPlayer3.Add(card.transform);
+                Vector3 offset3 = new Vector3(CardsInHandPlayer3.IndexOf(card.transform) * -4f, 0);
+                StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer3.position + offset3));
                 break;
         }
-        
     }
 
-    public void FocusOnCardInHand(GameObject card)
+    public void FocusOnCardInHand(Transform card)
     {
         //animation
+        Vector3 cardOffset = new Vector3(GetListOfCard(card.transform).IndexOf(card.transform) * -4, 0, -1);
+        card.transform.position = GetTransformOfList(GetListOfCard(card.transform)).GetChild(0).transform.position + cardOffset;
     }
 
-    public void UnfocusOnCardInHand(GameObject card)
+    public void UnfocusOnCardInHand(Transform card)
     {
         //undoAnimation
+        Transform HandTransform = GetTransformOfList(GetListOfCard(card.transform));
+        Vector3 handPosition = HandTransform.position;
+        Vector3 cardOffset = new Vector3(GetListOfCard(card.transform).IndexOf(card.transform) * -4, 0);
+        card.transform.position = handPosition + cardOffset;
     }
 
     public void DiscardCardInHand(GameObject card)
@@ -61,7 +71,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
     private IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination)
     {
         float timer = 0;
-        while (timer < 2)
+        while (timer < 1)
         {
             card.position = Vector3.Lerp(card.position, destination, 10 * Time.deltaTime);
             timer += Time.deltaTime;
@@ -82,7 +92,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
         return null;
     }
 
-    public bool CardIsInHand(Transform card)
+    public bool IsCardInHand(Transform card)
     {
         if (CardsInHandPlayer1.Contains(card))
             return true;
@@ -92,5 +102,17 @@ public class RV_ActionCard_Holder : MonoBehaviour
             return true;
         
         return false;
+    }
+
+    public Transform GetTransformOfList(List<Transform> CardsList)
+    {
+        if (CardsList == CardsInHandPlayer1)
+            return HandPlayer1;
+        if (CardsList == CardsInHandPlayer2)
+            return HandPlayer2;
+        if (CardsList == CardsInHandPlayer3)
+            return HandPlayer3;
+
+        return null;
     }
 }
