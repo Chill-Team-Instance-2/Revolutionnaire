@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class RV_PickACardOnEndTour : MonoBehaviour
 {
+    public static RV_PickACardOnEndTour Instance;
+
     public List<GameObject> ActionsCards;
     public List<GameObject> RevoltsCards;
     public List<GameObject> DiscardsList;
 
+    public GameObject CurrentCard;
+
     private Animator animator;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void PickACard()
     {
@@ -21,7 +30,8 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             int Cards = Random.Range(0, ActionsCards.Count);
             animator = ActionsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
-            DiscardsList.Add(ActionsCards[Cards]);
+            //DiscardsList.Add(ActionsCards[Cards]);
+            CurrentCard = ActionsCards[Cards];
             ActionsCards.Remove(ActionsCards[Cards]);
         }
         else if (ActionsCards.Count == 0)
@@ -34,7 +44,8 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             int Cards = Random.Range(0, RevoltsCards.Count);
             animator = RevoltsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
-            DiscardsList.Add(RevoltsCards[Cards]);
+            //DiscardsList.Add(RevoltsCards[Cards]);
+            CurrentCard = RevoltsCards[Cards];
             RevoltsCards.Remove(RevoltsCards[Cards]);
         }
         else if (RevoltsCards.Count == 0)
@@ -45,9 +56,21 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void ActualToDiscard()
     {
-        DiscardsList[DiscardsList.Count-2].GetComponent<Animator>().SetTrigger("FlipToDiscard");
+        if (CurrentCard)
+        {
+            if (CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revolt)) //if revolt card
+            {
+                CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
+                DiscardsList.Add(CurrentCard);
+            }
+            else //if action card
+            {
+                CurrentCard.GetComponent<Animator>().enabled = false;
+                RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
+                CurrentCard = null;
+            }
+        }
     }
-
 }
 
 
