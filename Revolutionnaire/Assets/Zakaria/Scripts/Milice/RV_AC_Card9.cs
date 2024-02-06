@@ -17,20 +17,19 @@ public class RV_AC_Card9 : MonoBehaviour
             case 0:
                 StartCoroutine(LaunchDiceComm());
                 
-                //int result = diceManager.diceResult;
-                //result = ((int)System.Math.Floor(result/2));
-                //gameManager.InfluencePlayer = result;
+                double result = RV_DiceManager.Instance.DiceResult;
+                result = System.Math.Floor(result/2);
+                gameManager.InfluencePlayer = ((int)result);
                 break;
             case 1:
                 //TODO : voir les 3 prochaines puis choisir
                 break;
             case 2:
-                /*
-                 if(diceManager.diceResult%3==0) 
+
+                if(RV_DiceManager.Instance.DiceResult%3==0) 
                 {
-                    gameManager.adding += 3;
+                    gameManager.Bonus += 3;
                 }
-                 */
                 break;
             default:
                 break;
@@ -58,6 +57,10 @@ public class RV_AC_Card9 : MonoBehaviour
             case 1:
                 break;
             case 2:
+                if(gameManager.Bonus > 0)
+                {
+                    gameManager.Bonus -= 3;
+                }
                 break;
             default:
                 break;

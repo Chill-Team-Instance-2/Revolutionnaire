@@ -41,14 +41,14 @@ public class RV_AC_Card6 : MonoBehaviour
 
     public void CheckTurn()
     {
-        if (!CardUsed && gameManager.Turn > 15)
-        {
-            gameManager.InfluencePlayer -= 20;
-        }
-        else
-        {
-            gameManager.InfluencePlayer -= 8;
-        }
+            if (!CardUsed && gameManager.Turn > 15)
+            {
+                gameManager.InfluencePlayer -= 20;
+            }
+            else
+            {
+                gameManager.InfluencePlayer -= 8;
+            }
     }
     public void EndAction()
     {
