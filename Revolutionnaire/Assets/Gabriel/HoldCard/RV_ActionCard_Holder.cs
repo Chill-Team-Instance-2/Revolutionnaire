@@ -29,17 +29,17 @@ public class RV_ActionCard_Holder : MonoBehaviour
         {
             case 0:
                 CardsInHandPlayer1.Add(card.transform);
-                Vector3 offset1 = new Vector3(CardsInHandPlayer1.IndexOf(card.transform) * -4f, 0);
+                Vector3 offset1 = new Vector3(CardsInHandPlayer1.IndexOf(card.transform) * -4f, 0, 0.01f * CardsInHandPlayer1.IndexOf(card.transform));
                 StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer1.position + offset1));
                 break;
             case 1:
                 CardsInHandPlayer2.Add(card.transform);
-                Vector3 offset2 = new Vector3(CardsInHandPlayer2.IndexOf(card.transform) * -4f, 0);
+                Vector3 offset2 = new Vector3(CardsInHandPlayer2.IndexOf(card.transform) * -4f, 0, 0.01f * CardsInHandPlayer2.IndexOf(card.transform));
                 StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer2.position + offset2));
                 break;
             case 2:
                 CardsInHandPlayer3.Add(card.transform);
-                Vector3 offset3 = new Vector3(CardsInHandPlayer3.IndexOf(card.transform) * -4f, 0);
+                Vector3 offset3 = new Vector3(CardsInHandPlayer3.IndexOf(card.transform) * -4f, 0, 0.01f * CardsInHandPlayer3.IndexOf(card.transform));
                 StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer3.position + offset3));
                 break;
         }
@@ -57,7 +57,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
         //undoAnimation
         Transform HandTransform = GetTransformOfList(GetListOfCard(card.transform));
         Vector3 handPosition = HandTransform.position;
-        Vector3 cardOffset = new Vector3(GetListOfCard(card.transform).IndexOf(card.transform) * -4, 0);
+        Vector3 cardOffset = new Vector3(GetListOfCard(card.transform).IndexOf(card.transform) * -4, 0, 0.01f * GetListOfCard(card).IndexOf(card.transform));
         card.transform.position = handPosition + cardOffset;
     }
 
