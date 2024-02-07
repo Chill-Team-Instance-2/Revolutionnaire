@@ -12,7 +12,7 @@ public class RV_RevoltCard : MonoBehaviour
     [SerializeField] private MeshRenderer planeFront;
     [SerializeField] private MeshRenderer planeBack;
 
-    //[SerializeField] private Sprite spriteFront;
+    [SerializeField] private Sprite spriteFront;
     //[SerializeField] private Sprite spriteBack;
     
     //[SerializeField] private Image imageFront;
