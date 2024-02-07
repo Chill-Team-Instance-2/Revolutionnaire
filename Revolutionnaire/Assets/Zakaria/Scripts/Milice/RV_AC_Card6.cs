@@ -13,7 +13,8 @@ public class RV_AC_Card6 : MonoBehaviour
     public void Action()
     {
         int MalusIndex = 3;
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 gameManager.Bonus = -1;
@@ -52,7 +53,8 @@ public class RV_AC_Card6 : MonoBehaviour
     }
     public void EndAction()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 break;

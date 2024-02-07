@@ -11,20 +11,23 @@ public class RV_ac_Card3 : MonoBehaviour
     }
     public void Action()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 CardUsed = true;
                 Turn = 0;
                 gameManager.Multiplier -= 0.5f;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 break;
             case 1:
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 gameManager.PickACardOnEndTour.PickACard();
-                gameManager.PickACardOnEndTour.ActualToDiscard();
                 //TODO : Redraw (anim)
                 break;
             case 2:
                 RV_DiceManager.Instance.DiceResult = RV_DiceManager.Instance.DiceResult * 2;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 break;
             default:
                 break;
@@ -49,7 +52,8 @@ public class RV_ac_Card3 : MonoBehaviour
     }
     public void EndAction()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 CardUsed = false;

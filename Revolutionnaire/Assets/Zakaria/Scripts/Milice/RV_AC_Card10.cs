@@ -15,7 +15,8 @@ public class RV_AC_Card10 : MonoBehaviour
     }
     public void Action()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 /* 
@@ -45,7 +46,8 @@ public class RV_AC_Card10 : MonoBehaviour
     }
     public void EndAction()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 TurnButton.enabled = true;
