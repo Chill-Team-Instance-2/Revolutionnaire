@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RV_ac_Card3 : MonoBehaviour
+public class RV_ac_Card3 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
     private int Turn;
@@ -9,7 +9,7 @@ public class RV_ac_Card3 : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
-    public void Action()
+    public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
@@ -50,7 +50,7 @@ public class RV_ac_Card3 : MonoBehaviour
             Turn++;
         }
     }
-    public void EndAction()
+    public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))

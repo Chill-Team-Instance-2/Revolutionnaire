@@ -65,7 +65,6 @@ public class RV_ActionCard_Holder : MonoBehaviour
     {
         StartCoroutine(AnimationPlaceCardInHand(card.transform, DiscardTransform.position, 3));
         RV_PickACardOnEndTour.Instance.DiscardsList.Add(card);
-        print(GetListOfCard(card.transform));
         GetListOfCard(card.transform).Remove(card.transform);
     }
 

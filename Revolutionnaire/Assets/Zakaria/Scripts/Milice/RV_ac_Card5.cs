@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RV_AC_Card5 : MonoBehaviour
+public class RV_AC_Card5 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
     [SerializeField]private CardManager cardManager;
@@ -10,7 +10,7 @@ public class RV_AC_Card5 : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
-    public void Action()
+    public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
@@ -31,7 +31,7 @@ public class RV_AC_Card5 : MonoBehaviour
                 break;
         }
     }
-    public void EndAction()
+    public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
