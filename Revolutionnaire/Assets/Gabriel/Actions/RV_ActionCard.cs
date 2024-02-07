@@ -15,7 +15,10 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnClick?.Invoke();
+        if (RV_ActionCard_Holder.Instance.IsCardInHand(transform)) //TODO || actual card
+        {
+            OnClick?.Invoke();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

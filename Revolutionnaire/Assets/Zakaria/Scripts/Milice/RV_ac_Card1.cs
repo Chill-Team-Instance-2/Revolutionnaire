@@ -13,14 +13,19 @@ public class RV_AC_Card1 : MonoBehaviour
     }
     public void Action()
     {
-        switch(gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch(cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 gameManager.Multiplier = gameManager.Multiplier + 1;
+                print(gameManager.Multiplier);
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 break;
             case 1:
                 gameManager.InfluencePlayer -= 2;
                 RV_DiceManager.Instance.ResultBonus += 2;
+                print(gameManager.InfluencePlayer);
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 break;
             case 2:
                 CanvaOddOrEven.enabled = true;
@@ -30,22 +35,40 @@ public class RV_AC_Card1 : MonoBehaviour
         }
     }
 
+    public void TakeEven()
+    {
+        OddOrEven = 0;
+        CardUsed = true;
+    }
+
+    public void TakeOdd()
+    {
+        OddOrEven = 1;
+        CardUsed = true;
+    }
+
     public void OddOrEvenCheck()
     {
-        CanvaOddOrEven.enabled = false;
-        if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
+        if (CardUsed)
         {
-            gameManager.InfluencePlayer += 6;
-        }
-        else
-        {
-            gameManager.InfluencePlayer -= 6;
+            CanvaOddOrEven.enabled = false;
+            if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
+            {
+                gameManager.InfluencePlayer += 6;
+                CardUsed = false;
+            }
+            else
+            {
+                gameManager.InfluencePlayer -= 6;
+                CardUsed = false;
+            }
         }
     }
 
     public void EndAction()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 gameManager.Multiplier = gameManager.Multiplier - 1;
