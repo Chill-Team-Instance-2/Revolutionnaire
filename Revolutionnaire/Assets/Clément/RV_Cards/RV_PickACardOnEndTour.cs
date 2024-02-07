@@ -32,6 +32,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             animator.SetTrigger("Flip");
             //DiscardsList.Add(ActionsCards[Cards]);
             CurrentCard = ActionsCards[Cards];
+            CurrentCard.GetComponent<RV_AC_Parent>().OnReveal();
             ActionsCards.Remove(ActionsCards[Cards]);
         }
         else if (ActionsCards.Count == 0)
@@ -65,9 +66,17 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             }
             else //if action card
             {
-                CurrentCard.GetComponent<Animator>().enabled = false;
-                RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
-                CurrentCard = null;
+                if (CurrentCard.GetComponent<RV_AC_Parent>().CanBePickup)
+                {
+                    CurrentCard.GetComponent<Animator>().enabled = false;
+                    RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
+                    CurrentCard = null;
+                }
+                else
+                {
+                    CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
+                    DiscardsList.Add(CurrentCard);
+                }
             }
         }
     }
