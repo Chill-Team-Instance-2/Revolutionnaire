@@ -10,6 +10,21 @@ public class RV_AC_Card9 : RV_AC_Parent
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public override void OnReveal()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                gameManager.DisableEndTurn();
+                CanBePickup = false;
+                gameManager.AddInfluenceWithDelay(RV_DiceManager.Instance.LaunchDice() / 2, RV_DiceManager.Instance.DiceTime);
+                gameManager.Invoke("EnableEndTurn", RV_DiceManager.Instance.DiceTime);
+                break;
+        }
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;

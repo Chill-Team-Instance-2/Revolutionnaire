@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,6 +29,8 @@ public class RV_GameManager : MonoBehaviour
 
     public List<int> PlayersClass = new List<int>(); //0 = millice, 1 = commerçant, 2 = intellectuel
     public List<string> PlayersName = new List<string>();
+
+    public bool CanEndTurn = true;
 
 
     private void Awake()
@@ -73,11 +76,14 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        PickACardOnEndTour.ActualToDiscard();
-        PickACardOnEndTour.PickACard();
-        Turn++;
-        NextPlayer();
-        onendturn?.Invoke();
+        if (CanEndTurn)
+        {
+            PickACardOnEndTour.ActualToDiscard();
+            PickACardOnEndTour.PickACard();
+            Turn++;
+            NextPlayer();
+            onendturn?.Invoke();
+        }
     }
 
     public int AddInfluence(float adding)
@@ -88,6 +94,19 @@ public class RV_GameManager : MonoBehaviour
         return (int)adding;
     }
 
+    public int AddInfluenceWithDelay(float adding, float delay)
+    {
+        adding = (adding + Bonus) * Multiplier;
+        adding = ((int)System.Math.Floor(adding));
+        StartCoroutine(CoroutineAddInfluenceWithDelay(adding, delay));
+        return (int)adding;
+    }
+
+    private IEnumerator CoroutineAddInfluenceWithDelay(float adding, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        InfluencePlayer += (int)adding;
+    }
 
     public void ChangeImageColorOnTurn()
     {
@@ -135,5 +154,15 @@ public class RV_GameManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void EnableEndTurn()
+    {
+        CanEndTurn = true;
+    }
+
+    public void DisableEndTurn()
+    {
+        CanEndTurn = false;
     }
 }

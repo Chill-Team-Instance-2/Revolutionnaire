@@ -5,7 +5,15 @@ using UnityEngine;
 
 public class RV_AC_Parent : MonoBehaviour
 {
-    public bool isActive = false;
+    public int CardID = 0;
+    public bool CanBePickup = true;
+    public bool IsActive = false;
+
+    public virtual void OnReveal()
+    {
+        print("default on reveal");
+    }
+
     public virtual void OnPickUp()
     {
         print("default on pickup");
@@ -24,5 +32,10 @@ public class RV_AC_Parent : MonoBehaviour
     public virtual void OnDiscard()
     {
         print("default on discard");
+    }
+
+    public virtual void RefreshVisual()
+    {
+
     }
 }
