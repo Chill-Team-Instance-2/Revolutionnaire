@@ -82,9 +82,10 @@ public class RV_GameManager : MonoBehaviour
 
     public int AddInfluence(float adding)
     {
-        adding = (adding - Bonus) * Multiplier;
-        InfluencePlayer += ((int)System.Math.Floor(adding));
-        return InfluencePlayer;
+        adding = (adding + Bonus) * Multiplier;
+        adding = ((int)System.Math.Floor(adding));
+        InfluencePlayer += (int)adding;
+        return (int)adding;
     }
 
 
