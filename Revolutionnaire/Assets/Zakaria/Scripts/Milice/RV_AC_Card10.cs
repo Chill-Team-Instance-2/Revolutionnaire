@@ -13,6 +13,7 @@ public class RV_AC_Card10 : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
     public void Action()
     {
         switch (gameManager.PlayersClass[gameManager.PlayerTurn])
