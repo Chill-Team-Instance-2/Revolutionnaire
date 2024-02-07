@@ -23,10 +23,6 @@ public class RV_AC_Card10 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.DisableEndTurn();
-                CanBePickup = false;
-                gameManager.AddInfluenceWithDelay(RV_DiceManager.Instance.LaunchDice(), RV_DiceManager.Instance.DiceTime);
-                gameManager.Invoke("EnableEndTurn", RV_DiceManager.Instance.DiceTime);
                 break;
         }
     }

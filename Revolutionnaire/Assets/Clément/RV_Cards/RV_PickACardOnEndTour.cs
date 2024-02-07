@@ -33,6 +33,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             //DiscardsList.Add(ActionsCards[Cards]);
             CurrentCard = ActionsCards[Cards];
             CurrentCard.GetComponent<RV_AC_Parent>().OnReveal();
+            CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
         }
         else if (ActionsCards.Count == 0)
@@ -69,6 +70,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
                 if (CurrentCard.GetComponent<RV_AC_Parent>().CanBePickup)
                 {
                     CurrentCard.GetComponent<Animator>().enabled = false;
+                    CurrentCard.GetComponent<RV_ActionCard>().RefreshVisual();
                     RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
                     CurrentCard = null;
                 }

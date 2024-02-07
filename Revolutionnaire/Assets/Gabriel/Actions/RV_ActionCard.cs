@@ -36,17 +36,35 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void RefreshVisual()
     {
         RV_ActionCard_Holder hand = RV_ActionCard_Holder.Instance;
-        switch (hand.GetPlayerFromList(hand.GetListOfCard(transform)))
+        if (hand.IsCardInHand(transform))
         {
-            case 0:
-                imagePlayerClass.sprite = spriteMil;
-                break;
-            case 1:
-                imagePlayerClass.sprite = spriteCom;
-                break;
-            case 2:
-                imagePlayerClass.sprite = spriteInt;
-                break;
+            switch (hand.GetPlayerFromList(hand.GetListOfCard(transform)))
+            {
+                case 0:
+                    imagePlayerClass.sprite = spriteMil;
+                    break;
+                case 1:
+                    imagePlayerClass.sprite = spriteCom;
+                    break;
+                case 2:
+                    imagePlayerClass.sprite = spriteInt;
+                    break;
+            }
+        }
+        else
+        {
+            switch (RV_GameManager.Instance.PlayerTurn)
+            {
+                case 0:
+                    imagePlayerClass.sprite = spriteMil;
+                    break;
+                case 1:
+                    imagePlayerClass.sprite = spriteCom;
+                    break;
+                case 2:
+                    imagePlayerClass.sprite = spriteInt;
+                    break;
+            }
         }
         textCardID.text = GetComponent<RV_AC_Parent>().CardID.ToString();
     }
