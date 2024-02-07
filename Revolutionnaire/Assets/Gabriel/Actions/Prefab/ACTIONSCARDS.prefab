@@ -553,6 +553,7 @@ MonoBehaviour:
   materialBack: {fileID: 2100000, guid: 72c6e98179eba1642b633f1054c3db55, type: 2}
   planeFront: {fileID: 4685488674699102133}
   planeBack: {fileID: 1933355240137192136}
+  spriteFront: {fileID: 21300000, guid: 29680f1fec56c2a44a123e3a11bedc41, type: 3}
   imagePlayerClass: {fileID: 2212550531052473680}
   textCardID: {fileID: 7544638161994171076}
   spriteInt: {fileID: 21300000, guid: abea457b31f85a5458d3fad7376644c4, type: 3}
