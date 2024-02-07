@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class RV_AC_Parent : MonoBehaviour
 {
+    public bool CanBePickup = true;
+
+    public virtual void OnReveal()
+    {
+
+    }
+
     public virtual void OnPickUp()
     {
         print("default on pickup");
