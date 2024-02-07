@@ -17,7 +17,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (RV_ActionCard_Holder.Instance.IsCardInHand(transform)) //TODO || actual card
         {
-            OnClick?.Invoke();
+            GetComponent<RV_AC_Parent>().Action();
         }
     }
 

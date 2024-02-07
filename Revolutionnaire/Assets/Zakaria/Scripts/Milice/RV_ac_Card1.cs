@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RV_AC_Card1 : MonoBehaviour
+public class RV_AC_Card1 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
     private bool CardUsed = false;
@@ -11,7 +11,7 @@ public class RV_AC_Card1 : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
-    public void Action()
+    public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch(cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
@@ -65,7 +65,7 @@ public class RV_AC_Card1 : MonoBehaviour
         }
     }
 
-    public void EndAction()
+    public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
