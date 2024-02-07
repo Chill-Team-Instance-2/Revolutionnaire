@@ -19,7 +19,7 @@ public class RV_GameManager : MonoBehaviour
     public int Turn = 0;
     public int MaxTurn = 15;
     public int Bonus = 0;
-    public float Multiplier = 0;
+    public float Multiplier = 1;
 
     public int InfluencePlayer = 0;
     public int InfluenceKing = 100;
@@ -82,9 +82,10 @@ public class RV_GameManager : MonoBehaviour
 
     public int AddInfluence(float adding)
     {
-        adding = (adding - Bonus) * Multiplier;
-        InfluencePlayer += ((int)System.Math.Floor(adding));
-        return InfluencePlayer;
+        adding = (adding + Bonus) * Multiplier;
+        adding = ((int)System.Math.Floor(adding));
+        InfluencePlayer += (int)adding;
+        return (int)adding;
     }
 
 
