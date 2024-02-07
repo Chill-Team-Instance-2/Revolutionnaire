@@ -19,7 +19,7 @@ public class RV_GameManager : MonoBehaviour
     public int Turn = 0;
     public int MaxTurn = 15;
     public int Bonus = 0;
-    public float Multiplier = 0;
+    public float Multiplier = 1;
 
     public int InfluencePlayer = 0;
     public int InfluenceKing = 100;

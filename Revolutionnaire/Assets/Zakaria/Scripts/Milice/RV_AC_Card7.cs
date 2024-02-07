@@ -12,7 +12,8 @@ public class RV_AC_Card7 : MonoBehaviour
     }
     public void Action()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 gameManager.Bonus += 1;
@@ -37,7 +38,8 @@ public class RV_AC_Card7 : MonoBehaviour
     }
     public void EndAction()
     {
-        switch (gameManager.PlayersClass[gameManager.PlayerTurn])
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
                 break;

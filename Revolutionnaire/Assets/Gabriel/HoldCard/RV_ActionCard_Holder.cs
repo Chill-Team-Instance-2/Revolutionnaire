@@ -63,15 +63,16 @@ public class RV_ActionCard_Holder : MonoBehaviour
 
     public void DiscardCardInHand(GameObject card)
     {
-        StartCoroutine(AnimationPlaceCardInHand(card.transform, DiscardTransform.position));
+        StartCoroutine(AnimationPlaceCardInHand(card.transform, DiscardTransform.position, 3));
         RV_PickACardOnEndTour.Instance.DiscardsList.Add(card);
+        print(GetListOfCard(card.transform));
         GetListOfCard(card.transform).Remove(card.transform);
     }
 
-    private IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination)
+    private IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination, float duration = 1)
     {
         float timer = 0;
-        while (timer < 1)
+        while (timer < duration)
         {
             card.position = Vector3.Lerp(card.position, destination, 10 * Time.deltaTime);
             timer += Time.deltaTime;
@@ -114,5 +115,17 @@ public class RV_ActionCard_Holder : MonoBehaviour
             return HandPlayer3;
 
         return null;
+    }
+
+    public int GetPlayerFromList(List<Transform> CardsList)
+    {
+        if (CardsList == CardsInHandPlayer1)
+            return 0;
+        if (CardsList == CardsInHandPlayer2)
+            return 1;
+        if (CardsList == CardsInHandPlayer3)
+            return 2;
+
+        return 0;
     }
 }
