@@ -8,7 +8,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private Sprite spriteFront;
     [SerializeField] private Sprite spriteBack;
 
-    [SerializeField] private Image imageFront;
+    [SerializeField] public Image imageFront;
     [SerializeField] private Image imageBack;
 
     public UnityEvent OnClick;

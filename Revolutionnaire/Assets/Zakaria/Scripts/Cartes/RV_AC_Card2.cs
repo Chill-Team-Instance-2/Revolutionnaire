@@ -3,13 +3,24 @@ using UnityEngine;
 public class RV_AC_Card2 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
+    private bool cardUsed = false;
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public void Update()
+    {
+        if (cardUsed && isActive)
+        {
+            RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
+            gameManager.InfluencePlayer -= 5;
+        }
+    }
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        print("fortnite battle passsss");
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
@@ -17,23 +28,22 @@ public class RV_AC_Card2 : RV_AC_Parent
                 {
                     gameManager.InfluencePlayer += 5;
                 }
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);   
                 break;
             case 1:
-                //TODO : faire carte commercant
-                //currentcard.ReanableLostJet();
-                 gameManager.InfluencePlayer -= 5;
+                cardUsed = true;
+                //TODO : Make a discard after ending the tour
                 break;
             case 2:
-                //TODO : faire carte intelligence
-                /*
-                 currentcard.ReanableLostJet();
-                */
+                RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 break;
 
             default:
                 break;
         }
     }
+
     public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -42,6 +52,7 @@ public class RV_AC_Card2 : RV_AC_Parent
             case 0:
                 break;
             case 1:
+                cardUsed = false;
                 break;
             case 2:
                 break;
