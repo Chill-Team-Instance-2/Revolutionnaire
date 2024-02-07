@@ -9,9 +9,35 @@ public class RV_AC_Card10 : RV_AC_Parent
     [SerializeField] Canvas CanvasBackwardTurn;
     [SerializeField] Button TurnButton;
     private bool CardUsed = false;
+
+    int turnCount = -1;
+
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
+    }
+
+    public override void OnReveal()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                break;
+        }
+    }
+
+    public override void OnPickUp()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                break;
+            case 2:
+                turnCount = 0;
+                break;
+        }
     }
 
     public override void Action()
@@ -26,7 +52,8 @@ public class RV_AC_Card10 : RV_AC_Parent
                 gameManager.PickACardOnEndTour.PickACard();
                 gameManager.PickACardOnEndTour.ActualToDiscard();
                 */
-                TurnButton.enabled = false; //Forcer le jet de dé
+
+                
                 break;
             case 1:
                 CanvasBackwardTurn.enabled = true;
@@ -35,6 +62,24 @@ public class RV_AC_Card10 : RV_AC_Parent
                 gameManager.EndTurn();
                 break;
             default:
+                break;
+        }
+    }
+
+    public void CheckTurn()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 2:
+                if (turnCount != -1)
+                {
+                    if (RV_GameManager.Instance.PlayerTurn == 0 && turnCount > 0)
+                    {
+                        RV_GameManager.Instance.EndTurn();
+                    }
+                    turnCount++;
+                }
                 break;
         }
     }

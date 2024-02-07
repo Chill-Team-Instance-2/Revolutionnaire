@@ -6,11 +6,17 @@ using UnityEngine.UI;
 
 public class RV_RevoltCard : MonoBehaviour
 {
-    [SerializeField] private Sprite spriteFront;
-    [SerializeField] private Sprite spriteBack;
+    [SerializeField] private Material materialFront;
+    [SerializeField] private Material materialBack;
+
+    [SerializeField] private MeshRenderer planeFront;
+    [SerializeField] private MeshRenderer planeBack;
+
+    //[SerializeField] private Sprite spriteFront;
+    //[SerializeField] private Sprite spriteBack;
     
-    [SerializeField] private Image imageFront;
-    [SerializeField] private Image imageBack;
+    //[SerializeField] private Image imageFront;
+    //[SerializeField] private Image imageBack;
 
     public List<int> JetRequirements = new List<int>();
     public List<int> JetInfluences = new List<int>();
@@ -24,13 +30,21 @@ public class RV_RevoltCard : MonoBehaviour
 
     private void Awake()
     {
-        if (spriteBack)
+        //if (spriteBack)
+        //{
+        //    imageBack.sprite = spriteBack;
+        //}
+        //if (spriteFront)
+        //{
+        //    imageFront.sprite = spriteFront;
+        //}
+        if (materialFront && planeFront)
         {
-            imageBack.sprite = spriteBack;
+            planeFront.material = materialFront;
         }
-        if (spriteFront)
+        if (materialBack && planeBack) 
         {
-            imageFront.sprite = spriteFront;
+            planeBack.material = materialBack;
         }
 
         for (int i = 0; i < JetRequirements.Count; i++)
