@@ -8,7 +8,6 @@ public class RV_AC_Card6 : RV_AC_Parent
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
-        Action();
     }
     public override void Action()
     {
