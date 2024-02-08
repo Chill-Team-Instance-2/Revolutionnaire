@@ -26,8 +26,21 @@ public class RV_Dice_Model : MonoBehaviour
         LaunchDice();
     }
 
-    public void ChangeText(int number)
+    public void ChangeText(int number, float delay = -1)
     {
+        if (delay != -1)
+        {
+            StartCoroutine(ChangeTextWithDelay(number, delay));
+        }
+        else
+        {
+            resultText.text = number.ToString();
+        }
+    }
+
+    public IEnumerator ChangeTextWithDelay(int number, float delay)
+    {
+        yield return new WaitForSeconds(delay);
         resultText.text = number.ToString();
     }
 

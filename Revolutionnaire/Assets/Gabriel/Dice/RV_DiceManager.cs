@@ -29,7 +29,7 @@ public class RV_DiceManager : MonoBehaviour
         DiceResult = ((int)(DiceResult * ResultMultiplier));
         DiceResult += ResultBonus;
         DiceResult = Mathf.Clamp(DiceResult, 1, 20);
-        dice.ChangeText(DiceResult);
+        dice.ChangeText(DiceResult, DiceTime + 0.25f);
         onDiceLaunch.Invoke();
         return DiceResult;
     }
