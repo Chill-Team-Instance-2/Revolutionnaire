@@ -33,6 +33,8 @@ public class RV_AC_Card5 : RV_AC_Parent
         {
             case 0:
                 CanBePickup = false;
+                RV_GameManager.Instance.InfluencePlayer += 5;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 break;
             case 1:
                 break;
@@ -130,6 +132,7 @@ public class RV_AC_Card5 : RV_AC_Parent
     {
         RV_PickACardOnEndTour.Instance.animator = cards[cardIndex].GetComponent<Animator>();
         RV_PickACardOnEndTour.Instance.animator.SetTrigger("Flip");
+        RV_PickACardOnEndTour.Instance.ActualToDiscard();
         RV_PickACardOnEndTour.Instance.CurrentCard = cards[cardIndex];
         if (whichTypeOfCard == 1)
         {
