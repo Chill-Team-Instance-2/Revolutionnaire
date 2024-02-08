@@ -43,7 +43,7 @@ public class RV_AC_Card2 : RV_AC_Parent
                 break;
             case 2:
                 RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 break;
 
             default:
