@@ -15,10 +15,6 @@ public class RV_AC_Card8 : RV_AC_Parent
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
-            case 0:
-                gameManager.InfluencePlayer += 5;
-                gameManager.Turn += 1;
-                break;
             case 1:
                 IsActive = true;
                 RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
@@ -33,6 +29,16 @@ public class RV_AC_Card8 : RV_AC_Parent
         }
     }
 
+    public override void OnReveal()
+    {
+        switch (RV_ActionCard_Holder.Instance.GetPlayerFromList(RV_ActionCard_Holder.Instance.GetListOfCard(transform)))
+        {
+            case 0:
+                gameManager.InfluencePlayer += 5;
+                gameManager.Turn += 1;
+                break;
+        }
+    }
     public void CheckDiceLaunch()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
