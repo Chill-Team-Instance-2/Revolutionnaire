@@ -20,8 +20,8 @@ public class RV_AC_Card8 : RV_AC_Parent
                 RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
                 break;
             case 2:
-                //RV_DiceManager.Instance.ResultBonus += 200;
-                //gameManager.Multiplier -= 0.5f;
+                gameManager.Multiplier -= 0.5f;
+                RV_DiceManager.Instance.ResultBonus += 200;
                 RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
                 break;
             default:
@@ -67,8 +67,8 @@ public class RV_AC_Card8 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
+                RV_DiceManager.Instance.ResultBonus -= 200;
                 gameManager.Multiplier += 0.5f;
-                RV_DiceManager.Instance.ResultBonus += 200;
                 break;
         }
     }
