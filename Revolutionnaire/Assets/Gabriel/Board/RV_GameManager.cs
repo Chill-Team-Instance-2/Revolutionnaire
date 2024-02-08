@@ -9,6 +9,7 @@ public class RV_GameManager : MonoBehaviour
     public static RV_GameManager Instance;
     public RV_PickACardOnEndTour PickACardOnEndTour;
     public UnityEvent onendturn;
+    public UnityEvent OnChangePlayer;
     [SerializeField] private Image milicia_Image;
     [SerializeField] private Image intellectual_Image;
     [SerializeField] private Image merchant_Image;
@@ -72,6 +73,7 @@ public class RV_GameManager : MonoBehaviour
     {
         PlayerTurn++;
         if (PlayerTurn > 2) PlayerTurn = 0;
+        OnChangePlayer.Invoke();
     }
 
     public void EndTurn()
