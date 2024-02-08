@@ -15,6 +15,7 @@ public class RV_AC_Card10 : RV_AC_Parent
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
+        gameManager.onendturn.AddListener(CheckTurn);
     }
 
     public override void OnReveal()
@@ -33,9 +34,14 @@ public class RV_AC_Card10 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
+                IsActive = true;
+                gameManager.DisableEndTurn();
+                break;
+            case 1:
                 break;
             case 2:
                 turnCount = 0;
+                IsActive = true;
                 break;
         }
     }
@@ -46,22 +52,26 @@ public class RV_AC_Card10 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                /* 
-                TODO : chercher carte actuelle et défausser si c'est une action
-                Trouver carte actuelle
-                gameManager.PickACardOnEndTour.PickACard();
-                gameManager.PickACardOnEndTour.ActualToDiscard();
-                */
-
-                
                 break;
             case 1:
                 CanvasBackwardTurn.enabled = true;
                 break;
             case 2:
-                gameManager.EndTurn();
                 break;
             default:
+                break;
+        }
+    }
+
+    public void CheckDiceLaunch()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                RV_GameManager.Instance.EnableEndTurn();
+                IsActive = false;
+                cardHolder.DiscardCardInHand(gameObject);
                 break;
         }
     }
@@ -71,14 +81,22 @@ public class RV_AC_Card10 : RV_AC_Parent
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
+            case 0:
+                if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revolt) && IsActive)
+                {
+                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
+                }
+                break;
             case 2:
-                if (turnCount != -1)
+                if (turnCount != -1 && IsActive)
                 {
                     if (RV_GameManager.Instance.PlayerTurn == 0 && turnCount > 0)
                     {
                         RV_GameManager.Instance.EndTurn();
                     }
                     turnCount++;
+                    IsActive = false;
+                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 }
                 break;
         }
@@ -96,7 +114,6 @@ public class RV_AC_Card10 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                TurnButton.enabled = true;
                 break;
             case 1:
                 break;

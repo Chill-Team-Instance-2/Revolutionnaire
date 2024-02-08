@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RV_ActionCard_Holder : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class RV_ActionCard_Holder : MonoBehaviour
     public List<Transform> CardsInHandPlayer3 = new List<Transform>();
 
     [SerializeField] public Transform DiscardTransform;
+
+    public UnityEvent OnDiscard;
 
     private void Awake()
     {
@@ -66,6 +69,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
         StartCoroutine(AnimationPlaceCardInHand(card.transform, DiscardTransform.position, 3));
         RV_PickACardOnEndTour.Instance.DiscardsList.Add(card);
         GetListOfCard(card.transform).Remove(card.transform);
+        OnDiscard.Invoke();
     }
 
     private IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination, float duration = 1)

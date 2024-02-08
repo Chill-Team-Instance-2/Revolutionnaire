@@ -22,8 +22,19 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void PickACard()
     {
+        int cardCount = ActionsCards.Count + RevoltsCards.Count;
+        int takeCard = Random.Range(0, cardCount);
         int wichTypeOfCard = Random.Range(1, 3);
-        Debug.Log(wichTypeOfCard);
+        if (takeCard < ActionsCards.Count)
+        {
+            wichTypeOfCard = 1;
+        }
+        else
+        {
+            wichTypeOfCard = 2;
+        }
+
+        //Debug.Log(wichTypeOfCard);
 
         if (wichTypeOfCard == 1 && ActionsCards.Count > 0)
         {
