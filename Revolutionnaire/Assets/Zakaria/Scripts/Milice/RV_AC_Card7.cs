@@ -10,19 +10,46 @@ public class RV_AC_Card7 : RV_AC_Parent
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public override void OnReveal()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                CanBePickup = false;
+                break;
+        }
+    }
+
+    public override void OnDiscard()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                RV_GameManager.Instance.Turn--;
+                break;
+        }
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.Bonus += 1;
                 break;
             case 1:
                 CardUsed = true;
                 break;
             case 2:
-                gameManager.Turn -= 1;
                 break;
             default:
                 break;

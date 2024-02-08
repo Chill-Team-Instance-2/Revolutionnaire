@@ -459,6 +459,12 @@ MonoBehaviour:
   CardID: 2
   CanBePickup: 1
   IsActive: 0
+  TitleText: "R\xE9pression \xE9claire"
+  MilText: "Si le tour actuel est pair, gagne 5 d\u2019influence."
+  ComText: "Un convoi du roi contenant une abondance de ressources a \xE9t\xE9 d\xE9tourn\xE9,
+    quand le commer\xE7ant le souhaite, relance un d\xE9 autant de fois que voulu
+    contre 5 d\u2019influence sur une carte choisie."
+  IntText: "Quand l'intellectuel le souhaite, peut relancer un d\xE9 1 fois."
 --- !u!1 &146158445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1242,15 @@ MonoBehaviour:
   CardID: 6
   CanBePickup: 1
   IsActive: 0
+  TitleText: Contre attaque du roi
+  MilText: "Tous les bless\xE9s de la milice ralentissent la r\xE9volution, perdez
+    1 d\u2019influence chaque nouveau tour."
+  ComText: "Les r\xE9serves ont \xE9t\xE9 pill\xE9es, chaque faction doit d\xE9fausser
+    une carte action, si une faction n\u2019a pas de carte action perdez 1 d\u2019influence
+    \xE0 la place."
+  IntText: "Avant de lancer 1 d\xE9, quand l\u2019intellectuel le souhaite, enl\xE8ve
+    8 au r\xE9sultat du d\xE9, si la carte n\u2019est pas d\xE9fauss\xE9e avant la
+    fin du 15\xE8me tours, perdez 20 d\u2019influence."
   cardManager: {fileID: 0}
 --- !u!1 &232050459
 GameObject:
@@ -1262,7 +1277,7 @@ Transform:
   m_GameObject: {fileID: 232050459}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2169,6 +2184,15 @@ MonoBehaviour:
   CardID: 1
   CanBePickup: 1
   IsActive: 0
+  TitleText: "Journ\xE9e citoyenne"
+  MilText: "Le peuple devient enrag\xE9, avant de jouer une carte r\xE9volte quand
+    la milice le souhaite, multiplie le gain d\u2019influence d\u2019un lancer de
+    d\xE9 par 2."
+  ComText: "Les commer\xE7ants veulent soutenir la milice, quand le commer\xE7ant
+    le souhaite, +2 de r\xE9sultat \xE0 un lancer de d\xE9 contre 2 d\u2019influence."
+  IntText: "Les intellectuels tentent un plan risqu\xE9, l\u2019intellectuel choisit
+    pair/impair, lance un d\xE9, puis +6 ou -6 en influence en fonction de si il
+    gagne le pari. "
   CanvaOddOrEven: {fileID: 836764306}
   OddOrEven: 0
 --- !u!1 &396059915
@@ -2466,6 +2490,14 @@ MonoBehaviour:
   CardID: 3
   CanBePickup: 1
   IsActive: 0
+  TitleText: "Coalition \xE9clair\xE9e"
+  MilText: "Le peuple veut prendre son temps pour revenir encore plus fort, si la
+    milice le souhaite, divise l\u2019influence gagn\xE9e par 2 \xE0 l'entier inf\xE9rieur
+    pendant 4 tours puis le multiplie par 2 pendant 5 tours."
+  ComText: "Quand le commer\xE7ant le souhaite, retire une carte de la pioche qu\u2019il
+    souhaite contre 3 d\u2019influence, m\xE9lange la pioche."
+  IntText: "Quand l\u2019intellectuel le souhaite, il peut doubler le r\xE9sultat
+    d\u2019un d\xE9."
 --- !u!1 &493499670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2695,14 @@ MonoBehaviour:
   CardID: 10
   CanBePickup: 1
   IsActive: 0
+  TitleText: "R\xE9bellion"
+  MilText: "Pour se cacher des gardes royaux, la milice est oblig\xE9e de lancer
+    le d\xE9 lors de son prochain tour."
+  ComText: "Les r\xE9serves appartenant \xE0 la royaut\xE9 ont \xE9t\xE9 pill\xE9es.
+    Si le   commer\xE7ant le souhaite, il peut d\xE9penser 10 d\u2019influence pour
+    reculer d\u2019un tour."
+  IntText: "Les intellectuels se rapprochent du roi. Les intellectuels sont oblig\xE9s
+    de passer leur prochain tour. "
   CanvasBackwardTurn: {fileID: 0}
   TurnButton: {fileID: 0}
 --- !u!1 &595622692 stripped
@@ -2706,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 630877685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5464,6 +5504,13 @@ MonoBehaviour:
   CardID: 5
   CanBePickup: 1
   IsActive: 0
+  TitleText: Soutien citoyen
+  MilText: "De nouvelles troupes arrivent, gagnez 5 d\u2019influence."
+  ComText: "Quand le commer\xE7ant le souhaite, prends une carte qu\u2019il souhaite
+    de la pioche contre 6 d\u2019influence, m\xE9lange la pioche."
+  IntText: "Les factions mettent en commun leurs ressources, ajoutez 5 au r\xE9sultat
+    du prochain d\xE9 si le nombre de carte action d\xE9tenu par toutes les factions
+    est sup\xE9rieur \xE0 3."
   cardManager: {fileID: 0}
 --- !u!1 &1056197081
 GameObject:
@@ -5800,6 +5847,14 @@ MonoBehaviour:
   CardID: 4
   CanBePickup: 1
   IsActive: 0
+  TitleText: "R\xE9forme \xE9conomique"
+  MilText: "Avant de jouer une carte r\xE9volte quand la milice le souhaite, annonce
+    s\u2019il va gagner un lancer de d\xE9, si oui double l\u2019influence gagn\xE9e,
+    sinon perd l\u2019influence qu\u2019il devait gagner."
+  ComText: "Quand le commer\xE7ant le souhaite, reprend la carte qui vient d\u2019\xEAtre
+    d\xE9fauss\xE9e et la met en carte actuelle."
+  IntText: "Si l\u2019intellectuel le souhaite, lance un d\xE9, si le r\xE9sultat
+    est en-dessous de 15, perd 10 d\u2019influence sinon gagne 15."
 --- !u!1001 &1105295705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7846,6 +7901,12 @@ MonoBehaviour:
   DiceTime: 2
   ResultMultiplier: 1
   ResultBonus: 0
+  onDiceLaunch:
+    m_PersistentCalls:
+      m_Calls: []
+  onDiceEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1447417467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7931,7 +7992,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7799045592411154841, guid: 5e916ab129c1c4748886db258c377138, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 437255476}
   m_SourcePrefab: {fileID: 100100000, guid: 5e916ab129c1c4748886db258c377138, type: 3}
 --- !u!1 &1453627556
@@ -8171,6 +8232,15 @@ MonoBehaviour:
   CardID: 9
   CanBePickup: 1
   IsActive: 0
+  TitleText: Le changement
+  MilText: "Le peuple f\xEAte l\u2019arriv\xE9e d\u2019un prochain grand changement.
+    Lancez un d\xE9, le r\xE9sultat est divis\xE9 par 2 \xE0 l\u2019entier inf\xE9rieur
+    et est ajout\xE9 \xE0 l\u2019influence. "
+  ComText: "Les marchands se rassemblent.Quand il le souhaite, le commer\xE7ant peut
+    piocher une carte parmi les trois premi\xE8res cartes de la pioche sans changer
+    de tour."
+  IntText: "Lancez un d\xE9, si le r\xE9sultat est un multiple de 3 augmentez l\u2019influence
+    de 3."
 --- !u!1 &1480120249
 GameObject:
   m_ObjectHideFlags: 0
@@ -8681,6 +8751,11 @@ MonoBehaviour:
   CardID: 7
   CanBePickup: 1
   IsActive: 0
+  TitleText: "Assembl\xE9e nationale"
+  MilText: "Le peuple gagne en espoir, gagnez 1 d\u2019influence chaque nouveau tour."
+  ComText: "Gagnez 1 d\u2019influence par chaque nouvelle carte action d\xE9fauss\xE9e."
+  IntText: "Les intellectuels ont r\xE9ussi \xE0 gagner du temps, reculez d\u2019un
+    tour."
 --- !u!1 &1582032506
 GameObject:
   m_ObjectHideFlags: 0
@@ -8706,7 +8781,7 @@ Transform:
   m_GameObject: {fileID: 1582032506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9470,6 +9545,9 @@ MonoBehaviour:
   CardsInHandPlayer2: []
   CardsInHandPlayer3: []
   DiscardTransform: {fileID: 1056197082}
+  OnDiscard:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1783463163
 GameObject:
   m_ObjectHideFlags: 0
@@ -9573,6 +9651,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1790335561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790335562}
+  - component: {fileID: 1790335564}
+  - component: {fileID: 1790335563}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1790335562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790335561}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7000248}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2004303362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 588, y: 419.30002}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1790335563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790335561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 82f375a6a06df014da7cea6f8f24616a, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2427eb456385331478982ac58f3dc950, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1790335564
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790335561}
+  m_CullTransparentMesh: 1
 --- !u!1 &1821916961
 GameObject:
   m_ObjectHideFlags: 0
@@ -9922,6 +10075,14 @@ MonoBehaviour:
   CardID: 8
   CanBePickup: 1
   IsActive: 0
+  TitleText: Offensive
+  MilText: "Le peuple f\xEAte la victoire mais pleure ses pertes, gagnez 5 d\u2019influence
+    et avancez d\u2019un tour."
+  ComText: "Les commer\xE7ants r\xE9arment le peuple. Avant de jouer une carte action,
+    quand le commer\xE7ant le souhaite, met la carte dans la pioche au lieu de la
+    d\xE9fausse."
+  IntText: "Le r\xE9sultat du prochain lancer de d\xE9 sera 20, divisez le gain d\u2019influence
+    de ce lancer par 2."
 --- !u!1 &1900269551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10776,13 +10937,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1790335562}
   - {fileID: 1296399764}
   - {fileID: 1598452006}
   m_Father: {fileID: 1314642639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 67.1, y: -47.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004303363
@@ -11856,7 +12018,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7799045592411154841, guid: 5e916ab129c1c4748886db258c377138, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 368211170}
   m_SourcePrefab: {fileID: 100100000, guid: 5e916ab129c1c4748886db258c377138, type: 3}
 --- !u!33 &3469287836889412408

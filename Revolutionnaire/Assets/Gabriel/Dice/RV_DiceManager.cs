@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RV_DiceManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class RV_DiceManager : MonoBehaviour
     public float ResultMultiplier = 1;
     public int ResultBonus = 0;
 
+    public UnityEvent onDiceLaunch;
+    public UnityEvent onDiceEnd;
+
     private void Awake()
     {
         Instance = this;
@@ -23,11 +28,18 @@ public class RV_DiceManager : MonoBehaviour
         DiceResult = dice.LaunchDice(DiceTime, true, true);
         DiceResult = ((int)(DiceResult * ResultMultiplier));
         DiceResult += ResultBonus;
+        onDiceLaunch.Invoke();
         return DiceResult;
     }
 
     public bool IsLaunching()
     {
         return dice.IsLaunching;
+    }
+
+    private IEnumerator SendOnDiceEnd()
+    {
+        yield return new WaitForSeconds(DiceTime + 0.25f);
+        onDiceEnd.Invoke();
     }
 }

@@ -25,6 +25,8 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private Sprite spriteCom;
     [SerializeField] private Sprite spriteMil;
 
+    [SerializeField] private TextMeshProUGUI TitleText;
+    [SerializeField] private TextMeshProUGUI DescriptionText;
 
     public UnityEvent OnClick;
 
@@ -36,18 +38,22 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void RefreshVisual()
     {
         RV_ActionCard_Holder hand = RV_ActionCard_Holder.Instance;
+        TitleText.text = transform.GetComponent<RV_AC_Parent>().TitleText;
         if (hand.IsCardInHand(transform))
         {
             switch (hand.GetPlayerFromList(hand.GetListOfCard(transform)))
             {
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
                     break;
             }
         }
@@ -57,12 +63,15 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
+                    DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
                     break;
             }
         }
