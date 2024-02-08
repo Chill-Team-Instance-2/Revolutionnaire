@@ -17,26 +17,33 @@ public class RV_AC_Card2 : RV_AC_Parent
             gameManager.InfluencePlayer -= 5;
         }
     }
+
+    public override void OnReveal()
+    {
+        switch (RV_ActionCard_Holder.Instance.GetPlayerFromList(RV_ActionCard_Holder.Instance.GetListOfCard(transform)))
+        {
+            case 0:
+                if (gameManager.Turn % 2 == 0)
+                {
+                    gameManager.InfluencePlayer += 5;
+                }
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                break;
+        }
+    }
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         print("fortnite battle passsss");
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
-            case 0:
-                if (gameManager.Turn%2==0)
-                {
-                    gameManager.InfluencePlayer += 5;
-                }
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);   
-                break;
             case 1:
                 cardUsed = true;
                 //TODO : Make a discard after ending the tour
                 break;
             case 2:
                 RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 break;
 
             default:
