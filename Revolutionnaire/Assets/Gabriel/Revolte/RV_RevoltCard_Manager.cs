@@ -29,9 +29,10 @@ public class RV_RevoltCard_Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(RV_DiceManager.Instance.DiceTime);
         
+
+
         if (success)
         {
-            RV_GameManager.Instance.NextPlayer();
             bool cardCompleted = true;
             for (int i = 0; i < 3; i++)
             {
@@ -43,12 +44,17 @@ public class RV_RevoltCard_Manager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 RV_GameManager.Instance.EndTurn();
             }
+            else
+            {
+                RV_GameManager.Instance.NextPlayer();
+            }
         }
         else
         {
             yield return new WaitForSeconds(0.5f);
             //RV_GameManager.Instance.EndTurn();
             currentCard.RemoveWonPoints();
+            RV_GameManager.Instance.NextPlayer();
         }
 
         yield return null;
