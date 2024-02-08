@@ -96,6 +96,7 @@ public class RV_AC_Card5 : RV_AC_Parent
     {
         RV_PickACardOnEndTour.Instance.animator = cards[cardIndex].GetComponent<Animator>();
         RV_PickACardOnEndTour.Instance.animator.SetTrigger("Flip");
+        RV_PickACardOnEndTour.Instance.ActualToDiscard();
         RV_PickACardOnEndTour.Instance.CurrentCard = cards[cardIndex];
         if (whichTypeOfCard == 1)
         {
