@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 368211170}
         m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
         m_MethodName: TakeEven
         m_Mode: 1
@@ -11655,7 +11655,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 368211170}
         m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
         m_MethodName: TakeOdd
         m_Mode: 1
