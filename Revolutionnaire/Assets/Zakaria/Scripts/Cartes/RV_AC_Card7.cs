@@ -21,6 +21,8 @@ public class RV_AC_Card7 : RV_AC_Parent
                 break;
             case 2:
                 CanBePickup = false;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                RV_GameManager.Instance.Turn -= 1;
                 break;
         }
     }
