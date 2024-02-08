@@ -20,16 +20,47 @@ public class RV_AC_Card8 : RV_AC_Parent
                 gameManager.Turn += 1;
                 break;
             case 1:
-                //TODO : garder carte dans la pioche pendant un tour
+                IsActive = true;
+                RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
                 break;
             case 2:
-                RV_DiceManager.Instance.ResultBonus =+ 200;
-                gameManager.Multiplier = 0.5f;
+                RV_DiceManager.Instance.ResultBonus += 200;
+                gameManager.Multiplier -= 0.5f;
+                RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
                 break;
             default:
                 break;
         }
     }
+
+    public void CheckDiceLaunch()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 2:
+                gameManager.Multiplier += 0.5f;
+                RV_DiceManager.Instance.ResultBonus -= 200;
+                break;
+        }
+    }
+
+    public void CheckDiscards()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 1:
+                List<GameObject> discardList = RV_PickACardOnEndTour.Instance.DiscardsList;
+                if (discardList[discardList.Count-1].TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard))
+                {
+                    discardList.RemoveAt(discardList.Count-1);
+                    RV_PickACardOnEndTour.Instance.ActionsCards.Add(actionCard.gameObject);
+                }
+                break;
+        }
+    }
+
     public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -40,7 +71,6 @@ public class RV_AC_Card8 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                gameManager.Multiplier = 1;
                 break;
             default:
                 break;

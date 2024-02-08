@@ -9,6 +9,13 @@ public class RV_AC_Parent : MonoBehaviour
     public bool CanBePickup = true;
     public bool IsActive = false;
 
+
+    public string TitleText = "Default Title Text";
+
+    public string MilText = "Default Mil Text";
+    public string ComText = "Default Com Text";
+    public string IntText = "Default Int Text";
+
     public virtual void OnReveal()
     {
         print("default on reveal");
