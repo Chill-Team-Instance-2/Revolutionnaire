@@ -94,7 +94,6 @@ public class RV_AC_Card5 : RV_AC_Parent
 
     public void ChangeCardOrder()
     {
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(RV_PickACardOnEndTour.Instance.CurrentCard);
         RV_PickACardOnEndTour.Instance.animator = cards[cardIndex].GetComponent<Animator>();
         RV_PickACardOnEndTour.Instance.animator.SetTrigger("Flip");
         RV_PickACardOnEndTour.Instance.CurrentCard = cards[cardIndex];
