@@ -50,10 +50,12 @@ public class RV_AC_Card9 : RV_AC_Parent
         {
             case 0:
                 StartCoroutine(LaunchDiceComm());
-                
                 double result = RV_DiceManager.Instance.DiceResult;
                 result = System.Math.Floor(result/2);
                 gameManager.InfluencePlayer = ((int)result);
+                RV_PickACardOnEndTour.Instance.ActualToDiscard();
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                RV_PickACardOnEndTour.Instance.PickACard();
                 break;
             case 1:
                 whichTypeOfCard = Random.Range(1, 2);
