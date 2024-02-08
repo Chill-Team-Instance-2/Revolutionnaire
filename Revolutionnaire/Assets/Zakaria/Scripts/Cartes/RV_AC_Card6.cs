@@ -37,7 +37,6 @@ public class RV_AC_Card6 : RV_AC_Parent
                 case 0:
                     break;
                 case 1:
-                    CanBePickup = false;
                     RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
                     if (cardHolder.CardsInHandPlayer1.Count != 0)
                     {

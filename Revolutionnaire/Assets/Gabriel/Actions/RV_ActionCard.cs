@@ -28,11 +28,9 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI TitleText;
     [SerializeField] private TextMeshProUGUI DescriptionText;
 
-    public UnityEvent OnClick;
-
-    public void Awake()
+    private void Start()
     {
-        //RefreshVisual();
+        RV_GameManager.Instance.onendturn.AddListener(RefreshVisual);
     }
 
     public void RefreshVisual()
