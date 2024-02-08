@@ -67,6 +67,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
     public void DiscardCardInHand(GameObject card)
     {
         StartCoroutine(AnimationPlaceCardInHand(card.transform, DiscardTransform.position, 3));
+        card.transform.eulerAngles = new Vector3(card.transform.eulerAngles.x, 0, card.transform.eulerAngles.z);
         RV_PickACardOnEndTour.Instance.DiscardsList.Add(card);
         GetListOfCard(card.transform).Remove(card.transform);
         OnDiscard.Invoke();

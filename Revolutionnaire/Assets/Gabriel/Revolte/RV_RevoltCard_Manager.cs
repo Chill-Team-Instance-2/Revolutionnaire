@@ -19,6 +19,7 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         if (diceResult >= requirement)
         {
             success = true;
+            currentCard.PointAdded +=  RV_GameManager.Instance.AddInfluenceWithDelay(influenceGain, RV_DiceManager.Instance.DiceTime);
         }
         StartCoroutine(JetDelayed(success, influenceGain, currentCard));
         return success;
@@ -31,7 +32,6 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         if (success)
         {
             RV_GameManager.Instance.NextPlayer();
-            currentCard.PointAdded += RV_GameManager.Instance.AddInfluence(influenceGain);
             bool cardCompleted = true;
             for (int i = 0; i < 3; i++)
             {
