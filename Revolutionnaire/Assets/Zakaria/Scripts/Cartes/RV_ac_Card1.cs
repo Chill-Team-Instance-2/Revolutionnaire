@@ -7,7 +7,6 @@ public class RV_AC_Card1 : RV_AC_Parent
     private bool CardUsed = false;
     [SerializeField] private GameObject CanvaOddOrEven;    
     public int OddOrEven = 0; //0 = pair 1 = impair
-    public RV_RevoltCard revoltCard;
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
@@ -48,7 +47,7 @@ public class RV_AC_Card1 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                if (IsActive)
+                if (IsActive && RV_ActionCard_Holder.Instance.IsCardInHand(transform))
                 {
                     IsActive = false;
                     gameManager.Multiplier -= 1;
@@ -58,6 +57,7 @@ public class RV_AC_Card1 : RV_AC_Parent
             case 1:
                 if (IsActive)
                 {
+                    IsActive = false;
                     RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 }
                 break;

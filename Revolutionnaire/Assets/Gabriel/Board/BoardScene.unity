@@ -2403,9 +2403,8 @@ MonoBehaviour:
   IntText: "Les intellectuels tentent un plan risqu\xE9, l\u2019intellectuel choisit
     pair/impair, lance un d\xE9, puis +6 ou -6 en influence en fonction de si il
     gagne le pari. "
-  CanvaOddOrEven: {fileID: 836764306}
+  CanvaOddOrEven: {fileID: 1671302332}
   OddOrEven: 0
-  revoltCard: {fileID: 0}
 --- !u!1 &396059915
 GameObject:
   m_ObjectHideFlags: 0
