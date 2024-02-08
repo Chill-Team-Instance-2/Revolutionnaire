@@ -9,16 +9,36 @@ public class RV_ac_Card3 : RV_AC_Parent
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public override void OnReveal()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 0:
+                CanBePickup = false;
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                CardUsed = true;
-                Turn = 0;
-                gameManager.Multiplier -= 0.5f;
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                if (!IsActive)
+                {
+                    CanBePickup = true;
+                    IsActive = true;
+                    CardUsed = true;
+                    Turn = 0;
+                    gameManager.Multiplier -= 0.5f;
+                    //RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                }
                 break;
             case 1:
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
@@ -47,6 +67,8 @@ public class RV_ac_Card3 : RV_AC_Parent
             else if (Turn == 10)
             {
                 gameManager.Multiplier -= 1;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                IsActive = false;
             }
             Turn++;
         }

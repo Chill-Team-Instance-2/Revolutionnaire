@@ -36,16 +36,24 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
         //Debug.Log(wichTypeOfCard);
 
+        bool turnWasEnabled = RV_GameManager.Instance.CanEndTurn;
+
         if (wichTypeOfCard == 1 && ActionsCards.Count > 0)
         {
+            RV_GameManager.Instance.DisableEndTurn();
+
             int Cards = Random.Range(0, ActionsCards.Count);
             animator = ActionsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
             //DiscardsList.Add(ActionsCards[Cards]);
             CurrentCard = ActionsCards[Cards];
             CurrentCard.GetComponent<RV_AC_Parent>().OnReveal();
+            CurrentCard.GetComponent<RV_AC_Parent>().Invoke("OnFinishedReveal", 1.4f);
             CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
+
+            if (turnWasEnabled)
+                RV_GameManager.Instance.Invoke("EnableEndTurn", 2f);
         }
         else if (ActionsCards.Count == 0)
         {
@@ -54,12 +62,17 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
         if (wichTypeOfCard == 2 && RevoltsCards.Count > 0)
         {
+            RV_GameManager.Instance.DisableEndTurn();
+
             int Cards = Random.Range(0, RevoltsCards.Count);
             animator = RevoltsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
             //DiscardsList.Add(RevoltsCards[Cards]);
             CurrentCard = RevoltsCards[Cards];
             RevoltsCards.Remove(RevoltsCards[Cards]);
+
+            if (turnWasEnabled)
+                RV_GameManager.Instance.Invoke("EnableEndTurn", 2f);
         }
         else if (RevoltsCards.Count == 0)
         {
@@ -87,6 +100,8 @@ public class RV_PickACardOnEndTour : MonoBehaviour
                 }
                 else
                 {
+                    if (CurrentCard.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
+                        actionCard.OnDiscard();
                     CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
                     DiscardsList.Add(CurrentCard);
                 }

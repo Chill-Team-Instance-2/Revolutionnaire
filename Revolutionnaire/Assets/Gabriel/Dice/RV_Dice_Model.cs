@@ -68,7 +68,6 @@ public class RV_Dice_Model : MonoBehaviour
 
         StartCoroutine(LaunchDiceRotation(result, diceTime));
         StartCoroutine(LaunchDiceFalling(diceTime));
-        resultText.text = result.ToString();
 
         if (hide)
         {

@@ -33,6 +33,7 @@ public class RV_AC_Card10 : RV_AC_Parent
         {
             case 0:
                 IsActive = true;
+                print(IsActive);
                 gameManager.DisableEndTurn();
                 break;
             case 1:

@@ -77,6 +77,7 @@ public class RV_GameManager : MonoBehaviour
     {
         PlayerTurn++;
         if (PlayerTurn > 2) PlayerTurn = 0;
+        if (cheatUsePlayerClass != -1) PlayerTurn = cheatUsePlayerClass; //CHEAT
         OnChangePlayer.Invoke();
     }
 

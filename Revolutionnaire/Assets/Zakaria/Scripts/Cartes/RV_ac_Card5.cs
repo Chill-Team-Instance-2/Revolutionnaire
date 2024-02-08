@@ -32,7 +32,6 @@ public class RV_AC_Card5 : RV_AC_Parent
         {
             case 0:
                 CanBePickup = false;
-                RV_GameManager.Instance.InfluencePlayer += 5;
                 break;
             case 1:
                 break;
