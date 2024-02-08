@@ -28,6 +28,7 @@ public class RV_DiceManager : MonoBehaviour
         DiceResult = dice.LaunchDice(DiceTime, true, true);
         DiceResult = ((int)(DiceResult * ResultMultiplier));
         DiceResult += ResultBonus;
+        DiceResult = Mathf.Clamp(DiceResult, 1, 20);
         onDiceLaunch.Invoke();
         return DiceResult;
     }
