@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RV_AC_Card5 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
-    [SerializeField]private CardManager cardManager;
     [SerializeField] private Image card1Image;
     [SerializeField] private Image card2Image;
     [SerializeField] private Image card3Image;
@@ -118,7 +117,7 @@ public class RV_AC_Card5 : RV_AC_Parent
                 canvasChooseCard.SetActive(true);
                 break;
             case 2:
-                if(cardManager.cards.Count >= 3)
+                if((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
                 {
                     RV_DiceManager.Instance.ResultBonus += 5;
                 }
