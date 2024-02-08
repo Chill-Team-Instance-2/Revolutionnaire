@@ -28,7 +28,7 @@ public class RV_AC_Card2 : RV_AC_Parent
                     gameManager.InfluencePlayer += 5;
                 }
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                break;
+            break;
         }
     }
     public override void Action()
