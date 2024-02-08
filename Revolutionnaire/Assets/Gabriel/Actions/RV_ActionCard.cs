@@ -12,7 +12,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private MeshRenderer planeFront;
     [SerializeField] private MeshRenderer planeBack;
 
-    [SerializeField] private Sprite spriteFront;
+    [SerializeField] public Sprite spriteFront;
     //[SerializeField] private Sprite spriteBack;
 
     //[SerializeField] private Image imageFront;

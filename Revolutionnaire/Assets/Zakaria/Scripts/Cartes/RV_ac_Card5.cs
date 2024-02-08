@@ -10,7 +10,12 @@ public class RV_AC_Card5 : RV_AC_Parent
     [SerializeField] private Image card1Image;
     [SerializeField] private Image card2Image;
     [SerializeField] private Image card3Image;
+
     [SerializeField] private GameObject canvasChooseCard;
+
+    private Texture2D card1Texture;
+    private Texture2D card2Texture;
+    private Texture2D card3Texture;
     public int cardIndex = 0;
     private List<GameObject> cards = new List<GameObject>();
 
@@ -37,40 +42,40 @@ public class RV_AC_Card5 : RV_AC_Parent
                 if (whichTypeOfCard == 1)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card1Image = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
+                    card1Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
                     cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
                 }
                 if (whichTypeOfCard == 2)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card1Image = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+                    card1Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
                 }                
                 
                 if (whichTypeOfCard2 == 1)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card2Image = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
+                    card2Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
                     cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
                 }
                 if (whichTypeOfCard2 == 2)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card2Image = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+                    card2Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
                 }                
                 
                 if (whichTypeOfCard3 == 1)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card3Image = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
+                    card3Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
                     cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
                 }
                 if (whichTypeOfCard3 == 2)
                 {
                     int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card3Image = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_ActionCard>().imageFront;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+                    card3Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
                 }
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
                 canvasChooseCard.SetActive(true);

@@ -11,7 +11,7 @@ public class RV_AC_Card2 : RV_AC_Parent
 
     public void Update()
     {
-        if (cardUsed && isActive)
+        if (cardUsed && IsActive)
         {
             RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
             gameManager.InfluencePlayer -= 5;

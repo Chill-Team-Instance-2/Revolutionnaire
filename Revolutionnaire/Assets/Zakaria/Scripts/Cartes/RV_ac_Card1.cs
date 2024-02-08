@@ -7,6 +7,7 @@ public class RV_AC_Card1 : RV_AC_Parent
     private bool CardUsed = false;
     [SerializeField] private GameObject CanvaOddOrEven;    
     public int OddOrEven = 0; //0 = pair 1 = impair
+    public RV_RevoltCard revoltCard;
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
@@ -38,17 +39,20 @@ public class RV_AC_Card1 : RV_AC_Parent
     public void TakeEven()
     {
         OddOrEven = 0;
-        CardUsed = true;
+        OddOrEvenCheck();
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void TakeOdd()
     {
         OddOrEven = 1;
-        CardUsed = true;
+        OddOrEvenCheck();
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void OddOrEvenCheck()
     {
+        RV_DiceManager.Instance.LaunchDice();
         if (CardUsed)
         {
             CanvaOddOrEven.SetActive(false);
@@ -62,6 +66,7 @@ public class RV_AC_Card1 : RV_AC_Parent
                 gameManager.InfluencePlayer -= 6;
                 CardUsed = false;
             }
+            CardUsed = false;
         }
     }
 
