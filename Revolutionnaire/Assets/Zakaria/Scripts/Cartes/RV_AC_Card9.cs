@@ -31,8 +31,7 @@ public class RV_AC_Card9 : RV_AC_Parent
 
     public override void OnReveal()
     {
-        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        switch (RV_GameManager.Instance.PlayerTurn)
         {
             case 0:
                 gameManager.DisableEndTurn();

@@ -26,6 +26,11 @@ public class RV_Dice_Model : MonoBehaviour
         LaunchDice();
     }
 
+    public void ChangeText(int number)
+    {
+        resultText.text = number.ToString();
+    }
+
     public int LaunchDice(float diceTime = 2, bool show = true, bool hide = true)
     {
         transform.rotation = baseRotation;

@@ -20,8 +20,8 @@ public class RV_AC_Card8 : RV_AC_Parent
                 RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
                 break;
             case 2:
-                RV_DiceManager.Instance.ResultBonus += 200;
                 gameManager.Multiplier -= 0.5f;
+                RV_DiceManager.Instance.ResultBonus += 200;
                 RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
                 break;
             default:
@@ -31,22 +31,44 @@ public class RV_AC_Card8 : RV_AC_Parent
 
     public override void OnReveal()
     {
-        switch (RV_ActionCard_Holder.Instance.GetPlayerFromList(RV_ActionCard_Holder.Instance.GetListOfCard(transform)))
+        switch (RV_GameManager.Instance.PlayerTurn)
         {
             case 0:
-                gameManager.InfluencePlayer += 5;
-                gameManager.Turn += 1;
+                CanBePickup = false;
                 break;
         }
     }
+
+    public override void OnDiscard()
+    {
+        if (CanBePickup)
+        {
+
+        }
+        else
+        {
+            switch (RV_GameManager.Instance.PlayerTurn)
+            {
+                case 0:
+                    gameManager.InfluencePlayer += 5;
+                    gameManager.Turn += 1;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    }
+
     public void CheckDiceLaunch()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
-                gameManager.Multiplier += 0.5f;
                 RV_DiceManager.Instance.ResultBonus -= 200;
+                gameManager.Multiplier += 0.5f;
                 break;
         }
     }

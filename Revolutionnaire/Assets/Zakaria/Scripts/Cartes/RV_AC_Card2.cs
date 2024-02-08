@@ -20,13 +20,14 @@ public class RV_AC_Card2 : RV_AC_Parent
 
     public override void OnReveal()
     {
-        switch (RV_ActionCard_Holder.Instance.GetPlayerFromList(RV_ActionCard_Holder.Instance.GetListOfCard(transform)))
+        switch (RV_GameManager.Instance.PlayerTurn)
         {
             case 0:
                 if (gameManager.Turn % 2 == 0)
                 {
                     gameManager.InfluencePlayer += 5;
                 }
+
                 CanBePickup = false;
             break;
         }

@@ -16,7 +16,12 @@ public class RV_AC_Card4 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.Multiplier += 1;
+                if (!IsActive)
+                {
+                    IsActive = true;
+                    gameManager.Multiplier += 1;
+                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                }
                 break;
             case 1:
                 //TODO : remettre la carte de la fausse dans la pioche
@@ -35,6 +40,22 @@ public class RV_AC_Card4 : RV_AC_Parent
                 break;
         }
     }
+
+    public void CheckDiceLaunch()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                if (IsActive)
+                {
+                    IsActive = false;
+                    gameManager.Multiplier -= 1;
+                }
+                break;
+        }
+    }
+
     public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;

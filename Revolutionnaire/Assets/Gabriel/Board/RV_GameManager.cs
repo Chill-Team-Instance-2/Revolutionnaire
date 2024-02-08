@@ -18,6 +18,8 @@ public class RV_GameManager : MonoBehaviour
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
 
+    [SerializeField] private int cheatUsePlayerClass = -1; // -1 = not activated
+
     public int Turn = 0;
     public int MaxTurn = 15;
     public int Bonus = 0;
@@ -32,6 +34,8 @@ public class RV_GameManager : MonoBehaviour
     public List<string> PlayersName = new List<string>();
 
     public bool CanEndTurn = true;
+
+
 
 
     private void Awake()
