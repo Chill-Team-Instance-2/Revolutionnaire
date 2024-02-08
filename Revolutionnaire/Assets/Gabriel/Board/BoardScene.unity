@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 368211170}
         m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
         m_MethodName: TakeEven
         m_Mode: 1
@@ -938,7 +938,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1051202824}
         m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -5711,6 +5711,7 @@ MonoBehaviour:
   selected_Image: {fileID: 0}
   turnPawn: {fileID: 656360759}
   turnTiles: {fileID: 493499671}
+  cheatUsePlayerClass: -1
   Turn: 0
   MaxTurn: 15
   Bonus: 0
@@ -6443,7 +6444,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1476209908}
         m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -8317,7 +8318,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1051202824}
         m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -8617,7 +8618,7 @@ RectTransform:
   m_GameObject: {fileID: 1430438066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.68, y: 1.68, z: 1.68}
+  m_LocalScale: {x: 2.45, y: 2.45, z: 2.45}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1655152418}
@@ -8625,7 +8626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 794, y: -366}
+  m_AnchoredPosition: {x: 769, y: -358}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430438068
@@ -8704,7 +8705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d75ba46d4cb1ea4478273956d0381da3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce7abcefa0a7a7547aee6ff6e116dab8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10252,8 +10253,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.3
-  m_fontSizeBase: 34.3
+  m_fontSize: 26.12
+  m_fontSizeBase: 26.12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10288,7 +10289,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 47.45633, y: 0, z: 42.435772, w: 0}
+  m_margin: {x: 54.467365, y: 55.166893, z: 53.958477, w: 55.964157}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10556,7 +10557,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1051202824}
         m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -11219,7 +11220,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1476209908}
         m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -11971,7 +11972,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1476209908}
         m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
         m_MethodName: ChangeCardOrder
         m_Mode: 1
@@ -12254,7 +12255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 368211170}
         m_TargetAssemblyTypeName: RV_AC_Card1, Assembly-CSharp
         m_MethodName: TakeOdd
         m_Mode: 1
