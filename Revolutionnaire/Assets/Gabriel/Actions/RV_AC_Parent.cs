@@ -21,6 +21,11 @@ public class RV_AC_Parent : MonoBehaviour
         print("default on reveal");
     }
 
+    public virtual void OnFinishedReveal()
+    {
+        print("default on finished reveal");
+    }
+
     public virtual void OnPickUp()
     {
         print("default on pickup");
