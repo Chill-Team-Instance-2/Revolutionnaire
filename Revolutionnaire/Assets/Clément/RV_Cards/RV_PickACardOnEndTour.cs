@@ -13,7 +13,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public GameObject CurrentCard;
 
-    private Animator animator;
+    public Animator animator;
 
     private void Awake()
     {
