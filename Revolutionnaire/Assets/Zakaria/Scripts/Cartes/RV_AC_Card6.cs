@@ -4,11 +4,70 @@ public class RV_AC_Card6 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
     private bool CardUsed = false;
-    [SerializeField] private CardManager cardManager;
+    //[SerializeField] private CardManager cardManager;
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public override void OnReveal()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 0:
+                break;
+            case 1:
+                CanBePickup = false;
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    public override void OnDiscard()
+    {
+        if (CanBePickup)
+        {
+
+        }
+        else
+        {
+            switch (RV_GameManager.Instance.PlayerTurn)
+            {
+                case 0:
+                    break;
+                case 1:
+                    CanBePickup = false;
+                    RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+                    if (cardHolder.CardsInHandPlayer1.Count != 0)
+                    {
+                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer1[0].gameObject);
+                    }
+                    else
+                        RV_GameManager.Instance.InfluencePlayer -= 1;
+
+                    if (cardHolder.CardsInHandPlayer2.Count != 0)
+                    {
+                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer1[0].gameObject);
+                    }
+                    else
+                        RV_GameManager.Instance.InfluencePlayer -= 1;
+
+                    if (cardHolder.CardsInHandPlayer3.Count != 0)
+                    {
+                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer1[0].gameObject);
+                    }
+                    else
+                        RV_GameManager.Instance.InfluencePlayer -= 1;
+
+
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    }
+
     public override void Action()
     {
         int MalusIndex = 3;
@@ -20,17 +79,17 @@ public class RV_AC_Card6 : RV_AC_Parent
                 CardUsed = true;
                 break;
             case 1:
-                while (cardManager.cards.Count > 0)
-                {
-                    cardManager.cards.RemoveRange(cardManager.cards.Count, 1);
-                    MalusIndex--;
-                }
-                if (cardManager.cards.Count == 0 && MalusIndex > 0)
-                {
-                    gameManager.InfluencePlayer -= MalusIndex;
-                }
-                CardUsed = true;
-                break;
+                //while (cardManager.cards.Count > 0)
+                //{
+                //    cardManager.cards.RemoveRange(cardManager.cards.Count, 1);
+                //    MalusIndex--;
+                //}
+                //if (cardManager.cards.Count == 0 && MalusIndex > 0)
+                //{
+                //    gameManager.InfluencePlayer -= MalusIndex;
+                //}
+                //CardUsed = true;
+                //break;
             case 2:
                 CheckTurn();
                 break;

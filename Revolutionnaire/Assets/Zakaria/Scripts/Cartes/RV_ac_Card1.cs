@@ -18,20 +18,48 @@ public class RV_AC_Card1 : RV_AC_Parent
         switch(cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.Multiplier = gameManager.Multiplier + 1;
-                print(gameManager.Multiplier);
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+                if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && !IsActive)
+                {
+                    IsActive = true;
+                    gameManager.Multiplier += 1;
+                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                }
                 break;
             case 1:
-                gameManager.InfluencePlayer -= 2;
-                RV_DiceManager.Instance.ResultBonus += 2;
-                print(gameManager.InfluencePlayer);
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+                if (!IsActive)
+                {
+                    IsActive = true;
+                    gameManager.InfluencePlayer -= 2;
+                    RV_DiceManager.Instance.ResultBonus += 2;
+                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                }
                 break;
             case 2:
                 CanvaOddOrEven.SetActive(true);
                 break;
             default:
+                break;
+        }
+    }
+
+    public void CheckDiceLaunch()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                if (IsActive)
+                {
+                    IsActive = false;
+                    gameManager.Multiplier -= 1;
+                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                }
+                break;
+            case 1:
+                if (IsActive)
+                {
+                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                }
                 break;
         }
     }
@@ -76,7 +104,6 @@ public class RV_AC_Card1 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.Multiplier = gameManager.Multiplier - 1;
                 break;
             case 1:
                 RV_DiceManager.Instance.ResultBonus -= 2;
