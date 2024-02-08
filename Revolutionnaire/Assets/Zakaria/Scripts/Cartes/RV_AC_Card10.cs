@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RV_AC_Card10 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
-    [SerializeField] Canvas CanvasBackwardTurn;
     [SerializeField] Button TurnButton;
     private bool CardUsed = false;
 
@@ -53,7 +52,8 @@ public class RV_AC_Card10 : RV_AC_Parent
             case 0:
                 break;
             case 1:
-                CanvasBackwardTurn.enabled = true;
+                BackWardTurn();
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 break;
             case 2:
                 break;
@@ -105,7 +105,6 @@ public class RV_AC_Card10 : RV_AC_Parent
     {
         gameManager.Turn -= 1;
         gameManager.InfluencePlayer -= 10;
-        CanvasBackwardTurn.enabled = false;
     }
     public override void EndAction()
     {
