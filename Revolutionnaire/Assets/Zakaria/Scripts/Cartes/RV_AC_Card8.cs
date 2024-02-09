@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RV_AC_Card8 : RV_AC_Parent
@@ -55,8 +56,12 @@ public class RV_AC_Card8 : RV_AC_Parent
 
     public void ActionCom()
     {
-        IsActive = true;
-        RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
+        if (!IsActive)
+        {
+            IsActive = true;
+            RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
+        }
+        
     }
 
     public void ActionInt()
@@ -128,7 +133,10 @@ public class RV_AC_Card8 : RV_AC_Parent
                 List<GameObject> discardList = RV_PickACardOnEndTour.Instance.DiscardsList;
                 if (discardList[discardList.Count-1].TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard))
                 {
-                    discardList.RemoveAt(discardList.Count-1);
+                    discardList.Remove(actionCard.gameObject);
+                    //discardList.RemoveAt(discardList.Count-1);
+                    actionCard.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
+                    actionCard.GetComponent<Animator>().ResetTrigger("Flip");
                     RV_PickACardOnEndTour.Instance.ActionsCards.Add(actionCard.gameObject);
                 }
                 break;

@@ -99,19 +99,21 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             }
             else //if action card
             {
-                if (CurrentCard.GetComponent<RV_AC_Parent>().CanBePickup)
+                if (CurrentCard.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
                 {
-                    CurrentCard.GetComponent<Animator>().enabled = false;
-                    CurrentCard.GetComponent<RV_ActionCard>().RefreshVisual();
-                    RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
-                    CurrentCard = null;
-                }
-                else
-                {
-                    if (CurrentCard.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
-                        actionCard.OnDiscard();
-                    CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
-                    DiscardsList.Add(CurrentCard);
+                    actionCard.OnDiscard();
+                    if (actionCard.CanBePickup)
+                    {
+                        CurrentCard.GetComponent<Animator>().enabled = false;
+                        CurrentCard.GetComponent<RV_ActionCard>().RefreshVisual();
+                        RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
+                        CurrentCard = null;
+                    }
+                    else
+                    {
+                        CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
+                        DiscardsList.Add(CurrentCard);
+                    }
                 }
             }
         }
