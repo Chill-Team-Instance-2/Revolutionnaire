@@ -38,6 +38,14 @@ public class RV_AC_Card9 : RV_AC_Parent
                 CanBePickup = false;
                 gameManager.Invoke("EnableEndTurn", RV_DiceManager.Instance.DiceTime);
                 break;
+            case 2:
+                CanBePickup = false;
+                RV_DiceManager.Instance.LaunchDice();
+                if (RV_DiceManager.Instance.DiceResult % 3 == 0)
+                {
+                    gameManager.Bonus += 3;
+                }
+                break;
         }
     }
 
@@ -151,10 +159,7 @@ public class RV_AC_Card9 : RV_AC_Parent
 
     public void ActionInt()
     {
-        if (RV_DiceManager.Instance.DiceResult % 3 == 0)
-        {
-            gameManager.Bonus += 3;
-        }
+
     }
 
     public void ChangeCardOrder()
