@@ -26,6 +26,7 @@ public class RV_AC_Card8 : RV_AC_Parent
                 default:
                     break;
             }
+           
         }
         else
         {
@@ -103,10 +104,19 @@ public class RV_AC_Card8 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
-                RV_DiceManager.Instance.ResultBonus -= 200;
-                gameManager.Multiplier += 0.5f;
+                if (IsActive)
+                {
+                    gameManager.Multiplier += 0.5f;
+                    RV_DiceManager.Instance.ResultBonus -= 200;
+                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                }
                 break;
         }
+    }
+
+    public void CheckDiceEnd()
+    {
+
     }
 
     public void CheckDiscards()
