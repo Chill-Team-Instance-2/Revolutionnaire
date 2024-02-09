@@ -54,7 +54,6 @@ public class RV_AC_Card5 : RV_AC_Parent
         {
             case 2:
                 RV_DiceManager.Instance.ResultBonus -= 5;
-                print("shit");
                 break;
         }
     }

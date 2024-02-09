@@ -75,8 +75,6 @@ public class RV_AC_Card6 : RV_AC_Parent
                     }
                     else
                         RV_GameManager.Instance.InfluencePlayer -= 1;
-
-
                     break;
                 case 2:
                     break;
@@ -89,7 +87,7 @@ public class RV_AC_Card6 : RV_AC_Parent
         int MalusIndex = 3;
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         if (cardHolder.IsCardInHand(transform))
-        {
+        {      
             switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
             {
                 case 0:
@@ -145,8 +143,9 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void ActionInt()
     {
-        IsActive = true;
-        RV_DiceManager.Instance.ResultBonus -= 8;
+         IsActive = true;
+         RV_DiceManager.Instance.ResultBonus -= 8;
+         RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEndMalus);
     }
 
     public void CheckTurn()
@@ -171,6 +170,7 @@ public class RV_AC_Card6 : RV_AC_Parent
     public void CheckDiceEndMalus()
     {
         RV_DiceManager.Instance.ResultBonus += 8;
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public override void EndAction()
