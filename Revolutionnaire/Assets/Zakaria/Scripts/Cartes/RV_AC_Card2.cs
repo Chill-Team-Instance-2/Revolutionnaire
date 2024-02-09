@@ -91,6 +91,7 @@ public class RV_AC_Card2 : RV_AC_Parent
     public void ActionInt()
     {
         RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
+        RV_GameManager.Instance.PlayerTurn = 2;
         RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 

@@ -24,6 +24,11 @@ public class RV_ac_Card3 : RV_AC_Parent
         }
     }
 
+    public override void OnDiscard()
+    {
+        RV_DiceManager.Instance.ResultMultiplier -= 1;
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -87,7 +92,7 @@ public class RV_ac_Card3 : RV_AC_Parent
 
     public void ActionInt()
     {
-        RV_DiceManager.Instance.DiceResult = RV_DiceManager.Instance.DiceResult * 2;
+        RV_DiceManager.Instance.ResultMultiplier += 1;
         RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
     }
 
