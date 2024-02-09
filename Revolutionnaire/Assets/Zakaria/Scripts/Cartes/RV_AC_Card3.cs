@@ -24,11 +24,6 @@ public class RV_ac_Card3 : RV_AC_Parent
         }
     }
 
-    public override void OnDiscard()
-    {
-        RV_DiceManager.Instance.ResultMultiplier -= 1;
-    }
-
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -92,10 +87,23 @@ public class RV_ac_Card3 : RV_AC_Parent
 
     public void ActionInt()
     {
-        RV_DiceManager.Instance.ResultMultiplier += 1;
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+        if (!IsActive)
+        {
+            RV_DiceManager.Instance.ResultMultiplier += 1;
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDice);
+            IsActive = true;
+        }
     }
 
+    public void CheckDice()
+    {
+        if (IsActive)
+        {
+            RV_DiceManager.Instance.ResultMultiplier -= 1;
+            RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+            IsActive = false;
+        }
+    }
     public void CheckTurn()
     {
         if (CardUsed)
