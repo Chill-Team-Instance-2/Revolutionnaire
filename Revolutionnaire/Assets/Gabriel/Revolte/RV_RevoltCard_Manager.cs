@@ -26,7 +26,7 @@ public class RV_RevoltCard_Manager : MonoBehaviour
         }
         StartCoroutine(JetDelayed(success, influenceGain, currentCard));
         LastTryInfluenceGain = influenceGain;
-        LastTrySuccesResult = true;
+        LastTrySuccesResult = success;
         return success;
     }
 

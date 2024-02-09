@@ -15,6 +15,8 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public Animator animator;
 
+    public bool IsReanablingTurn = true;
+
     private void Awake()
     {
         Instance = this;
@@ -36,7 +38,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
         //Debug.Log(wichTypeOfCard);
 
-        bool turnWasEnabled = RV_GameManager.Instance.CanEndTurn;
+        bool IsReanablingTurn = RV_GameManager.Instance.CanEndTurn;
 
         if (wichTypeOfCard == 1 && ActionsCards.Count > 0)
         {
@@ -52,8 +54,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
 
-            if (turnWasEnabled)
-                RV_GameManager.Instance.Invoke("EnableEndTurn", 2f);
+            Invoke("FinishedPicking", 2f);
         }
         else if (ActionsCards.Count == 0)
         {
@@ -71,12 +72,20 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             CurrentCard = RevoltsCards[Cards];
             RevoltsCards.Remove(RevoltsCards[Cards]);
 
-            if (turnWasEnabled)
-                RV_GameManager.Instance.Invoke("EnableEndTurn", 2f);
+            Invoke("FinishedPicking", 2f);
         }
         else if (RevoltsCards.Count == 0)
         {
             wichTypeOfCard = 1;
+        }
+    }
+
+    public void FinishedPicking()
+    {
+        print(IsReanablingTurn);
+        if (IsReanablingTurn)
+        {
+            RV_GameManager.Instance.EnableEndTurn();
         }
     }
 
