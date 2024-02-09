@@ -5712,7 +5712,7 @@ MonoBehaviour:
   selected_Image: {fileID: 0}
   turnPawn: {fileID: 656360759}
   turnTiles: {fileID: 493499671}
-  cheatUsePlayerClass: -1
+  cheatUsePlayerClass: 1
   Turn: 0
   MaxTurn: 15
   Bonus: 0

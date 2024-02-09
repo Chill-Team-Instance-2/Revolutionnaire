@@ -90,10 +90,10 @@ public class RV_GameManager : MonoBehaviour
         }
         if (CanEndTurn)
         {
-            PickACardOnEndTour.ActualToDiscard();
-            PickACardOnEndTour.PickACard();
             Turn++;
             NextPlayer();
+            PickACardOnEndTour.ActualToDiscard();
+            PickACardOnEndTour.PickACard();
             onendturn?.Invoke();
         }
     }

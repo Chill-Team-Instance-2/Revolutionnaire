@@ -19,10 +19,10 @@ public class RV_AC_Card7 : RV_AC_Parent
             case 0:
                 break;
             case 1:
-                CanBePickup = false;
-                RV_GameManager.Instance.Turn -= 1;
                 break;
             case 2:
+                CanBePickup = false;
+                RV_GameManager.Instance.Turn -= 1;
                 break;
         }
     }
