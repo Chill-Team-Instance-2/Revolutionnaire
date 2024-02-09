@@ -82,7 +82,6 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void FinishedPicking()
     {
-        print(IsReanablingTurn);
         if (IsReanablingTurn)
         {
             RV_GameManager.Instance.EnableEndTurn();

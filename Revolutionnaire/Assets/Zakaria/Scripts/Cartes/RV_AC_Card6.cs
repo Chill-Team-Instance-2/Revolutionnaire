@@ -64,14 +64,14 @@ public class RV_AC_Card6 : RV_AC_Parent
 
                     if (cardHolder.CardsInHandPlayer2.Count != 0)
                     {
-                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer1[0].gameObject);
+                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer2[0].gameObject);
                     }
                     else
                         RV_GameManager.Instance.InfluencePlayer -= 1;
 
                     if (cardHolder.CardsInHandPlayer3.Count != 0)
                     {
-                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer1[0].gameObject);
+                        cardHolder.DiscardCardInHand(cardHolder.CardsInHandPlayer3[0].gameObject);
                     }
                     else
                         RV_GameManager.Instance.InfluencePlayer -= 1;
