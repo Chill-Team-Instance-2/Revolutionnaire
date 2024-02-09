@@ -121,7 +121,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void DiscardToActual(GameObject card)
     {
-        print(card);
+        card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
         card.GetComponent<Animator>().SetTrigger("TDiscardToCurrent");
         DiscardsList.Remove(card);
         CurrentCard = card;
