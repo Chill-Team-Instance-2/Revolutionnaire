@@ -106,15 +106,31 @@ public class RV_AC_Card10 : RV_AC_Parent
     public override void OnDiscard()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                break;
-            case 1:
-                IsActive = false;
-                break;
-            case 2:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    break;
+                case 1:
+                    IsActive = false;
+                    break;
+                case 2:
+                    break;
+            }
+        }
+        else
+        {
+            switch (RV_GameManager.Instance.PlayerTurn)
+            {
+                case 0:
+                    break;
+                case 1:
+                    IsActive = false;
+                    break;
+                case 2:
+                    break;
+            }
         }
     }
 
