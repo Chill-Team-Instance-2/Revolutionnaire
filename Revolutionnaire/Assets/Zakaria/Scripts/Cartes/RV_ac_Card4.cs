@@ -20,7 +20,7 @@ public class RV_AC_Card4 : RV_AC_Parent
                 {
                     IsActive = true;
                     gameManager.Multiplier += 1;
-                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
                 }
                 break;
             case 1:
@@ -51,6 +51,11 @@ public class RV_AC_Card4 : RV_AC_Parent
                 {
                     IsActive = false;
                     gameManager.Multiplier -= 1;
+                    if (!RV_RevoltCard_Manager.Instance.LastTrySuccesResult)
+                    {
+                        RV_GameManager.Instance.InfluencePlayer -= RV_RevoltCard_Manager.Instance.LastTryInfluenceGain;
+                    }
+                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 }
                 break;
         }

@@ -21,7 +21,7 @@ public class RV_AC_Card1 : RV_AC_Parent
                 {
                     IsActive = true;
                     gameManager.Multiplier += 1;
-                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
                 }
                 break;
             case 1:

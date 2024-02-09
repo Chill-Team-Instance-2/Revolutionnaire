@@ -85,7 +85,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (RV_ActionCard_Holder.Instance.IsCardInHand(transform)) //TODO || actual card
+        if (RV_ActionCard_Holder.Instance.IsCardInHand(transform) || RV_PickACardOnEndTour.Instance.CurrentCard == gameObject) //TODO || actual card
         {
             GetComponent<RV_AC_Parent>().Action();
         }

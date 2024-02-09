@@ -7,6 +7,9 @@ public class RV_RevoltCard_Manager : MonoBehaviour
 
     [SerializeField] private Transform currentPile;
 
+    public int LastTryInfluenceGain = 0;
+    public bool LastTrySuccesResult = false;
+
     private void Awake()
     {
         Instance = this;
@@ -22,6 +25,8 @@ public class RV_RevoltCard_Manager : MonoBehaviour
             currentCard.PointAdded +=  RV_GameManager.Instance.AddInfluenceWithDelay(influenceGain, RV_DiceManager.Instance.DiceTime);
         }
         StartCoroutine(JetDelayed(success, influenceGain, currentCard));
+        LastTryInfluenceGain = influenceGain;
+        LastTrySuccesResult = success;
         return success;
     }
 

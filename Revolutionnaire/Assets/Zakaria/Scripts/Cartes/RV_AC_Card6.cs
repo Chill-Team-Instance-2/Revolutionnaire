@@ -24,6 +24,23 @@ public class RV_AC_Card6 : RV_AC_Parent
         }
     }
 
+    public override void OnPickUp()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                IsActive = true;
+                RV_GameManager.Instance.onendturn.AddListener(CheckTurn);
+                break;
+            case 1:
+                break;
+            case 2:
+                RV_GameManager.Instance.onendturn.AddListener(CheckTurn);
+                break;
+        }
+    }
+
     public override void OnDiscard()
     {
         if (CanBePickup)
@@ -74,8 +91,6 @@ public class RV_AC_Card6 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.Bonus = -1;
-                CardUsed = true;
                 break;
             case 1:
                 //while (cardManager.cards.Count > 0)
@@ -90,7 +105,8 @@ public class RV_AC_Card6 : RV_AC_Parent
                 //CardUsed = true;
                 //break;
             case 2:
-                CheckTurn();
+                IsActive = true;
+                RV_DiceManager.Instance.ResultBonus -= 8;
                 break;
             default:
                 break;
@@ -99,15 +115,28 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void CheckTurn()
     {
-            if (!CardUsed && gameManager.Turn > 15)
-            {
-                gameManager.InfluencePlayer -= 20;
-            }
-            else
-            {
-                gameManager.InfluencePlayer -= 8;
-            }
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                gameManager.InfluencePlayer -= 1;
+                break;
+            case 1:
+                break;
+            case 2:
+                if (!CardUsed && gameManager.Turn > 15)
+                {
+                    gameManager.InfluencePlayer -= 20;
+                }
+                break;
+        }
     }
+
+    public void CheckDiceEndMalus()
+    {
+        RV_DiceManager.Instance.ResultBonus += 8;
+    }
+
     public override void EndAction()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;

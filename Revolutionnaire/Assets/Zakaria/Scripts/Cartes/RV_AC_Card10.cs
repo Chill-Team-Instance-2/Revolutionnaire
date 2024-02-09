@@ -14,7 +14,6 @@ public class RV_AC_Card10 : RV_AC_Parent
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
-        gameManager.onendturn.AddListener(CheckTurn);
     }
 
     public override void OnReveal()
@@ -33,13 +32,14 @@ public class RV_AC_Card10 : RV_AC_Parent
         {
             case 0:
                 IsActive = true;
-                gameManager.DisableEndTurn();
+                gameManager.onendturn.AddListener(CheckTurn);
                 break;
             case 1:
                 break;
             case 2:
                 turnCount = 0;
                 IsActive = true;
+                gameManager.onendturn.AddListener(CheckTurn);
                 break;
         }
     }
@@ -81,15 +81,17 @@ public class RV_AC_Card10 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revolt) && IsActive)
+                if (gameManager.PlayerTurn == 0 && RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revolt) && IsActive)
                 {
+                    gameManager.DisableEndTurn();
+                    RV_PickACardOnEndTour.Instance.IsReanablingTurn = false;
                     RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
                 }
                 break;
             case 2:
                 if (turnCount != -1 && IsActive)
                 {
-                    if (RV_GameManager.Instance.PlayerTurn == 0 && turnCount > 0)
+                    if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0)
                     {
                         RV_GameManager.Instance.EndTurn();
                     }

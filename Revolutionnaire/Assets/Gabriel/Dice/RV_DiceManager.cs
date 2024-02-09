@@ -29,8 +29,9 @@ public class RV_DiceManager : MonoBehaviour
         DiceResult = ((int)(DiceResult * ResultMultiplier));
         DiceResult += ResultBonus;
         DiceResult = Mathf.Clamp(DiceResult, 1, 20);
-        dice.ChangeText(DiceResult);
+        dice.ChangeText(DiceResult, DiceTime/2f);
         onDiceLaunch.Invoke();
+        StartCoroutine(SendOnDiceEnd());
         return DiceResult;
     }
 
@@ -41,7 +42,7 @@ public class RV_DiceManager : MonoBehaviour
 
     private IEnumerator SendOnDiceEnd()
     {
-        yield return new WaitForSeconds(DiceTime + 0.25f);
+        yield return new WaitForSeconds(DiceTime);
         onDiceEnd.Invoke();
     }
 }

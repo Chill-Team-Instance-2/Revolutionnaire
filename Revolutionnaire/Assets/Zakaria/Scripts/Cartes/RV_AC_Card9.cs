@@ -36,8 +36,17 @@ public class RV_AC_Card9 : RV_AC_Parent
             case 0:
                 gameManager.DisableEndTurn();
                 CanBePickup = false;
-                gameManager.AddInfluenceWithDelay(RV_DiceManager.Instance.LaunchDice() / 2, RV_DiceManager.Instance.DiceTime);
                 gameManager.Invoke("EnableEndTurn", RV_DiceManager.Instance.DiceTime);
+                break;
+        }
+    }
+
+    public override void OnFinishedReveal()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 0:
+                gameManager.AddInfluenceWithDelay(RV_DiceManager.Instance.LaunchDice() / 2, RV_DiceManager.Instance.DiceTime);
                 break;
         }
     }

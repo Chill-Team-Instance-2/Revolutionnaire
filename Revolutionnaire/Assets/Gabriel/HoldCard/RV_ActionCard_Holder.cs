@@ -26,6 +26,8 @@ public class RV_ActionCard_Holder : MonoBehaviour
 
     public void PutCardInHand(GameObject card, int playerId)
     {
+        if (IsCardInHand(card.transform)) return;
+
         card.transform.localScale = new Vector3(1, 1, 1);
         card.transform.localEulerAngles = new Vector3(0, 180, 0);
         switch (playerId)
@@ -46,6 +48,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
                 StartCoroutine(AnimationPlaceCardInHand(card.transform, HandPlayer3.position + offset3));
                 break;
         }
+        card.GetComponent<RV_AC_Parent>().OnPickUp();
     }
 
     public void FocusOnCardInHand(Transform card)
