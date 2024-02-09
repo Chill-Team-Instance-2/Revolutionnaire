@@ -112,7 +112,6 @@ public class RV_AC_Card2 : RV_AC_Parent
                 break;
             case 2:
                 break;
-
             default:
                 break;
         }
