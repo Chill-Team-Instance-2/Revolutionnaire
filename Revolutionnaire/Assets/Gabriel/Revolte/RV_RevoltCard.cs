@@ -28,6 +28,7 @@ public class RV_RevoltCard : MonoBehaviour
 
     public int PointAdded = 0;
 
+    public bool HasBeenPlayed = false;
     private void Awake()
     {
         //if (spriteBack)
@@ -58,6 +59,7 @@ public class RV_RevoltCard : MonoBehaviour
     {
         if (!RV_DiceManager.Instance.IsLaunching() && JetAvailable[number] && !JetWon[number])
         {
+            HasBeenPlayed = true;
             JetAvailable[number] = false;
             if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number], GetComponent<RV_RevoltCard>())) //win
             {
@@ -83,6 +85,7 @@ public class RV_RevoltCard : MonoBehaviour
     public void ResetCard()
     {
         PointAdded = 0;
+        HasBeenPlayed = false;
         for (int i = 0; i < JetRequirements.Count; i++)
         {
             TextRequirements[i].color = new Color(1, 1, 1);
