@@ -43,6 +43,7 @@ public class RV_AC_Card2 : RV_AC_Parent
                 {
                     IsActive = true;
                     revoltCard.ReanableLostJet();
+                    RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
                     gameManager.InfluencePlayer -= 5;
                 }
                 break;
@@ -56,6 +57,11 @@ public class RV_AC_Card2 : RV_AC_Parent
         }
     }
 
+    public void CheckEndTurnComm()
+    {
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+    }
+
     public override void OnDiscard()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -64,7 +70,6 @@ public class RV_AC_Card2 : RV_AC_Parent
             case 1:
                 if (IsActive)
                 {
-                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                     IsActive = false;
                 }
                 break;

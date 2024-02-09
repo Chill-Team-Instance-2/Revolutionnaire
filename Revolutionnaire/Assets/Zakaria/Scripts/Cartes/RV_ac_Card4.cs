@@ -24,6 +24,9 @@ public class RV_AC_Card4 : RV_AC_Parent
                 }
                 break;
             case 1:
+                RV_PickACardOnEndTour pioche = RV_PickACardOnEndTour.Instance;
+                pioche.ActualToDiscard();
+                pioche.DiscardToActual(pioche.DiscardsList[pioche.DiscardsList.Count - 1]);
                 //TODO : remettre la carte de la fausse dans la pioche
                 break;
             case 2:

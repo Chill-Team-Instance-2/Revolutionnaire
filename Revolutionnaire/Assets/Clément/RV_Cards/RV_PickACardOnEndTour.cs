@@ -116,6 +116,13 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             }
         }
     }
+
+    public void DiscardToActual(GameObject card)
+    {
+        card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
+        DiscardsList.Remove(card);
+        CurrentCard = card;
+    }
 }
 
 
