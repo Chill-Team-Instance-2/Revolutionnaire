@@ -30,6 +30,7 @@ public class RV_AC_Card4 : RV_AC_Parent
                 //TODO : remettre la carte de la fausse dans la pioche
                 break;
             case 2:
+                RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
                 if(RV_DiceManager.Instance.DiceResult <= 15) 
                 {
                     gameManager.InfluencePlayer += 15;
