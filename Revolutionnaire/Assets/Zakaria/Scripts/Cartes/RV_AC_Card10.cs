@@ -22,6 +22,9 @@ public class RV_AC_Card10 : RV_AC_Parent
         {
             case 0:
                 break;
+            case 1:
+                CanBePickup = false;
+                break;
         }
     }
 
@@ -52,12 +55,30 @@ public class RV_AC_Card10 : RV_AC_Parent
             case 0:
                 break;
             case 1:
-                BackWardTurn();
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                if (!IsActive)
+                {
+                    IsActive = true;
+                    BackWardTurn();
+                }
                 break;
             case 2:
                 break;
             default:
+                break;
+        }
+    }
+
+    public override void OnDiscard()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                break;
+            case 1:
+                IsActive = false;
+                break;
+            case 2:
                 break;
         }
     }

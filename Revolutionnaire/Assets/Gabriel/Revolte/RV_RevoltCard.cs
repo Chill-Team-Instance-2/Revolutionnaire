@@ -104,13 +104,25 @@ public class RV_RevoltCard : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (!JetWon[i])
+            if (!JetAvailable[i] && !JetWon[i])
             {
                 JetAvailable[i] = true;
-                TextRequirements[i].color = new Color(1, 1, 1);
-                TextInfluences[i].color = new Color(1, 1, 1);
+                TextRequirements[i].color = new Color(0, 0, 0);
+                TextInfluences[i].color = new Color(0, 0, 0);
             }
         }
+    }
+
+    public bool HasLostJet()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!JetWon[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void RemoveWonPoints()

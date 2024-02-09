@@ -82,7 +82,6 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void FinishedPicking()
     {
-        print(IsReanablingTurn);
         if (IsReanablingTurn)
         {
             RV_GameManager.Instance.EnableEndTurn();
@@ -116,6 +115,13 @@ public class RV_PickACardOnEndTour : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void DiscardToActual(GameObject card)
+    {
+        card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
+        DiscardsList.Remove(card);
+        CurrentCard = card;
     }
 }
 

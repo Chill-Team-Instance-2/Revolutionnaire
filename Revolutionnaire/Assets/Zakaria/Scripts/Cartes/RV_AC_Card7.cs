@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class RV_AC_Card7 : RV_AC_Parent
@@ -58,17 +59,33 @@ public class RV_AC_Card7 : RV_AC_Parent
 
     public override void OnDiscard()
     {
-        switch (RV_GameManager.Instance.PlayerTurn)
+        if (CanBePickup)
         {
-            case 0:
-                IsActive = false;
-                break;
-            case 1:
-                IsActive = false;
-                break;
-            case 2:
-                RV_GameManager.Instance.Turn--;
-                break;
+            RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    IsActive = false;
+                    break;
+                case 1:
+                    IsActive = false;
+                    break;
+            }
+        }
+        else
+        {
+            switch (RV_GameManager.Instance.PlayerTurn)
+            {
+                case 0:
+                    
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    RV_GameManager.Instance.Turn--;
+                    break;
+            }
         }
     }
 

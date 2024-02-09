@@ -30,7 +30,7 @@ public class RV_AC_Card1 : RV_AC_Parent
                     IsActive = true;
                     gameManager.InfluencePlayer -= 2;
                     RV_DiceManager.Instance.ResultBonus += 2;
-                    RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
                 }
                 break;
             case 2:
@@ -58,6 +58,7 @@ public class RV_AC_Card1 : RV_AC_Parent
                 if (IsActive)
                 {
                     IsActive = false;
+                    RV_DiceManager.Instance.ResultBonus -= 2;
                     RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 }
                 break;
