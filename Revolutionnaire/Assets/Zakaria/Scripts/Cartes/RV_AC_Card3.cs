@@ -27,32 +27,68 @@ public class RV_ac_Card3 : RV_AC_Parent
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                if (!IsActive)
-                {
-                    CanBePickup = true;
-                    IsActive = true;
-                    CardUsed = true;
-                    Turn = 0;
-                    gameManager.Multiplier -= 0.5f;
-                    //RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                }
-                break;
-            case 1:
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                RV_PickACardOnEndTour.Instance.ActualToDiscard();
-                RV_PickACardOnEndTour.Instance.PickACard();
-                //TODO : Redraw (anim)
-                break;
-            case 2:
-                RV_DiceManager.Instance.DiceResult = RV_DiceManager.Instance.DiceResult * 2;
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
-                break;
-            default:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void ActionMil()
+    {
+        if (!IsActive)
+        {
+            CanBePickup = true;
+            IsActive = true;
+            CardUsed = true;
+            Turn = 0;
+            gameManager.Multiplier -= 0.5f;
+            //RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+        }
+    }
+
+    public void ActionCom()
+    {
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+        RV_PickACardOnEndTour.Instance.ActualToDiscard();
+        RV_PickACardOnEndTour.Instance.PickACard();
+        //TODO : Redraw (anim)
+    }
+
+    public void ActionInt()
+    {
+        RV_DiceManager.Instance.DiceResult = RV_DiceManager.Instance.DiceResult * 2;
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
     }
 
     public void CheckTurn()

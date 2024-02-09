@@ -50,22 +50,57 @@ public class RV_AC_Card10 : RV_AC_Parent
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                break;
-            case 1:
-                if (!IsActive)
-                {
-                    IsActive = true;
-                    BackWardTurn();
-                }
-                break;
-            case 2:
-                break;
-            default:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void ActionMil()
+    {
+
+    }
+
+    public void ActionCom()
+    {
+        if (!IsActive)
+        {
+            IsActive = true;
+            BackWardTurn();
+        }
+    }
+
+    public void ActionInt()
+    {
+
     }
 
     public override void OnDiscard()

@@ -88,29 +88,65 @@ public class RV_AC_Card6 : RV_AC_Parent
     {
         int MalusIndex = 3;
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                break;
-            case 1:
-                //while (cardManager.cards.Count > 0)
-                //{
-                //    cardManager.cards.RemoveRange(cardManager.cards.Count, 1);
-                //    MalusIndex--;
-                //}
-                //if (cardManager.cards.Count == 0 && MalusIndex > 0)
-                //{
-                //    gameManager.InfluencePlayer -= MalusIndex;
-                //}
-                //CardUsed = true;
-                //break;
-            case 2:
-                IsActive = true;
-                RV_DiceManager.Instance.ResultBonus -= 8;
-                break;
-            default:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void ActionMil()
+    {
+
+    }
+
+    public void ActionCom()
+    {
+        //while (cardManager.cards.Count > 0)
+        //{
+        //    cardManager.cards.RemoveRange(cardManager.cards.Count, 1);
+        //    MalusIndex--;
+        //}
+        //if (cardManager.cards.Count == 0 && MalusIndex > 0)
+        //{
+        //    gameManager.InfluencePlayer -= MalusIndex;
+        //}
+        //CardUsed = true;
+        //break;
+    }
+
+    public void ActionInt()
+    {
+        IsActive = true;
+        RV_DiceManager.Instance.ResultBonus -= 8;
     }
 
     public void CheckTurn()
