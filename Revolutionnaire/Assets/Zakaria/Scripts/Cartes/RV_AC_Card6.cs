@@ -75,8 +75,6 @@ public class RV_AC_Card6 : RV_AC_Parent
                     }
                     else
                         RV_GameManager.Instance.InfluencePlayer -= 1;
-
-
                     break;
                 case 2:
                     break;
@@ -107,6 +105,7 @@ public class RV_AC_Card6 : RV_AC_Parent
             case 2:
                 IsActive = true;
                 RV_DiceManager.Instance.ResultBonus -= 8;
+                RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEndMalus);
                 break;
             default:
                 break;
@@ -135,6 +134,7 @@ public class RV_AC_Card6 : RV_AC_Parent
     public void CheckDiceEndMalus()
     {
         RV_DiceManager.Instance.ResultBonus += 8;
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public override void EndAction()
