@@ -70,7 +70,8 @@ public class RV_AC_Card4 : RV_AC_Parent
 
     public void ActionInt()
     {
-        if (RV_DiceManager.Instance.DiceResult <= 15)
+        RV_DiceManager.Instance.LaunchDice();
+        if (RV_DiceManager.Instance.DiceResult >= 15)
         {
             gameManager.InfluencePlayer += 15;
         }
@@ -78,6 +79,7 @@ public class RV_AC_Card4 : RV_AC_Parent
         {
             gameManager.InfluencePlayer -= 10;
         }
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void CheckDiceLaunch()

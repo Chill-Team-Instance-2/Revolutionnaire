@@ -143,9 +143,12 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void ActionInt()
     {
-         IsActive = true;
-         RV_DiceManager.Instance.ResultBonus -= 8;
-         RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEndMalus);
+        if (!IsActive)
+        {
+            IsActive = true;
+            RV_DiceManager.Instance.ResultBonus -= 8;
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEndMalus);
+        }
     }
 
     public void CheckTurn()
@@ -170,7 +173,6 @@ public class RV_AC_Card6 : RV_AC_Parent
     public void CheckDiceEndMalus()
     {
         RV_DiceManager.Instance.ResultBonus += 8;
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public override void EndAction()
