@@ -42,6 +42,9 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void RefreshVisual()
     {
+        if (RV_PickACardOnEndTour.Instance.DiscardsList.Contains(gameObject))
+            return;
+        
         RV_ActionCard_Holder hand = RV_ActionCard_Holder.Instance;
         TitleText.text = transform.GetComponent<RV_AC_Parent>().TitleText;
         if (hand.IsCardInHand(transform))
