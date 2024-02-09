@@ -66,9 +66,13 @@ public class RV_AC_Card8 : RV_AC_Parent
 
     public void ActionInt()
     {
-        gameManager.Multiplier -= 0.5f;
-        RV_DiceManager.Instance.ResultBonus += 200;
-        RV_DiceManager.Instance.onDiceLaunch.AddListener(CheckDiceLaunch);
+        if (!IsActive) 
+        {
+            gameManager.Multiplier -= 0.5f;
+            IsActive = true;
+            RV_DiceManager.Instance.ResultBonus += 200;
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
+        }
     }
 
     public override void OnReveal()
@@ -114,6 +118,7 @@ public class RV_AC_Card8 : RV_AC_Parent
                     gameManager.Multiplier += 0.5f;
                     RV_DiceManager.Instance.ResultBonus -= 200;
                     RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+                    IsActive = false;
                 }
                 break;
         }
