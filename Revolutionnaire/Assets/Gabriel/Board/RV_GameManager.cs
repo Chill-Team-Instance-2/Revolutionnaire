@@ -83,15 +83,19 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard))
+        if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard)) // action card
         {
             PassTurn();
             return;
         }
-        if (CanEndTurn)
+        if (CanEndTurn) // revolt
         {
             Turn++;
-            NextPlayer();
+            if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
+            {
+                if (!revoltCard.HasBeenPlayed)
+                    NextPlayer();
+            }
             PickACardOnEndTour.ActualToDiscard();
             PickACardOnEndTour.PickACard();
             onendturn?.Invoke();
