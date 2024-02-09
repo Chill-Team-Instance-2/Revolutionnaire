@@ -14,31 +14,68 @@ public class RV_AC_Card1 : RV_AC_Parent
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch(cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && !IsActive)
-                {
-                    IsActive = true;
-                    gameManager.Multiplier += 1;
-                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
-                }
-                break;
-            case 1:
-                if (!IsActive)
-                {
-                    IsActive = true;
-                    gameManager.InfluencePlayer -= 2;
-                    RV_DiceManager.Instance.ResultBonus += 2;
-                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
-                }
-                break;
-            case 2:
-                CanvaOddOrEven.SetActive(true);
-                break;
-            default:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        
+    }
+
+    public void ActionMil()
+    {
+        if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && !IsActive)
+        {
+            IsActive = true;
+            gameManager.Multiplier += 1;
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
+        }
+    }
+
+    public void ActionCom()
+    {
+        if (!IsActive)
+        {
+            IsActive = true;
+            gameManager.InfluencePlayer -= 2;
+            RV_DiceManager.Instance.ResultBonus += 2;
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
+        }
+    }
+
+    public void ActionInt()
+    {
+        CanvaOddOrEven.SetActive(true);
     }
 
     public void CheckDiceLaunch()
