@@ -3360,7 +3360,7 @@ RectTransform:
   m_GameObject: {fileID: 656360758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3.8}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 543450653304224016}
@@ -3369,7 +3369,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -526, y: 339.5}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656360760
 MonoBehaviour:
@@ -5846,7 +5846,7 @@ MonoBehaviour:
   selected_Image: {fileID: 0}
   turnPawn: {fileID: 656360759}
   turnTiles: {fileID: 493499671}
-  cheatUsePlayerClass: -1
+  cheatUsePlayerClass: 1
   Turn: 0
   MaxTurn: 15
   Bonus: 0
@@ -9403,14 +9403,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 9707757bd41b38d4199dbc4882d339b7, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.87843144, g: 0.7686275, b: 0.5294118, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20e7d84445b04874ab814adfce65fb14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab7a3d4182dd63b43be899a3969396da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
