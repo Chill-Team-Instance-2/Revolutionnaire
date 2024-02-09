@@ -28,13 +28,13 @@ public class RV_PlayerTurns_Visual : MonoBehaviour
             switch (gameManager.PlayerTurn)
             {
                 case 0:
-                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, milPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
+                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, -16 + milPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
                     break;
                 case 1:
-                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, comPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
+                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, -16 + comPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
                     break;
                 case 2:
-                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, intPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
+                    turnPointer.localPosition = Vector3.Lerp(turnPointer.localPosition, new Vector3(turnPointer.localPosition.x, -16 + intPortrait.transform.localPosition.y, turnPointer.localPosition.z), 10 * Time.deltaTime);
                     break;
             }
         }
