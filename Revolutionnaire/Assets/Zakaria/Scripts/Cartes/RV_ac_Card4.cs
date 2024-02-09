@@ -38,7 +38,6 @@ public class RV_AC_Card4 : RV_AC_Parent
                     ActionMil();
                     break;
                 case 1:
-                    ActionCom();
                     break;
                 case 2:
                     ActionInt();
@@ -64,7 +63,8 @@ public class RV_AC_Card4 : RV_AC_Parent
     {
         RV_PickACardOnEndTour pioche = RV_PickACardOnEndTour.Instance;
         pioche.ActualToDiscard();
-        pioche.DiscardToActual(pioche.DiscardsList[pioche.DiscardsList.Count - 1]);
+        pioche.DiscardToActual(pioche.DiscardsList[pioche.DiscardsList.Count - 2]);
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
         //TODO : remettre la carte de la fausse dans la pioche
     }
 
