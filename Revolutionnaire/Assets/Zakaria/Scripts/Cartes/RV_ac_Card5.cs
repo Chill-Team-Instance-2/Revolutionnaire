@@ -64,65 +64,101 @@ public class RV_AC_Card5 : RV_AC_Parent
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 0:
-                break;
-            case 1:
-                whichTypeOfCard = Random.Range(1, 2);
-                whichTypeOfCard2 = Random.Range(1, 2);
-                whichTypeOfCard3 = Random.Range(1, 2);
-                if (whichTypeOfCard == 1)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card1Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
-                }
-                if (whichTypeOfCard == 2)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card1Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
-                }                
-                
-                if (whichTypeOfCard2 == 1)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card2Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
-                }
-                if (whichTypeOfCard2 == 2)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card2Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
-                }                
-                
-                if (whichTypeOfCard3 == 1)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
-                    card3Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
-                }
-                if (whichTypeOfCard3 == 2)
-                {
-                    int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
-                    card3Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
-                    cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
-                }
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
-                canvasChooseCard.SetActive(true);
-                break;
-            case 2:
-                if((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
-                {
-                    RV_DiceManager.Instance.ResultBonus += 5;
-                }
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
-                break;
-            default:
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void ActionMil()
+    {
+
+    }
+
+    public void ActionCom()
+    {
+        whichTypeOfCard = Random.Range(1, 2);
+        whichTypeOfCard2 = Random.Range(1, 2);
+        whichTypeOfCard3 = Random.Range(1, 2);
+        if (whichTypeOfCard == 1)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            card1Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+        }
+        if (whichTypeOfCard == 2)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            card1Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
+        }
+
+        if (whichTypeOfCard2 == 1)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            card2Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+        }
+        if (whichTypeOfCard2 == 2)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            card2Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
+        }
+
+        if (whichTypeOfCard3 == 1)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            card3Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
+        }
+        if (whichTypeOfCard3 == 2)
+        {
+            int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            card3Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
+            cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
+        }
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+        canvasChooseCard.SetActive(true);
+    }
+
+    public void ActionInt()
+    {
+        if ((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
+        {
+            RV_DiceManager.Instance.ResultBonus += 5;
+        }
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
     }
 
     public void ChangeCardOrder()

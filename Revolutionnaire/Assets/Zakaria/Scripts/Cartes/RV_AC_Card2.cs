@@ -35,26 +35,63 @@ public class RV_AC_Card2 : RV_AC_Parent
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
-        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        if (cardHolder.IsCardInHand(transform))
         {
-            case 1:
-                GameObject currentCard = RV_PickACardOnEndTour.Instance.CurrentCard;
-                if (currentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && revoltCard.HasLostJet())
-                {
-                    IsActive = true;
-                    revoltCard.ReanableLostJet();
-                    RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
-                    gameManager.InfluencePlayer -= 5;
-                }
-                break;
-            case 2:
-                RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                break;
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (gameManager.PlayerTurn)
+            {
+                case 0:
+                    ActionMil();
+                    break;
+                case 1:
+                    ActionCom();
+                    break;
+                case 2:
+                    ActionInt();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+
+    public void ActionMil()
+    {
+        
+    }
+
+    public void ActionCom()
+    {
+        GameObject currentCard = RV_PickACardOnEndTour.Instance.CurrentCard;
+        if (currentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && revoltCard.HasLostJet())
+        {
+            IsActive = true;
+            revoltCard.ReanableLostJet();
+            RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
+            gameManager.InfluencePlayer -= 5;
+        }
+    }
+
+    public void ActionInt()
+    {
+        RV_PickACardOnEndTour.Instance.CurrentCard.GetComponent<RV_RevoltCard>().ReanableLostJet();
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void CheckEndTurnComm()
