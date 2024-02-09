@@ -84,20 +84,14 @@ public class RV_AC_Card1 : RV_AC_Parent
     public void OddOrEvenCheck()
     {
         RV_DiceManager.Instance.LaunchDice();
-        if (CardUsed)
+        CanvaOddOrEven.SetActive(false);
+        if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
         {
-            CanvaOddOrEven.SetActive(false);
-            if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
-            {
-                gameManager.InfluencePlayer += 6;
-                CardUsed = false;
-            }
-            else
-            {
-                gameManager.InfluencePlayer -= 6;
-                CardUsed = false;
-            }
-            CardUsed = false;
+            gameManager.InfluencePlayer += 6;
+        }
+        else
+        {
+            gameManager.InfluencePlayer -= 6;
         }
     }
 
