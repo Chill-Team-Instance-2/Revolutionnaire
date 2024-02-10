@@ -17,9 +17,12 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public bool IsReanablingTurn = true;
 
+    public Vector3 baseCardPos = Vector3.zero;
+
     private void Awake()
     {
         Instance = this;
+        baseCardPos = RevoltsCards[0].transform.position;
     }
 
     public void PickACard()
@@ -123,6 +126,15 @@ public class RV_PickACardOnEndTour : MonoBehaviour
     {
         card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
         card.GetComponent<Animator>().SetTrigger("TDiscardToCurrent");
+        if (card.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
+        {
+            revoltCard.ResetCard();
+        }
+        if (card.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
+        {
+            actionCard.IsActive = false;
+            actionCard.RefreshVisual();
+        }
         DiscardsList.Remove(card);
         CurrentCard = card;
     }

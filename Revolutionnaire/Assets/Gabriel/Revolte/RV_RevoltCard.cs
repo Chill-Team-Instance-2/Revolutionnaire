@@ -132,4 +132,9 @@ public class RV_RevoltCard : MonoBehaviour
     {
         RV_GameManager.Instance.InfluencePlayer -= PointAdded;
     }
+
+    public void GiveBackLostPoints()
+    {
+        RV_GameManager.Instance.InfluencePlayer += PointAdded;
+    }
 }
