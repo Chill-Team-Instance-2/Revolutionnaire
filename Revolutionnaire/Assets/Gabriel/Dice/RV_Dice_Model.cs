@@ -11,6 +11,10 @@ public class RV_Dice_Model : MonoBehaviour
 
     [SerializeField] private AnimationCurve diceCurve;
 
+    public bool IsLaunching = false;
+
+    
+
     private void Awake()
     {
         baseRotation = transform.rotation;
@@ -22,12 +26,32 @@ public class RV_Dice_Model : MonoBehaviour
         LaunchDice();
     }
 
+    public void ChangeText(int number, float delay = -1)
+    {
+        if (delay != -1)
+        {
+            StartCoroutine(ChangeTextWithDelay(number, delay));
+        }
+        else
+        {
+            resultText.text = number.ToString();
+        }
+    }
+
+    public IEnumerator ChangeTextWithDelay(int number, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        resultText.text = number.ToString();
+    }
+
     public int LaunchDice(float diceTime = 2, bool show = true, bool hide = true)
     {
         transform.rotation = baseRotation;
         //transform.position = new Vector3(0, 0, baseHeight);
 
         int result = Random.Range(1, 20);
+
+        IsLaunching = true;
         
         StartCoroutine(LaunchingDice(result, diceTime, show, hide));
 
@@ -44,13 +68,15 @@ public class RV_Dice_Model : MonoBehaviour
 
         StartCoroutine(LaunchDiceRotation(result, diceTime));
         StartCoroutine(LaunchDiceFalling(diceTime));
-        resultText.text = result.ToString();
 
         if (hide)
         {
             yield return new WaitForSeconds(diceTime);
             StartCoroutine(HideDice(1));
+            yield return new WaitForSeconds(1);
         }
+
+        IsLaunching = false;
         yield return null;
     }
 

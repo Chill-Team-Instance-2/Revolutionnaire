@@ -5,24 +5,59 @@ using UnityEngine;
 
 public class RV_PickACardOnEndTour : MonoBehaviour
 {
+    public static RV_PickACardOnEndTour Instance;
+
     public List<GameObject> ActionsCards;
     public List<GameObject> RevoltsCards;
     public List<GameObject> DiscardsList;
 
-    private Animator animator;
+    public GameObject CurrentCard;
+
+    public Animator animator;
+
+    public bool IsReanablingTurn = true;
+
+    public Vector3 baseCardPos = Vector3.zero;
+
+    private void Awake()
+    {
+        Instance = this;
+        baseCardPos = RevoltsCards[0].transform.position;
+    }
 
     public void PickACard()
     {
+        int cardCount = ActionsCards.Count + RevoltsCards.Count;
+        int takeCard = Random.Range(0, cardCount);
         int wichTypeOfCard = Random.Range(1, 3);
-        Debug.Log(wichTypeOfCard);
+        if (takeCard < ActionsCards.Count)
+        {
+            wichTypeOfCard = 1;
+        }
+        else
+        {
+            wichTypeOfCard = 2;
+        }
+
+        //Debug.Log(wichTypeOfCard);
+
+        bool IsReanablingTurn = RV_GameManager.Instance.CanEndTurn;
 
         if (wichTypeOfCard == 1 && ActionsCards.Count > 0)
         {
+            RV_GameManager.Instance.DisableEndTurn();
+
             int Cards = Random.Range(0, ActionsCards.Count);
             animator = ActionsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
-            DiscardsList.Add(ActionsCards[Cards]);
+            //DiscardsList.Add(ActionsCards[Cards]);
+            CurrentCard = ActionsCards[Cards];
+            CurrentCard.GetComponent<RV_AC_Parent>().OnReveal();
+            CurrentCard.GetComponent<RV_AC_Parent>().Invoke("OnFinishedReveal", 1.4f);
+            CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
+
+            Invoke("FinishedPicking", 2f);
         }
         else if (ActionsCards.Count == 0)
         {
@@ -31,11 +66,16 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
         if (wichTypeOfCard == 2 && RevoltsCards.Count > 0)
         {
+            RV_GameManager.Instance.DisableEndTurn();
+
             int Cards = Random.Range(0, RevoltsCards.Count);
             animator = RevoltsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
-            DiscardsList.Add(RevoltsCards[Cards]);
+            //DiscardsList.Add(RevoltsCards[Cards]);
+            CurrentCard = RevoltsCards[Cards];
             RevoltsCards.Remove(RevoltsCards[Cards]);
+
+            Invoke("FinishedPicking", 2f);
         }
         else if (RevoltsCards.Count == 0)
         {
@@ -43,11 +83,61 @@ public class RV_PickACardOnEndTour : MonoBehaviour
         }
     }
 
-    public void ActualToDiscard()
+    public void FinishedPicking()
     {
-        DiscardsList[DiscardsList.Count-2].GetComponent<Animator>().SetTrigger("FlipToDiscard");
+        if (IsReanablingTurn)
+        {
+            RV_GameManager.Instance.EnableEndTurn();
+        }
     }
 
+    public void ActualToDiscard()
+    {
+        if (CurrentCard)
+        {
+            if (CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revolt)) //if revolt card
+            {
+                CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
+                DiscardsList.Add(CurrentCard);
+            }
+            else //if action card
+            {
+                if (CurrentCard.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
+                {
+                    actionCard.OnDiscard();
+                    if (actionCard.CanBePickup)
+                    {
+                        CurrentCard.GetComponent<Animator>().enabled = false;
+                        CurrentCard.GetComponent<RV_ActionCard>().RefreshVisual();
+                        RV_ActionCard_Holder.Instance.PutCardInHand(CurrentCard, RV_GameManager.Instance.PlayerTurn);
+                        CurrentCard = null;
+                    }
+                    else
+                    {
+                        CurrentCard.GetComponent<Animator>().SetTrigger("FlipToDiscard");
+                        DiscardsList.Add(CurrentCard);
+                    }
+                }
+            }
+        }
+    }
+
+    public void DiscardToActual(GameObject card)
+    {
+        card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
+        card.GetComponent<Animator>().SetTrigger("TDiscardToCurrent");
+        if (card.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
+        {
+            revoltCard.ResetCard();
+        }
+        if (card.TryGetComponent<RV_AC_Parent>(out RV_AC_Parent actionCard))
+        {
+            actionCard.IsActive = false;
+            actionCard.RefreshVisual();
+        }
+        DiscardsList.Remove(card);
+        CurrentCard = card;
+    }
 }
 
 
