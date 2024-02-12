@@ -3,7 +3,6 @@ using UnityEngine;
 public class RV_AC_Card6 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
-    private bool CardUsed = false;
     //[SerializeField] private CardManager cardManager;
     public void Awake()
     {
@@ -160,14 +159,18 @@ public class RV_AC_Card6 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                gameManager.InfluencePlayer -= 1;
+                if (!IsActive)
+                {
+                    gameManager.InfluencePlayer -= 1;
+                }
                 break;
             case 1:
                 break;
             case 2:
-                if (!CardUsed && gameManager.Turn > 15)
+                if (!IsActive && gameManager.Turn > 15)
                 {
                     gameManager.InfluencePlayer -= 20;
+                    IsActive = true;
                 }
                 break;
         }
