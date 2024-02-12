@@ -19,7 +19,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //[SerializeField] private Image imageBack;
 
     [SerializeField] private Image imagePlayerClass;
-    [SerializeField] private TextMeshProUGUI textCardID;
+    //[SerializeField] private TextMeshProUGUI textCardID;
 
     [SerializeField] private Sprite spriteInt;
     [SerializeField] private Sprite spriteCom;
@@ -27,6 +27,8 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [SerializeField] private TextMeshProUGUI TitleText;
     [SerializeField] private TextMeshProUGUI DescriptionText;
+
+    [SerializeField] private TextMeshProUGUI factionText;
 
     [SerializeField] private GameObject cardGlow;
 
@@ -54,14 +56,17 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
+                    factionText.text = "Milice";
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
+                    factionText.text = "Commerçant";
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
+                    factionText.text = "Intellectuel";
                     break;
             }
         }
@@ -72,18 +77,21 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
+                    factionText.text = "Milice";
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
+                    factionText.text = "Commerçant";
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
+                    factionText.text = "Intellectuel";
                     break;
             }
         }
-        textCardID.text = GetComponent<RV_AC_Parent>().CardID.ToString();
+        //textCardID.text = GetComponent<RV_AC_Parent>().CardID.ToString();
     }
 
     public void OnPointerClick(PointerEventData eventData)

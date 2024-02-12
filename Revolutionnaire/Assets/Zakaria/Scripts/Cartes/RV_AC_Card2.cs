@@ -80,11 +80,14 @@ public class RV_AC_Card2 : RV_AC_Parent
         GameObject currentCard = RV_PickACardOnEndTour.Instance.CurrentCard;
         if (currentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && revoltCard.HasLostJet())
         {
-            IsActive = true;
-            revoltCard.ReanableLostJet();
-            revoltCard.GiveBackLostPoints();
-            RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
-            gameManager.InfluencePlayer -= 5;
+            if (revoltCard.HasLostJet())
+            {
+                IsActive = true;
+                revoltCard.ReanableLostJet();
+                revoltCard.GiveBackLostPoints();
+                RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
+                gameManager.InfluencePlayer -= 5;
+            }
         }
     }
 

@@ -126,6 +126,8 @@ public class RV_AC_Card5 : RV_AC_Parent
 
     public void ActionCom()
     {
+        RV_GameManager.Instance.InfluencePlayer -= 6;
+
         RV_PickACardOnEndTour pioche = RV_PickACardOnEndTour.Instance;
 
         whichTypeOfCard = Random.Range(1, 3);
