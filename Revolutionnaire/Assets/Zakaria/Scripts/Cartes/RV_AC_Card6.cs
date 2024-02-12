@@ -52,6 +52,8 @@ public class RV_AC_Card6 : RV_AC_Parent
             switch (RV_GameManager.Instance.PlayerTurn)
             {
                 case 0:
+                    break;
+                case 1:
                     RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
                     if (cardHolder.CardsInHandPlayer1.Count != 0)
                     {
@@ -77,8 +79,6 @@ public class RV_AC_Card6 : RV_AC_Parent
                     {
                         RV_GameManager.Instance.InfluencePlayer -= 1;
                     }
-                    break;
-                case 1:
                     break;
                 case 2:
                     break;

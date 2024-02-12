@@ -83,6 +83,7 @@ public class RV_AC_Card2 : RV_AC_Parent
         {
             IsActive = true;
             revoltCard.ReanableLostJet();
+            revoltCard.GiveBackLostPoints();
             RV_GameManager.Instance.onendturn.AddListener(CheckEndTurnComm);
             gameManager.InfluencePlayer -= 5;
         }

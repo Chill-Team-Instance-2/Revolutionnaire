@@ -140,12 +140,33 @@ public class RV_AC_Card8 : RV_AC_Parent
                 {
                     discardList.Remove(actionCard.gameObject);
                     //discardList.RemoveAt(discardList.Count-1);
-                    actionCard.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
-                    actionCard.GetComponent<Animator>().ResetTrigger("Flip");
+
+                    StartCoroutine(MoveCardToPioche(actionCard.transform));
                     RV_PickACardOnEndTour.Instance.ActionsCards.Add(actionCard.gameObject);
                 }
                 break;
         }
+    }
+
+    private IEnumerator MoveCardToPioche(Transform card)
+    {
+        card.GetComponent<Animator>().enabled = false;
+        card.GetComponent<Animator>().ResetTrigger("FlipToDiscard");
+        card.GetComponent<Animator>().ResetTrigger("Flip");
+        card.GetComponent<Animator>().ResetTrigger("CurrentToPioche");
+        card.GetComponent<Animator>().ResetTrigger("TDiscardToCurrent");
+
+        Vector3 destination = RV_PickACardOnEndTour.Instance.baseCardPos;
+        float timemove = 0;
+        card.eulerAngles = Vector3.zero;
+        while (timemove < 3)
+        {
+            card.position = Vector3.Lerp(card.position, destination, 40 * Time.deltaTime);
+            timemove += Time.deltaTime;
+            yield return null;
+        }
+        card.GetComponent<Animator>().enabled = true;
+        yield return null;
     }
 
     public override void EndAction()

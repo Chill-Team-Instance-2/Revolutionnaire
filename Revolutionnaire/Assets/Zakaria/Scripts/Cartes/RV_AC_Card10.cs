@@ -70,13 +70,11 @@ public class RV_AC_Card10 : RV_AC_Parent
             switch (gameManager.PlayerTurn)
             {
                 case 0:
-                    ActionMil();
                     break;
                 case 1:
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;
@@ -95,6 +93,7 @@ public class RV_AC_Card10 : RV_AC_Parent
         {
             IsActive = true;
             BackWardTurn();
+            RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
         }
     }
 
