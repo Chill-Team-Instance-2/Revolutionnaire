@@ -36,13 +36,7 @@ public class RV_AC_Card5 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                CanBePickup = false;
-                print((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count));
-                if ((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
-                {
-                    RV_DiceManager.Instance.ResultBonus += 5;
-                    RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEnd);
-                }
+                CanBePickup = true;
                 break;
         }
     }
@@ -53,7 +47,10 @@ public class RV_AC_Card5 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
+                print("DiceEnd");
                 RV_DiceManager.Instance.ResultBonus -= 5;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+                IsActive = false;
                 break;
         }
     }
@@ -109,7 +106,6 @@ public class RV_AC_Card5 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;
@@ -172,12 +168,16 @@ public class RV_AC_Card5 : RV_AC_Parent
 
     public void ActionInt()
     {
-        if ((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
+        if (!IsActive)
         {
-            RV_DiceManager.Instance.ResultBonus += 5;
-      
+            print((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count));
+            if ((RV_ActionCard_Holder.Instance.CardsInHandPlayer1.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer2.Count + RV_ActionCard_Holder.Instance.CardsInHandPlayer3.Count) >= 3)
+            {
+                RV_DiceManager.Instance.ResultBonus += 5;
+                RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEnd);
+                IsActive = true;
+            }
         }
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
     }
 
     public void ChangeCardOrder()
@@ -207,7 +207,6 @@ public class RV_AC_Card5 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                RV_DiceManager.Instance.ResultBonus -= 5;
                 break;
             default:
                 break;
