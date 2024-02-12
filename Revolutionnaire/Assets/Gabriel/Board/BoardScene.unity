@@ -929,7 +929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 186911311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 186911314}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &186911311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8745,7 +8757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1332364207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1332364210}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1332364207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9225,6 +9249,7 @@ MonoBehaviour:
   onDiceEnd:
     m_PersistentCalls:
       m_Calls: []
+  IsReanablingEndTurn: 0
 --- !u!1001 &1447417467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11144,7 +11169,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1781202163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1781202166}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1781202163
 MonoBehaviour:
   m_ObjectHideFlags: 0
