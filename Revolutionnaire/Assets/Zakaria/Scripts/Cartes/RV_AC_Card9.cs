@@ -173,9 +173,9 @@ public class RV_AC_Card9 : RV_AC_Parent
 
         canvasChooseCard.SetActive(true);
 
-        card1Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card1, whichTypeOfCard);
-        card2Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card2, whichTypeOfCard2);
-        card3Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card3, whichTypeOfCard3);
+        card1Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card1, whichTypeOfCard, RV_GameManager.Instance.PlayerTurn);
+        card2Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card2, whichTypeOfCard2, RV_GameManager.Instance.PlayerTurn);
+        card3Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card3, whichTypeOfCard3, RV_GameManager.Instance.PlayerTurn);
 
         RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
