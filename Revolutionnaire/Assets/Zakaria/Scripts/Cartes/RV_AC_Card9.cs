@@ -171,12 +171,13 @@ public class RV_AC_Card9 : RV_AC_Parent
             cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
         }
 
+        canvasChooseCard.SetActive(true);
+
         card1Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card1, whichTypeOfCard);
         card2Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card2, whichTypeOfCard2);
         card3Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card3, whichTypeOfCard3);
 
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
-        canvasChooseCard.SetActive(true);
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void ActionInt()
