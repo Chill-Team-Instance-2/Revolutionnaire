@@ -79,7 +79,8 @@ public class RV_ac_Card3 : RV_AC_Parent
 
     public void ActionCom()
     {
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+        if (RV_ActionCard_Holder.Instance.IsCardInHand(transform))
+            RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
         RV_PickACardOnEndTour.Instance.ActualToDiscard();
         RV_PickACardOnEndTour.Instance.PickACard();
         //TODO : Redraw (anim)

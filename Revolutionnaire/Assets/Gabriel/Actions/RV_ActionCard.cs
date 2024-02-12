@@ -28,6 +28,8 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI TitleText;
     [SerializeField] private TextMeshProUGUI DescriptionText;
 
+    [SerializeField] private TextMeshProUGUI factionText;
+
     [SerializeField] private GameObject cardGlow;
 
     private void Start()
@@ -54,14 +56,17 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
+                    factionText.text = "Milice";
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
+                    factionText.text = "Commerçant";
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
+                    factionText.text = "Intellectuel";
                     break;
             }
         }
@@ -72,14 +77,17 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     imagePlayerClass.sprite = spriteMil;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().MilText;
+                    factionText.text = "Milice";
                     break;
                 case 1:
                     imagePlayerClass.sprite = spriteCom;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().ComText;
+                    factionText.text = "Commerçant";
                     break;
                 case 2:
                     imagePlayerClass.sprite = spriteInt;
                     DescriptionText.text = transform.GetComponent<RV_AC_Parent>().IntText;
+                    factionText.text = "Intellectuel";
                     break;
             }
         }
