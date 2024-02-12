@@ -25,12 +25,14 @@ public class RV_RevoltCard : MonoBehaviour
 
     public List<TextMeshProUGUI> TextRequirements = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> TextInfluences = new List<TextMeshProUGUI>();
+    public Color TextBaseColor = Color.black;
 
     public int PointAdded = 0;
 
     public bool HasBeenPlayed = false;
     private void Awake()
     {
+        TextBaseColor = TextRequirements[0].color;
         //if (spriteBack)
         //{
         //    imageBack.sprite = spriteBack;
@@ -88,8 +90,8 @@ public class RV_RevoltCard : MonoBehaviour
         HasBeenPlayed = false;
         for (int i = 0; i < JetRequirements.Count; i++)
         {
-            TextRequirements[i].color = new Color(1, 1, 1);
-            TextInfluences[i].color = new Color(1, 1, 1);
+            TextRequirements[i].color = TextBaseColor;
+            TextInfluences[i].color = TextBaseColor;
             JetAvailable[i] = true;
             JetWon[i] = false;
         }

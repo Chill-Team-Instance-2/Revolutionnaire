@@ -794,6 +794,8 @@ MonoBehaviour:
   CurrentCard: {fileID: 0}
   animator: {fileID: 0}
   IsReanablingTurn: 1
+  IsTouchingTurn: 0
+  baseCardPos: {x: 0, y: 0, z: 0}
 --- !u!23 &186260425
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -853,6 +855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186911309}
+  - component: {fileID: 186911314}
   - component: {fileID: 186911313}
   - component: {fileID: 186911312}
   - component: {fileID: 186911311}
@@ -926,31 +929,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 186911311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 186911312}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1051202824}
-        m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &186911311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +984,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186911308}
   m_CullTransparentMesh: 1
+--- !u!114 &186911314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186911308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 186911311}
+  CardID: 0
+  CardType: 1
 --- !u!1 &191341575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -450}
+  m_AnchoredPosition: {x: 39.00005, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191341577
@@ -2176,7 +2170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de620e2c52a21bc4bb4721a28aa7a6f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2833c41168ae10b45a1c68fcf502bf32, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2402,6 +2396,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347168715}
+  m_CullTransparentMesh: 1
+--- !u!1 &354736730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354736731}
+  - component: {fileID: 354736733}
+  - component: {fileID: 354736732}
+  m_Layer: 5
+  m_Name: Shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &354736731
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354736730}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.66, y: 8.82, z: 6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1314642639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 751.00085, y: 147}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &354736732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354736730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2833c41168ae10b45a1c68fcf502bf32, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &354736733
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354736730}
   m_CullTransparentMesh: 1
 --- !u!1 &364205515
 GameObject:
@@ -3326,6 +3395,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565837213}
   m_CullTransparentMesh: 1
+--- !u!1 &569895639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569895640}
+  - component: {fileID: 569895642}
+  - component: {fileID: 569895641}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &569895640
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569895639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1484004898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 75.581}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &569895641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569895639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 9707757bd41b38d4199dbc4882d339b7, type: 2}
+  m_Color: {r: 0.8784314, g: 0.76862746, b: 0.5294118, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 080f951da46189c4cb84755f9b0f660f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &569895642
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569895639}
+  m_CullTransparentMesh: 1
 --- !u!1 &579375017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7799045592411154841, guid: 5e916ab129c1c4748886db258c377138, type: 3}
@@ -3662,7 +3806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchoredPosition: {x: 39, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686471262
@@ -4910,7 +5054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &847233611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4920,8 +5064,8 @@ RectTransform:
   m_GameObject: {fileID: 847233610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 186911309}
   - {fileID: 1332364205}
@@ -6643,6 +6787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1104659296}
+  - component: {fileID: 1104659301}
   - component: {fileID: 1104659300}
   - component: {fileID: 1104659299}
   - component: {fileID: 1104659298}
@@ -6717,21 +6862,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1104659299}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1476209908}
-        m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
+      - m_Target: {fileID: 1104659301}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6795,6 +6928,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104659295}
   m_CullTransparentMesh: 1
+--- !u!114 &1104659301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104659295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 1104659298}
+  CardID: 0
+  CardType: 1
 --- !u!1001 &1105295705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8495,6 +8643,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 354736731}
   - {fileID: 324546631}
   - {fileID: 493499671}
   - {fileID: 1313325358}
@@ -8522,6 +8671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1332364205}
+  - component: {fileID: 1332364210}
   - component: {fileID: 1332364209}
   - component: {fileID: 1332364208}
   - component: {fileID: 1332364207}
@@ -8595,31 +8745,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1332364207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1332364208}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1051202824}
-        m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1332364207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8674,6 +8800,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332364204}
   m_CullTransparentMesh: 1
+--- !u!114 &1332364210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332364204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 1332364207}
+  CardID: 0
+  CardType: 1
 --- !u!1 &1359685214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5388532105067766351, guid: c1253f001892ca7478fdb86bd3d607b6, type: 3}
@@ -8918,7 +9059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 737, y: -48.9}
+  m_AnchoredPosition: {x: 737, y: 1}
   m_SizeDelta: {x: 109.352, y: 59.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430438068
@@ -9420,9 +9561,9 @@ MonoBehaviour:
     de 3."
   canvasChooseCard: {fileID: 1602939146}
   cardIndex: 0
-  card1Image: {fileID: 1865251148}
-  card2Image: {fileID: 1953094571}
-  card3Image: {fileID: 1104659298}
+  card1Choice: {fileID: 1865251146}
+  card2Choice: {fileID: 1953094569}
+  card3Choice: {fileID: 1104659296}
 --- !u!1 &1480120249
 GameObject:
   m_ObjectHideFlags: 0
@@ -9545,17 +9686,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484004897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.70710653}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.1499996, y: 6.1499996, z: 6.1499996}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1569748573}
+  - {fileID: 569895640}
   m_Father: {fileID: 1313325358}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78, y: -16}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -51, y: -16}
+  m_SizeDelta: {x: 100, y: 73.971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484004899
 MonoBehaviour:
@@ -9564,7 +9707,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484004897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9577,7 +9720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3c8564b9534b86d479707b1a7e47a2d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 080f951da46189c4cb84755f9b0f660f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10013,6 +10156,81 @@ MonoBehaviour:
   ComText: "Gagnez 1 d\u2019influence par chaque nouvelle carte action d\xE9fauss\xE9e."
   IntText: "Les intellectuels ont r\xE9ussi \xE0 gagner du temps, reculez d\u2019un
     tour."
+--- !u!1 &1569748572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1569748573}
+  - component: {fileID: 1569748575}
+  - component: {fileID: 1569748574}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1569748573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569748572}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1484004898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.9512253, y: -1.7886238}
+  m_SizeDelta: {x: 100, y: 73.971}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1569748574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569748572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 9707757bd41b38d4199dbc4882d339b7, type: 2}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 080f951da46189c4cb84755f9b0f660f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1569748575
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569748572}
+  m_CullTransparentMesh: 1
 --- !u!1 &1582032506
 GameObject:
   m_ObjectHideFlags: 0
@@ -10208,8 +10426,8 @@ RectTransform:
   m_GameObject: {fileID: 1602939146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1865251146}
   - {fileID: 1953094569}
@@ -10852,6 +11070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781202161}
+  - component: {fileID: 1781202166}
   - component: {fileID: 1781202165}
   - component: {fileID: 1781202164}
   - component: {fileID: 1781202163}
@@ -10925,31 +11144,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1781202163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1781202164}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1051202824}
-        m_TargetAssemblyTypeName: RV_AC_Card5, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1781202163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11004,6 +11199,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781202160}
   m_CullTransparentMesh: 1
+--- !u!114 &1781202166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781202160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 1781202163}
+  CardID: 0
+  CardType: 1
 --- !u!1 &1783463163
 GameObject:
   m_ObjectHideFlags: 0
@@ -11516,6 +11726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865251146}
   - component: {fileID: 1865251150}
+  - component: {fileID: 1865251151}
   - component: {fileID: 1865251149}
   - component: {fileID: 1865251148}
   - component: {fileID: 1865251147}
@@ -11589,21 +11800,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1865251149}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1476209908}
-        m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
+      - m_Target: {fileID: 1865251151}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11667,6 +11866,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865251145}
   m_CullTransparentMesh: 1
+--- !u!114 &1865251151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865251145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 1865251148}
+  CardID: 0
+  CardType: 1
 --- !u!1 &1872169004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7799045592411154841, guid: 5e916ab129c1c4748886db258c377138, type: 3}
@@ -12267,6 +12481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1953094569}
+  - component: {fileID: 1953094574}
   - component: {fileID: 1953094573}
   - component: {fileID: 1953094572}
   - component: {fileID: 1953094571}
@@ -12341,21 +12556,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1953094572}
-        m_TargetAssemblyTypeName: RV_ChangeIndex, Assembly-CSharp
-        m_MethodName: ChangeIndex
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1476209908}
-        m_TargetAssemblyTypeName: RV_AC_Card9, Assembly-CSharp
-        m_MethodName: ChangeCardOrder
+      - m_Target: {fileID: 1953094574}
+        m_TargetAssemblyTypeName: RV_ChooseCards, Assembly-CSharp
+        m_MethodName: PutCardInActual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12419,6 +12622,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953094568}
   m_CullTransparentMesh: 1
+--- !u!114 &1953094574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953094568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e95ce1cdfd7c1a40a628505aabffc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageCard: {fileID: 1953094571}
+  CardID: 0
+  CardType: 1
 --- !u!1 &1959752827
 GameObject:
   m_ObjectHideFlags: 0
@@ -13854,7 +14072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -250}
+  m_AnchoredPosition: {x: 39.00005, y: -250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135392969
@@ -14059,7 +14277,7 @@ PrefabInstance:
     - target: {fileID: 1702160323831027776, guid: 5e916ab129c1c4748886db258c377138, type: 3}
       propertyPath: spriteFront
       value: 
-      objectReference: {fileID: 21300000, guid: 185ead8c372d5b740b7a91e22b7e6ea6, type: 3}
+      objectReference: {fileID: 21300000, guid: 29680f1fec56c2a44a123e3a11bedc41, type: 3}
     - target: {fileID: 1702160323831027776, guid: 5e916ab129c1c4748886db258c377138, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
