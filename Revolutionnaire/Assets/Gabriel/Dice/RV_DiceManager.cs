@@ -18,6 +18,8 @@ public class RV_DiceManager : MonoBehaviour
     public UnityEvent onDiceLaunch;
     public UnityEvent onDiceEnd;
 
+    public bool IsReanablingEndTurn = false;
+
     private void Awake()
     {
         Instance = this;
@@ -25,6 +27,13 @@ public class RV_DiceManager : MonoBehaviour
 
     public int LaunchDice()
     {
+        if (RV_GameManager.Instance.CanEndTurn)
+        {
+            RV_GameManager.Instance.DisableEndTurn();
+            IsReanablingEndTurn = true;
+            Invoke("ReanablingTurnOnDiceEnd", DiceTime);
+        }
+        
         DiceResult = dice.LaunchDice(DiceTime, true, true);
         DiceResult = ((int)(DiceResult * ResultMultiplier));
         DiceResult += ResultBonus;
@@ -32,6 +41,7 @@ public class RV_DiceManager : MonoBehaviour
         dice.ChangeText(DiceResult, DiceTime/2f);
         onDiceLaunch.Invoke();
         StartCoroutine(SendOnDiceEnd());
+        
         return DiceResult;
     }
 
@@ -44,5 +54,13 @@ public class RV_DiceManager : MonoBehaviour
     {
         yield return new WaitForSeconds(DiceTime);
         onDiceEnd.Invoke();
+    }
+
+    public void ReanablingTurnOnDiceEnd()
+    {
+        if (IsReanablingEndTurn)
+        {
+            RV_GameManager.Instance.EnableEndTurn();
+        }
     }
 }

@@ -16,6 +16,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
     public Animator animator;
 
     public bool IsReanablingTurn = true;
+    public bool IsTouchingTurn = false;
 
     public Vector3 baseCardPos = Vector3.zero;
 
@@ -25,7 +26,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
         baseCardPos = RevoltsCards[0].transform.position;
     }
 
-    public void PickACard()
+    public void PickACard(int specificCard = -1, int specificCardType = -1)
     {
         int cardCount = ActionsCards.Count + RevoltsCards.Count;
         int takeCard = Random.Range(0, cardCount);
@@ -39,6 +40,8 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             wichTypeOfCard = 2;
         }
 
+        if (specificCardType != -1) wichTypeOfCard = specificCardType;
+
         //Debug.Log(wichTypeOfCard);
 
         bool IsReanablingTurn = RV_GameManager.Instance.CanEndTurn;
@@ -48,6 +51,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             RV_GameManager.Instance.DisableEndTurn();
 
             int Cards = Random.Range(0, ActionsCards.Count);
+            if (specificCard != -1) Cards = specificCard;
             animator = ActionsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
             //DiscardsList.Add(ActionsCards[Cards]);
@@ -57,6 +61,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
 
+            IsTouchingTurn = true;
             Invoke("FinishedPicking", 2f);
         }
         else if (ActionsCards.Count == 0)
@@ -69,12 +74,14 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             RV_GameManager.Instance.DisableEndTurn();
 
             int Cards = Random.Range(0, RevoltsCards.Count);
+            if (specificCard != -1) Cards = specificCard;
             animator = RevoltsCards[Cards].GetComponent<Animator>();
             animator.SetTrigger("Flip");
             //DiscardsList.Add(RevoltsCards[Cards]);
             CurrentCard = RevoltsCards[Cards];
             RevoltsCards.Remove(RevoltsCards[Cards]);
 
+            IsTouchingTurn = true;
             Invoke("FinishedPicking", 2f);
         }
         else if (RevoltsCards.Count == 0)
@@ -85,6 +92,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
 
     public void FinishedPicking()
     {
+        IsTouchingTurn = false;
         if (IsReanablingTurn)
         {
             RV_GameManager.Instance.EnableEndTurn();
