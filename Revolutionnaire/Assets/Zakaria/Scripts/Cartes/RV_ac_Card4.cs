@@ -62,7 +62,7 @@ public class RV_AC_Card4 : RV_AC_Parent
     public void ActionCom()
     {
         RV_PickACardOnEndTour pioche = RV_PickACardOnEndTour.Instance;
-        if (pioche.DiscardsList.Count > 2)
+        if (pioche.DiscardsList.Count >= 1)
         {
             pioche.ActualToDiscard();
             pioche.DiscardToActual(pioche.DiscardsList[pioche.DiscardsList.Count - 2]);
