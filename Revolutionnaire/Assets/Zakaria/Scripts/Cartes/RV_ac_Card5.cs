@@ -40,7 +40,8 @@ public class RV_AC_Card5 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                CanBePickup = true;
+                CanBePickup = false;
+                ActionInt();
                 break;
         }
     }
@@ -51,10 +52,12 @@ public class RV_AC_Card5 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
-                print("DiceEnd");
-                RV_DiceManager.Instance.ResultBonus -= 5;
-                RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
-                IsActive = false;
+                if (IsActive)
+                {
+                    print("DiceEnd");
+                    RV_DiceManager.Instance.ResultBonus -= 5;
+                    IsActive = false;
+                }
                 break;
         }
     }
@@ -93,7 +96,6 @@ public class RV_AC_Card5 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;

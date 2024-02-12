@@ -124,7 +124,7 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void ActionMil()
     {
-
+        
     }
 
     public void ActionCom()
@@ -159,7 +159,7 @@ public class RV_AC_Card6 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                if (!IsActive && !CardUsed)
+                if (IsActive)
                 {
                     gameManager.InfluencePlayer -= 1;
                 }
