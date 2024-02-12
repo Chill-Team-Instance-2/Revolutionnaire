@@ -3,6 +3,7 @@ using UnityEngine;
 public class RV_AC_Card6 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
+    private bool CardUsed = false;
     //[SerializeField] private CardManager cardManager;
     public void Awake()
     {
@@ -114,7 +115,6 @@ public class RV_AC_Card6 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;
@@ -145,11 +145,12 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void ActionInt()
     {
-        if (!IsActive)
+        if (!CardUsed)
         {
-            IsActive = true;
             RV_DiceManager.Instance.ResultBonus -= 8;
             RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceEndMalus);
+            IsActive = true;
+            CardUsed = true;
         }
     }
 
@@ -159,7 +160,7 @@ public class RV_AC_Card6 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                if (!IsActive)
+                if (!IsActive && !CardUsed)
                 {
                     gameManager.InfluencePlayer -= 1;
                 }
@@ -167,10 +168,10 @@ public class RV_AC_Card6 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                if (!IsActive && gameManager.Turn > 15)
+                if (!CardUsed && gameManager.Turn >= 15)
                 {
                     gameManager.InfluencePlayer -= 20;
-                    IsActive = true;
+                    CardUsed = true;
                 }
                 break;
         }
