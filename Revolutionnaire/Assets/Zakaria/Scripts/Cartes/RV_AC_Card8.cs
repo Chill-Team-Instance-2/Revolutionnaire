@@ -139,7 +139,7 @@ public class RV_AC_Card8 : RV_AC_Parent
                 {
                     discardList.Remove(actionCard.gameObject);
                     //discardList.RemoveAt(discardList.Count-1);
-
+                    RV_ActionCard_Holder.Instance.StopAllCoroutines();
                     StartCoroutine(MoveCardToPioche(actionCard.transform));
                     RV_PickACardOnEndTour.Instance.ActionsCards.Add(actionCard.gameObject);
                 }
@@ -158,7 +158,7 @@ public class RV_AC_Card8 : RV_AC_Parent
         Vector3 destination = RV_PickACardOnEndTour.Instance.baseCardPos;
         float timemove = 0;
         card.eulerAngles = Vector3.zero;
-        while (timemove < 3)
+        while (timemove < 1)
         {
             card.position = Vector3.Lerp(card.position, destination, 40 * Time.deltaTime);
             timemove += Time.deltaTime;
