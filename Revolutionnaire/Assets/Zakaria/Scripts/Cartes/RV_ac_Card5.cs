@@ -18,6 +18,10 @@ public class RV_AC_Card5 : RV_AC_Parent
     public int cardIndex = 0;
     private List<GameObject> cards = new List<GameObject>();
 
+    [SerializeField] private Transform card1Choice;
+    [SerializeField] private Transform card2Choice;
+    [SerializeField] private Transform card3Choice;
+
     int whichTypeOfCard;
     int whichTypeOfCard2;
     int whichTypeOfCard3;
@@ -103,7 +107,6 @@ public class RV_AC_Card5 : RV_AC_Parent
                     ActionMil();
                     break;
                 case 1:
-                    ActionCom();
                     break;
                 case 2:
                     break;
@@ -121,18 +124,31 @@ public class RV_AC_Card5 : RV_AC_Parent
 
     public void ActionCom()
     {
-        whichTypeOfCard = Random.Range(1, 2);
-        whichTypeOfCard2 = Random.Range(1, 2);
-        whichTypeOfCard3 = Random.Range(1, 2);
+        RV_PickACardOnEndTour pioche = RV_PickACardOnEndTour.Instance;
+
+        whichTypeOfCard = Random.Range(1, 3);
+        whichTypeOfCard2 = Random.Range(1, 3);
+        whichTypeOfCard3 = Random.Range(1, 3);
+
+        int cardCount = pioche.ActionsCards.Count + pioche.RevoltsCards.Count;
+        int takeCard = Random.Range(0, cardCount); if (takeCard < RV_PickACardOnEndTour.Instance.ActionsCards.Count) whichTypeOfCard = 1; else whichTypeOfCard = 2;
+        int takeCard2 = Random.Range(0, cardCount); if (takeCard2 < RV_PickACardOnEndTour.Instance.ActionsCards.Count) whichTypeOfCard2 = 1; else whichTypeOfCard2 = 2;
+        int takeCard3 = Random.Range(0, cardCount); if (takeCard3 < RV_PickACardOnEndTour.Instance.ActionsCards.Count) whichTypeOfCard3 = 1; else whichTypeOfCard3 = 2;
+
+        int Card1 = 1;
+        int Card2 = 1;
+        int Card3 = 1;
         if (whichTypeOfCard == 1)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            Card1 = Cards;
             card1Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
         }
         if (whichTypeOfCard == 2)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            Card1 = Cards;
             card1Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
         }
@@ -140,12 +156,14 @@ public class RV_AC_Card5 : RV_AC_Parent
         if (whichTypeOfCard2 == 1)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            Card2 = Cards;
             card2Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
         }
         if (whichTypeOfCard2 == 2)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            Card2 = Cards;
             card2Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
         }
@@ -153,17 +171,25 @@ public class RV_AC_Card5 : RV_AC_Parent
         if (whichTypeOfCard3 == 1)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.ActionsCards.Count);
+            Card3 = Cards;
             card3Texture = RV_PickACardOnEndTour.Instance.ActionsCards[Cards].GetComponent<RV_ActionCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.ActionsCards[Cards]);
         }
         if (whichTypeOfCard3 == 2)
         {
             int Cards = Random.Range(0, RV_PickACardOnEndTour.Instance.RevoltsCards.Count);
+            Card3 = Cards;
             card3Texture = RV_PickACardOnEndTour.Instance.RevoltsCards[Cards].GetComponent<RV_RevoltCard>().spriteFront.texture;
             cards.Add(RV_PickACardOnEndTour.Instance.RevoltsCards[Cards]);
         }
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(this.gameObject);
+
         canvasChooseCard.SetActive(true);
+
+        card1Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card1, whichTypeOfCard, RV_GameManager.Instance.PlayerTurn);
+        card2Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card2, whichTypeOfCard2, RV_GameManager.Instance.PlayerTurn);
+        card3Choice.GetComponent<RV_ChooseCards>().GiveCardID(Card3, whichTypeOfCard3, RV_GameManager.Instance.PlayerTurn);
+
+        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void ActionInt()
