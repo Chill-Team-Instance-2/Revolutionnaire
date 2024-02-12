@@ -25,7 +25,6 @@ public class RV_AC_Card1 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;
@@ -61,6 +60,17 @@ public class RV_AC_Card1 : RV_AC_Parent
         }
     }
 
+    public override void OnReveal()
+    {
+        switch (RV_GameManager.Instance.PlayerTurn)
+        {
+            case 2:
+                CanBePickup = false;
+                CanvaOddOrEven.SetActive(true);
+                break;
+        }
+    }
+
     public void ActionCom()
     {
         if (!IsActive)
@@ -70,11 +80,6 @@ public class RV_AC_Card1 : RV_AC_Parent
             RV_DiceManager.Instance.ResultBonus += 2;
             RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
         }
-    }
-
-    public void ActionInt()
-    {
-        CanvaOddOrEven.SetActive(true);
     }
 
     public void CheckDiceLaunch()
@@ -106,8 +111,6 @@ public class RV_AC_Card1 : RV_AC_Parent
         CanvaOddOrEven.SetActive(false);
         OddOrEven = 0;
         OddOrEvenCheck();
-        
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void TakeOdd()
@@ -115,7 +118,6 @@ public class RV_AC_Card1 : RV_AC_Parent
         CanvaOddOrEven.SetActive(false);
         OddOrEven = 1;
         OddOrEvenCheck();
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void OddOrEvenCheck()
