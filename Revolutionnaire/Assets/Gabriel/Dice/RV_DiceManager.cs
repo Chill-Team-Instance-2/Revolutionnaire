@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class RV_DiceManager : MonoBehaviour
 {
     public static RV_DiceManager Instance;
 
+    public AudioSource DiceSound;
     [SerializeField] private RV_Dice_Model dice;
 
     public int DiceResult;
@@ -14,6 +16,7 @@ public class RV_DiceManager : MonoBehaviour
 
     public float ResultMultiplier = 1;
     public int ResultBonus = 0;
+    public float Timing;
 
     public UnityEvent onDiceLaunch;
     public UnityEvent onDiceEnd;
@@ -32,6 +35,7 @@ public class RV_DiceManager : MonoBehaviour
         dice.ChangeText(DiceResult, DiceTime/2f);
         onDiceLaunch.Invoke();
         StartCoroutine(SendOnDiceEnd());
+        DiceSound.Play();
         return DiceResult;
     }
 
