@@ -42,7 +42,6 @@ public class RV_AC_Card1 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;

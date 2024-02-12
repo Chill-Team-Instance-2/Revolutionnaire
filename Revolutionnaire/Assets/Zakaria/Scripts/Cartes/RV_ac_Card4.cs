@@ -40,7 +40,6 @@ public class RV_AC_Card4 : RV_AC_Parent
                 case 1:
                     break;
                 case 2:
-                    ActionInt();
                     break;
                 default:
                     break;
