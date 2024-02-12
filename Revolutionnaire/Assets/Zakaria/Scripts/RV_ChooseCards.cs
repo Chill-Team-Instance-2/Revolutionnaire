@@ -23,6 +23,12 @@ public class RV_ChooseCards : MonoBehaviour
     [SerializeField] public TextMeshProUGUI TextTitleAction;
     [SerializeField] public TextMeshProUGUI TextDescriptionAction;
 
+    [SerializeField] public TextMeshProUGUI TextFaction;
+    [SerializeField] public Image ImageFaction;
+    [SerializeField] public Sprite SpriteMil;
+    [SerializeField] public Sprite SpriteCom;
+    [SerializeField] public Sprite SpriteInt;
+
     public void GiveCardID(int cardID, int cardType, int pfaction) //1 == action card 2 == revolt card
     {
         CardID = cardID;
@@ -42,12 +48,18 @@ public class RV_ChooseCards : MonoBehaviour
             {
                 case 0:
                     TextDescriptionAction.text = card.GetComponent<RV_AC_Parent>().MilText;
+                    TextFaction.text = "Milice";
+                    ImageFaction.sprite = SpriteMil;
                     break;
                 case 1:
                     TextDescriptionAction.text = card.GetComponent<RV_AC_Parent>().ComText;
+                    TextFaction.text = "Commerçant";
+                    ImageFaction.sprite = SpriteCom;
                     break;
                 case 2:
                     TextDescriptionAction.text = card.GetComponent<RV_AC_Parent>().IntText;
+                    TextFaction.text = "Intellectuel";
+                    ImageFaction.sprite = SpriteInt;
                     break;
             }
         }

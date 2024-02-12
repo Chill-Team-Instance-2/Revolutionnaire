@@ -19,7 +19,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //[SerializeField] private Image imageBack;
 
     [SerializeField] private Image imagePlayerClass;
-    [SerializeField] private TextMeshProUGUI textCardID;
+    //[SerializeField] private TextMeshProUGUI textCardID;
 
     [SerializeField] private Sprite spriteInt;
     [SerializeField] private Sprite spriteCom;
@@ -91,7 +91,7 @@ public class RV_ActionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
             }
         }
-        textCardID.text = GetComponent<RV_AC_Parent>().CardID.ToString();
+        //textCardID.text = GetComponent<RV_AC_Parent>().CardID.ToString();
     }
 
     public void OnPointerClick(PointerEventData eventData)
