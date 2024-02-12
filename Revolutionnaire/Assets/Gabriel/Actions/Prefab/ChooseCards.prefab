@@ -1523,6 +1523,8 @@ MonoBehaviour:
   ImageCard: {fileID: 2695769208216944157}
   CardID: 0
   CardType: 1
+  PlayerClass: 1
+  RevoltParent: {fileID: 5241038672535559289}
   TextRequirement:
   - {fileID: 1195605621196631072}
   - {fileID: 208257539350262176}
@@ -1531,6 +1533,7 @@ MonoBehaviour:
   - {fileID: 7452322748171811998}
   - {fileID: 8439334300164269177}
   - {fileID: 5291368117880590225}
+  ActionParent: {fileID: 3355878278728481239}
   TextTitleAction: {fileID: 4115807041541488897}
   TextDescriptionAction: {fileID: 5218796064362075588}
 --- !u!114 &3718873429040629509

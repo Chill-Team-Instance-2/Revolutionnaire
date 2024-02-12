@@ -14,10 +14,12 @@ public class RV_ChooseCards : MonoBehaviour
     public int PlayerClass = 1;
 
     [Header("Revolt")]
+    [SerializeField] public GameObject RevoltParent;
     [SerializeField] public List<TextMeshProUGUI> TextRequirement;
     [SerializeField] public List<TextMeshProUGUI> TextInfluence;
 
     [Header("Action")]
+    [SerializeField] public GameObject ActionParent;
     [SerializeField] public TextMeshProUGUI TextTitleAction;
     [SerializeField] public TextMeshProUGUI TextDescriptionAction;
 
@@ -28,6 +30,9 @@ public class RV_ChooseCards : MonoBehaviour
         PlayerClass = pfaction;
         if (cardType == 1)
         {
+            ActionParent.SetActive(true);
+            RevoltParent.SetActive(false);
+
             Transform card = RV_PickACardOnEndTour.Instance.ActionsCards[cardID].transform;
             ImageCard.sprite = card.GetComponent<RV_ActionCard>().spriteFront;
 
@@ -48,6 +53,9 @@ public class RV_ChooseCards : MonoBehaviour
         }
         else if (cardType == 2)
         {
+            ActionParent.SetActive(false);
+            RevoltParent.SetActive(true);
+
             Transform card = RV_PickACardOnEndTour.Instance.RevoltsCards[cardID].transform;
             ImageCard.sprite = card.GetComponent<RV_RevoltCard>().spriteFront;
 
