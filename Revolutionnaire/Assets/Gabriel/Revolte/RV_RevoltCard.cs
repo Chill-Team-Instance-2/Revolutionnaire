@@ -65,12 +65,12 @@ public class RV_RevoltCard : MonoBehaviour
             JetAvailable[number] = false;
             if (RV_RevoltCard_Manager.Instance.Jet(JetRequirements[number], JetInfluences[number], GetComponent<RV_RevoltCard>())) //win
             {
-                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0, 0.75f, 0)));
+                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(17f/255f, 110f/255f, 22f/255f)));
                 JetWon[number] = true;
             }
             else //jet raté
             {
-                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0.75f, 0, 0)));
+                StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(0.65f, 0, 0)));
                 DisableAllJet();
             }
         }

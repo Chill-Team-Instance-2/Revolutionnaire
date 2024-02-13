@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278913332
+  m_fontColor: {r: 0.20392157, g: 0.03529412, b: 0.043137256, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278913332
+  m_fontColor: {r: 0.20392157, g: 0.03529412, b: 0.043137256, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -524,8 +524,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278913332
+  m_fontColor: {r: 0.20392157, g: 0.03529412, b: 0.043137256, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -826,7 +826,6 @@ MonoBehaviour:
   planeBack: {fileID: 1933355240137192136}
   spriteFront: {fileID: 21300000, guid: 29680f1fec56c2a44a123e3a11bedc41, type: 3}
   imagePlayerClass: {fileID: 2212550531052473680}
-  textCardID: {fileID: 0}
   spriteInt: {fileID: 21300000, guid: abea457b31f85a5458d3fad7376644c4, type: 3}
   spriteCom: {fileID: 21300000, guid: 9b1b215dcf1c21140853a6528997111a, type: 3}
   spriteMil: {fileID: 21300000, guid: c9fc8210a0357bf4ebe01fd861729905, type: 3}
