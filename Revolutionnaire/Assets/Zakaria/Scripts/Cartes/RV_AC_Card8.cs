@@ -7,6 +7,8 @@ public class RV_AC_Card8 : RV_AC_Parent
 {
     private RV_GameManager gameManager;
     private bool CardUsed = false;
+
+    private int turnComGivePoint = 0;
     public void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
@@ -55,14 +57,21 @@ public class RV_AC_Card8 : RV_AC_Parent
 
     public void ActionCom()
     {
-        if (!IsActive)
-        {
-            IsActive = true;
-            RV_ActionCard_Holder.Instance.OnDiscard.AddListener(CheckDiscards);
-        }
-        
+        IsActive = true;
+        turnComGivePoint = RV_GameManager.Instance.Turn + 3;
+        RV_GameManager.Instance.onendturn.AddListener(CheckComTurns);
     }
 
+    public void CheckComTurns()
+    {
+        if (RV_GameManager.Instance.Turn == turnComGivePoint && IsActive)
+        {
+            IsActive = false;
+            RV_GameManager.Instance.AddInfluence(10);
+            RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+        }
+    }
+         
     public void ActionInt()
     {
         if (!IsActive) 
@@ -88,7 +97,7 @@ public class RV_AC_Card8 : RV_AC_Parent
     {
         if (CanBePickup)
         {
-
+            IsActive = false;
         }
         else
         {
