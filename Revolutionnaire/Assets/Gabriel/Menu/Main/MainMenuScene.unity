@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  offset: 1000
+  offset: 2000
 --- !u!1 &949821152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  offset: 1000
+  offset: 4000
 --- !u!1 &1887925635
 GameObject:
   m_ObjectHideFlags: 0
