@@ -93,12 +93,6 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        if (CanEndTurn && Turn >= 15) //&& (influenceKing - influencePlayer) < 20
-        {
-            ActivateJetGuillotine();
-            return;
-        }
-
         if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard)) // action card
         {
             PassTurn();
@@ -106,6 +100,21 @@ public class RV_GameManager : MonoBehaviour
         }
         if (CanEndTurn) // revolt
         {
+            if (CanEndTurn && Turn >= 15)
+            {
+                if (InfluencePlayer > InfluenceKing)
+                {
+                    EndJetGuillotineVictory();
+                    return;
+                }
+                if ((InfluenceKing - InfluencePlayer) < 20)
+                {
+                    ActivateJetGuillotine();
+                    return;
+                }
+                EndJetGuillotineDefeat();
+                return;
+            }
             Turn++;
             if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
             {
