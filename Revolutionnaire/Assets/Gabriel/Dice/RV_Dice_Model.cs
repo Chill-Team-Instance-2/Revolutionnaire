@@ -1,4 +1,6 @@
+using JetBrains.Annotations;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,7 +15,7 @@ public class RV_Dice_Model : MonoBehaviour
 
     public bool IsLaunching = false;
 
-    
+    public Transform FakeNumbersParent;
 
     private void Awake()
     {
@@ -35,6 +37,32 @@ public class RV_Dice_Model : MonoBehaviour
         else
         {
             resultText.text = number.ToString();
+            ApplyFakeNumbers(number);
+        }
+    }
+
+    public void ApplyFakeNumbers(int result) //result = number to avoid
+    {
+        List<TextMeshProUGUI> allFakeNumbersText = new List<TextMeshProUGUI>();
+        for (int i = 0; i < FakeNumbersParent.childCount; i++)
+        {
+            allFakeNumbersText.Add(FakeNumbersParent.GetChild(i).GetComponent<TextMeshProUGUI>());
+        }
+
+        List<int> alreadyAppliedNumbers = new List<int>();
+        for (int i = 0; i < 19; i++)
+        {
+            int number = Random.Range(1, 21);
+            if (alreadyAppliedNumbers.Contains(number) || number == result)
+            {
+                i -= 1;
+                continue;
+            }
+            else
+            {
+                alreadyAppliedNumbers.Add(number);
+                allFakeNumbersText[i].text = number.ToString();
+            }
         }
     }
 
@@ -42,6 +70,7 @@ public class RV_Dice_Model : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         resultText.text = number.ToString();
+        ApplyFakeNumbers(number);
     }
 
     public int LaunchDice(float diceTime = 2, bool show = true, bool hide = true)
@@ -146,4 +175,6 @@ public class RV_Dice_Model : MonoBehaviour
             yield return null;
         }
     }
+
+    
 }
