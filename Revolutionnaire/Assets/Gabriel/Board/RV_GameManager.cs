@@ -11,6 +11,7 @@ public class RV_GameManager : MonoBehaviour
     public RV_PickACardOnEndTour PickACardOnEndTour;
     public UnityEvent onendturn;
     public UnityEvent OnChangePlayer;
+    public AudioSource FlipCard;
     [SerializeField] private Image milicia_Image;
     [SerializeField] private Image intellectual_Image;
     [SerializeField] private Image merchant_Image;
@@ -111,6 +112,7 @@ public class RV_GameManager : MonoBehaviour
                 if (!revoltCard.HasBeenPlayed)
                     NextPlayer();
             }
+            FlipCard.Play();
             PickACardOnEndTour.ActualToDiscard();
             PickACardOnEndTour.PickACard();
             onendturn?.Invoke();
