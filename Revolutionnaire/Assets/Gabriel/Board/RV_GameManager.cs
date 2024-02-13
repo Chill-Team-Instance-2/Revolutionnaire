@@ -28,6 +28,7 @@ public class RV_GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textDescriptionResult;
     [SerializeField] private TextMeshProUGUI textEndInfluence;
 
+
     [SerializeField] private int cheatUsePlayerClass = -1; // -1 = not activated
 
     public int Turn = 0;
@@ -154,7 +155,8 @@ public class RV_GameManager : MonoBehaviour
         print("victory!");
 
         canvasGameOver.SetActive(true);
-        textDescriptionResult.text = "Victoire !";
+
+        textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
     } 
     
@@ -163,7 +165,7 @@ public class RV_GameManager : MonoBehaviour
         print("defeat!");
 
         canvasGameOver.SetActive(true);
-        textDescriptionResult.text = "Défaite";
+        textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
     }
 
