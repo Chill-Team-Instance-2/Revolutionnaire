@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -17,6 +18,14 @@ public class RV_GameManager : MonoBehaviour
     [SerializeField] private Sprite selected_Image;
     [SerializeField] private Transform turnPawn;
     [SerializeField] private Transform turnTiles;
+
+    [SerializeField] private GameObject canvasGuillotine;
+    [SerializeField] private TextMeshProUGUI textDescriptionGuillotine;
+
+    [SerializeField] private GameObject canvasGameOver;
+    [SerializeField] private TextMeshProUGUI textGameResult;
+    [SerializeField] private TextMeshProUGUI textDescriptionResult;
+    [SerializeField] private TextMeshProUGUI textEndInfluence;
 
     [SerializeField] private int cheatUsePlayerClass = -1; // -1 = not activated
 
@@ -83,7 +92,11 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-
+        if (CanEndTurn && Turn >= 15) //&& (influenceKing - influencePlayer) < 20
+        {
+            ActivateJetGuillotine();
+            return;
+        }
 
         if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_ActionCard>(out RV_ActionCard actionCard)) // action card
         {
@@ -102,6 +115,45 @@ public class RV_GameManager : MonoBehaviour
             PickACardOnEndTour.PickACard();
             onendturn?.Invoke();
         }
+    }
+
+    public void ActivateJetGuillotine()
+    {
+        canvasGuillotine.SetActive(true);
+        textDescriptionGuillotine.text = "Faites " + (InfluenceKing - InfluencePlayer + 1).ToString() + " ou plus pour détrôner le roi !";
+    }
+
+    public void LaunchJetGuillotine()
+    {
+        canvasGuillotine.SetActive(false);
+        int result = RV_DiceManager.Instance.LaunchDice();
+        InfluencePlayer += result;
+        if (InfluencePlayer > InfluenceKing)
+        {
+            RV_DiceManager.Instance.onDiceEnd.AddListener(EndJetGuillotineVictory);
+        }
+        else
+        {
+            RV_DiceManager.Instance.onDiceEnd.AddListener(EndJetGuillotineDefeat);
+        }
+    }
+
+    public void EndJetGuillotineVictory()
+    {
+        print("victory!");
+
+        canvasGameOver.SetActive(true);
+        textDescriptionResult.text = "Victoire !";
+        textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
+    } 
+    
+    public void EndJetGuillotineDefeat()
+    {
+        print("defeat!");
+
+        canvasGameOver.SetActive(true);
+        textDescriptionResult.text = "Défaite";
+        textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
     }
 
     public void PassTurn() //when ending turn on action card
