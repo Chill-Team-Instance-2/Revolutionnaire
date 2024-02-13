@@ -122,7 +122,7 @@ public class RV_RevoltCard : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (!JetWon[i])
+            if (!JetAvailable[i] && !JetWon[i])
             {
                 return true;
             }
