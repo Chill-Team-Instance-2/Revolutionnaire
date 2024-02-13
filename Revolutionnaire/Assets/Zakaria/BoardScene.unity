@@ -3094,9 +3094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Continue
-
-'
+  m_text: Continuer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 14fe4d6580d505f43bf98501abacb357, type: 2}
   m_sharedMaterial: {fileID: 5934913589560429477, guid: 14fe4d6580d505f43bf98501abacb357, type: 2}
@@ -7263,7 +7261,7 @@ MonoBehaviour:
   textGameResult: {fileID: 3647139733144344842}
   textDescriptionResult: {fileID: 3647139733144344840}
   textEndInfluence: {fileID: 3647139733144344841}
-  cheatUsePlayerClass: -1
+  cheatUsePlayerClass: 2
   Turn: 0
   MaxTurn: 15
   Bonus: 0
