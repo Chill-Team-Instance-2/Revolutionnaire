@@ -25,6 +25,7 @@ public class RV_RevoltCard : MonoBehaviour
 
     public List<TextMeshProUGUI> TextRequirements = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> TextInfluences = new List<TextMeshProUGUI>();
+
     public Color TextBaseColor = Color.black;
 
     public int PointAdded = 0;
