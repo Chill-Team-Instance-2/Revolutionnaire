@@ -21,7 +21,6 @@ public class RV_AC_Card8 : RV_AC_Parent
             switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
             {
                 case 1:
-                    ActionCom();
                     break;
                 case 2:
                     ActionInt();
@@ -39,7 +38,6 @@ public class RV_AC_Card8 : RV_AC_Parent
                     ActionMil();
                     break;
                 case 1:
-                    ActionCom();
                     break;
                 case 2:
                     break;
@@ -60,6 +58,21 @@ public class RV_AC_Card8 : RV_AC_Parent
         IsActive = true;
         turnComGivePoint = RV_GameManager.Instance.Turn + 3;
         RV_GameManager.Instance.onendturn.AddListener(CheckComTurns);
+    }
+
+    public override void OnPickUp()
+    {
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+        {
+            case 0:
+                break;
+            case 1:
+                ActionCom();
+                break;
+            case 2:
+                break;
+        }
     }
 
     public void CheckComTurns()
