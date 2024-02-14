@@ -18,5 +18,6 @@ public class RV_ButtonClickSFX : MonoBehaviour
         newAudioSource.clip = Resources.Load<AudioClip>("normalClick");
         newAudioSource.volume = 0.1f;
         newAudioSource.Play();
+        Destroy(newObject, 2);
     }
 }
