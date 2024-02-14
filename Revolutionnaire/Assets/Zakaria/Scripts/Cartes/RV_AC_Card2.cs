@@ -105,6 +105,7 @@ public class RV_AC_Card2 : RV_AC_Parent
 
     public override void OnDiscard()
     {
+        base.OnDiscard();
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {

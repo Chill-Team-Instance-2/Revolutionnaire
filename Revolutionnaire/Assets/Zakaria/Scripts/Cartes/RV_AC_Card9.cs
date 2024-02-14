@@ -49,6 +49,11 @@ public class RV_AC_Card9 : RV_AC_Parent
         }
     }
 
+    public override void OnDiscard()
+    {
+        base.OnDiscard();
+    }
+
     public override void OnFinishedReveal()
     {
         switch (RV_GameManager.Instance.PlayerTurn)

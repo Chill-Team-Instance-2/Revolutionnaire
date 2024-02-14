@@ -48,6 +48,10 @@ public class RV_AC_Card4 : RV_AC_Parent
         }
     }
 
+    public override void OnDiscard()
+    {
+        base.OnDiscard();
+    }
     public void ActionMil()
     {
         if (!IsActive)

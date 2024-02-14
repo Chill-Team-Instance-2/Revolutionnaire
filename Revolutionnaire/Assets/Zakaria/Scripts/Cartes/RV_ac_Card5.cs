@@ -64,6 +64,7 @@ public class RV_AC_Card5 : RV_AC_Parent
 
     public override void OnDiscard()
     {
+        base.OnDiscard();
         if (CanBePickup)
         {
 
