@@ -43,6 +43,7 @@ public class RV_AC_Parent : MonoBehaviour
 
     public virtual void OnDiscard()
     {
+        IsActive = false;
         print("default on discard");
     }
 

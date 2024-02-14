@@ -58,6 +58,7 @@ public class RV_AC_Card7 : RV_AC_Parent
 
     public override void OnDiscard()
     {
+        base.OnDiscard();
         if (CanBePickup)
         {
             RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;

@@ -50,6 +50,11 @@ public class RV_AC_Card1 : RV_AC_Parent
         
     }
 
+    public override void OnDiscard()
+    {
+        base.OnDiscard();
+    }
+
     public void ActionMil()
     {
         if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard) && !IsActive)

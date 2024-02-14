@@ -24,6 +24,30 @@ public class RV_ac_Card3 : RV_AC_Parent
         }
     }
 
+    public override void OnDiscard()
+    {
+        base.OnDiscard();
+        RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
+        if (CanBePickup)
+        {
+            switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            
+        }
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -73,6 +97,7 @@ public class RV_ac_Card3 : RV_AC_Parent
             CardUsed = true;
             Turn = 0;
             gameManager.Multiplier -= 0.5f;
+            RV_GameManager.Instance.onRealEndTurn.AddListener(CheckTurn);
             //RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
         }
     }
@@ -107,14 +132,14 @@ public class RV_ac_Card3 : RV_AC_Parent
     }
     public void CheckTurn()
     {
-        if (CardUsed)
+        if (IsActive)
         {
-            if (Turn == 5)
+            if (Turn == 4)
             {
                 gameManager.Multiplier += 0.5f;
                 gameManager.Multiplier += 1;
             }
-            else if (Turn == 10)
+            else if (Turn == 9)
             {
                 gameManager.Multiplier -= 1;
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
