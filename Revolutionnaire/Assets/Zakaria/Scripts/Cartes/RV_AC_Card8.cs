@@ -57,9 +57,12 @@ public class RV_AC_Card8 : RV_AC_Parent
 
     public void ActionCom()
     {
-        IsActive = true;
-        turnComGivePoint = RV_GameManager.Instance.Turn + 3;
-        RV_GameManager.Instance.onendturn.AddListener(CheckComTurns);
+        if (!IsActive)
+        {
+            IsActive = true;
+            turnComGivePoint = RV_GameManager.Instance.Turn + 3;
+            RV_GameManager.Instance.onendturn.AddListener(CheckComTurns);
+        }
     }
 
     public void CheckComTurns()
@@ -89,6 +92,9 @@ public class RV_AC_Card8 : RV_AC_Parent
         {
             case 0:
                 CanBePickup = false;
+                break;
+            case 1:
+                ActionCom();
                 break;
         }
     }
