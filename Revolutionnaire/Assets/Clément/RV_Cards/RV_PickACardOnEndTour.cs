@@ -56,7 +56,7 @@ public class RV_PickACardOnEndTour : MonoBehaviour
             animator.SetTrigger("Flip");
             //DiscardsList.Add(ActionsCards[Cards]);
             CurrentCard = ActionsCards[Cards];
-            CurrentCard.GetComponent<RV_AC_Parent>().OnReveal();
+            CurrentCard.GetComponent<RV_AC_Parent>().Invoke("OnReveal", 0.3f);
             CurrentCard.GetComponent<RV_AC_Parent>().Invoke("OnFinishedReveal", 1.4f);
             CurrentCard.GetComponent<RV_ActionCard>().Invoke("RefreshVisual", 0.1f);
             ActionsCards.Remove(ActionsCards[Cards]);
