@@ -99,7 +99,7 @@ public class RV_GameManager : MonoBehaviour
         }
         if (CanEndTurn) // revolt
         {
-            if (CanEndTurn && Turn >= 15)
+            if (Turn >= 15)
             {
                 if (InfluencePlayer > InfluenceKing)
                 {

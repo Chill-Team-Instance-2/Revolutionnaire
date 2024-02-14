@@ -11446,6 +11446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1430438067}
   - component: {fileID: 1430438070}
+  - component: {fileID: 1430438072}
   - component: {fileID: 1430438071}
   - component: {fileID: 1430438069}
   - component: {fileID: 1430438068}
@@ -11585,6 +11586,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1655152419}
   colorOffset: 50
+--- !u!114 &1430438072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430438066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffedc6bb6e8a814ebb6f893819afccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textEnd: {fileID: 1655152419}
 --- !u!1 &1439358230
 GameObject:
   m_ObjectHideFlags: 0
@@ -18793,6 +18807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1376470061735967781, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1646234320409570059, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -18912,6 +18930,10 @@ PrefabInstance:
     - target: {fileID: 6869387069223862583, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118522337161980068, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8406038519542738283, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
       propertyPath: m_Color.a

@@ -692,8 +692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -259}
-  m_SizeDelta: {x: 924.78, y: 95.93}
+  m_AnchoredPosition: {x: 0, y: -254}
+  m_SizeDelta: {x: 924.78, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2604380637269004740
 CanvasRenderer:
@@ -824,8 +824,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -638}
-  m_SizeDelta: {x: 924.78, y: 95.93}
+  m_AnchoredPosition: {x: 0, y: -630}
+  m_SizeDelta: {x: 924.78, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5427493462048717255
 CanvasRenderer:
@@ -1130,8 +1130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -445}
-  m_SizeDelta: {x: 924.78, y: 95.93}
+  m_AnchoredPosition: {x: 0, y: -440}
+  m_SizeDelta: {x: 924.78, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8564195681712220569
 CanvasRenderer:
@@ -1358,6 +1358,10 @@ MonoBehaviour:
   - {fileID: 2692524763754281679}
   - {fileID: 6643275701900724492}
   - {fileID: 988935853113674382}
+  JetButtons:
+  - {fileID: 8796615818416634061}
+  - {fileID: 4710237071315619578}
+  - {fileID: 7553701080376990400}
   TextBaseColor: {r: 0, g: 0, b: 0, a: 1}
   PointAdded: 0
   HasBeenPlayed: 0
