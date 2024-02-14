@@ -112,8 +112,8 @@ public class RV_RevoltCard : MonoBehaviour
             if (!JetAvailable[i] && !JetWon[i])
             {
                 JetAvailable[i] = true;
-                TextRequirements[i].color = new Color(0, 0, 0);
-                TextInfluences[i].color = new Color(0, 0, 0);
+                TextRequirements[i].color = TextBaseColor;
+                TextInfluences[i].color = TextBaseColor;
             }
         }
     }
