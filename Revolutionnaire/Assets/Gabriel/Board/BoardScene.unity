@@ -8431,6 +8431,7 @@ MonoBehaviour:
   PlayersClass: 
   PlayersName: []
   CanEndTurn: 1
+  musicSource: {fileID: 173225323}
 --- !u!4 &1027700631
 Transform:
   m_ObjectHideFlags: 0
