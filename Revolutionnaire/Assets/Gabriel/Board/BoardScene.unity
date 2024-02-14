@@ -8069,6 +8069,8 @@ MonoBehaviour:
   textGameResult: {fileID: 3647139733144344842}
   textDescriptionResult: {fileID: 3647139733144344840}
   textEndInfluence: {fileID: 3647139733144344841}
+  guillotineAnimator: {fileID: 3647139733144344843}
+  tombstone: {fileID: 3647139733144344844}
   cheatUsePlayerClass: -1
   Turn: 0
   MaxTurn: 15
@@ -18087,6 +18089,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3647139733144344843 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7032778072542657465, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
+  m_PrefabInstance: {fileID: 3647139733144344838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3647139733144344844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1376470061735967781, guid: 674383a51a4ece240a34f960c0a61acf, type: 3}
+  m_PrefabInstance: {fileID: 3647139733144344838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4378239450984805400
 PrefabInstance:
   m_ObjectHideFlags: 0
