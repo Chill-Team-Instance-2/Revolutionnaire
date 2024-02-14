@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Gabriel/Menu/Main/MainMenuScene.unity
+    guid: 028c2da2771b59949aa19af3ecb8f657
+  - enabled: 1
+    path: Assets/Gabriel/Board/BoardScene.unity
+    guid: 9379e93244a8b154f9f212f2ef97ec2b
   m_configObjects: {}
