@@ -8,9 +8,20 @@ public class RV_ImageManager : MonoBehaviour
     private Image _Image;
     void Start()
     {
-        Time.timeScale = 0f;
-        _Image = GetComponentInChildren<Image>();
-        _Image.sprite = Sprites[0];
+        PlayerPrefs.GetInt("TutorialPassed", 0);
+        print(PlayerPrefs.GetInt("TutorialPassed"));
+
+        if (PlayerPrefs.GetInt("TutorialPassed") == 0)
+        {
+            gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            _Image = GetComponentInChildren<Image>();
+            _Image.sprite = Sprites[0];
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -21,8 +32,9 @@ public class RV_ImageManager : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
             Time.timeScale = 1.0f;
+            PlayerPrefs.SetInt("TutorialPassed", 1);
+            gameObject.SetActive(false);
         }
     }
 }
