@@ -150,7 +150,8 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndJetGuillotineVictory()
     {
-        canvasGameOver.SetActive(true);
+        CanEndTurn = false;
+        StartCoroutine(showVictoryDefeat(1.5f));
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Vous avez réussi ensemble à détrôner le Roi ! Liberté, Égalité, Fraternité !";
@@ -161,13 +162,20 @@ public class RV_GameManager : MonoBehaviour
     
     public void EndJetGuillotineDefeat()
     {
-        canvasGameOver.SetActive(true);
+        CanEndTurn = false;
+        StartCoroutine(showVictoryDefeat(1.5f));
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
 
         tombstone.gameObject.SetActive(true);
         guillotineAnimator.gameObject.SetActive(false);
+    }
+
+    public IEnumerator showVictoryDefeat(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canvasGameOver.SetActive(true);
     }
 
     public void PassTurn() //when ending turn on action card
