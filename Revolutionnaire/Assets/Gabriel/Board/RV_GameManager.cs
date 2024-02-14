@@ -101,6 +101,7 @@ public class RV_GameManager : MonoBehaviour
         {
             if (Turn >= 15)
             {
+                Turn = 15;
                 if (InfluencePlayer > InfluenceKing)
                 {
                     EndJetGuillotineVictory();

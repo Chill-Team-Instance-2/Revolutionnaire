@@ -21,7 +21,10 @@ public class RV_AC_Card7 : RV_AC_Parent
                 break;
             case 2:
                 CanBePickup = false;
-                RV_GameManager.Instance.Turn -= 1;
+                if (RV_GameManager.Instance.Turn > 0)
+                {
+                    RV_GameManager.Instance.Turn--;
+                }
                 break;
         }
     }
@@ -73,6 +76,7 @@ public class RV_AC_Card7 : RV_AC_Parent
         }
         else
         {
+            RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
             switch (RV_GameManager.Instance.PlayerTurn)
             {
                 case 0:
@@ -82,7 +86,6 @@ public class RV_AC_Card7 : RV_AC_Parent
                     
                     break;
                 case 2:
-                    RV_GameManager.Instance.Turn--;
                     break;
             }
         }
