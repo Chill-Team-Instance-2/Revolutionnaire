@@ -27,7 +27,8 @@ public class RV_GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textGameResult;
     [SerializeField] private TextMeshProUGUI textDescriptionResult;
     [SerializeField] private TextMeshProUGUI textEndInfluence;
-
+    [SerializeField] private Animator guillotineAnimator;
+    [SerializeField] private GameObject tombstone;
 
     [SerializeField] private int cheatUsePlayerClass = -1; // -1 = not activated
 
@@ -45,9 +46,6 @@ public class RV_GameManager : MonoBehaviour
     public List<string> PlayersName = new List<string>();
 
     public bool CanEndTurn = true;
-
-
-
 
     private void Awake()
     {
@@ -152,21 +150,23 @@ public class RV_GameManager : MonoBehaviour
 
     public void EndJetGuillotineVictory()
     {
-        print("victory!");
-
         canvasGameOver.SetActive(true);
-
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
+
+        tombstone.gameObject.SetActive(false);
+        guillotineAnimator.gameObject.SetActive(true);
+        guillotineAnimator.SetTrigger("Cut");
     } 
     
     public void EndJetGuillotineDefeat()
     {
-        print("defeat!");
-
         canvasGameOver.SetActive(true);
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
+
+        tombstone.gameObject.SetActive(true);
+        guillotineAnimator.gameObject.SetActive(false);
     }
 
     public void PassTurn() //when ending turn on action card
