@@ -32,7 +32,7 @@ public class RV_AC_Card7 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                RV_GameManager.Instance.onendturn.AddListener(AddWhenEndTurn);
+                RV_GameManager.Instance.onRealEndTurn.AddListener(AddWhenEndTurn);
                 IsActive = true;
                 break;
             case 1:
