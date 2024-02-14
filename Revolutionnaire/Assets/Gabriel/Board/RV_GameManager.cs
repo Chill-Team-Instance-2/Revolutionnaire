@@ -153,8 +153,7 @@ public class RV_GameManager : MonoBehaviour
         canvasGameOver.SetActive(true);
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
-        textDescriptionResult.text = "lore victoire";
-
+        textDescriptionResult.text = "Vous avez réussi ensemble à détrôner le Roi ! Liberté, Égalité, Fraternité !";
         tombstone.gameObject.SetActive(false);
         guillotineAnimator.gameObject.SetActive(true);
         guillotineAnimator.SetTrigger("Cut");
@@ -165,7 +164,7 @@ public class RV_GameManager : MonoBehaviour
         canvasGameOver.SetActive(true);
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
-        textDescriptionResult.text = "lore defaite";
+        textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
 
         tombstone.gameObject.SetActive(true);
         guillotineAnimator.gameObject.SetActive(false);
