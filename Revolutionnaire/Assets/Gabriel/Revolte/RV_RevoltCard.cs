@@ -69,6 +69,7 @@ public class RV_RevoltCard : MonoBehaviour
             {
                 StartCoroutine(ApplyColorText(number, RV_DiceManager.Instance.DiceTime, new Color(17f/255f, 110f/255f, 22f/255f)));
                 JetWon[number] = true;
+                JetButtons[number].interactable = false;
             }
             else //jet raté
             {
@@ -96,6 +97,7 @@ public class RV_RevoltCard : MonoBehaviour
             TextInfluences[i].color = TextBaseColor;
             JetAvailable[i] = true;
             JetWon[i] = false;
+            JetButtons[i].interactable = true;
         }
     }
 
@@ -104,6 +106,7 @@ public class RV_RevoltCard : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             JetAvailable[i] = false;
+            JetButtons[i].interactable = false;
         }
     }
 
@@ -116,6 +119,7 @@ public class RV_RevoltCard : MonoBehaviour
                 JetAvailable[i] = true;
                 TextRequirements[i].color = TextBaseColor;
                 TextInfluences[i].color = TextBaseColor;
+                JetButtons[i].interactable = true;
             }
         }
     }
