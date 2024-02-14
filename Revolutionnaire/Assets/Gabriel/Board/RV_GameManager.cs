@@ -47,6 +47,8 @@ public class RV_GameManager : MonoBehaviour
 
     public bool CanEndTurn = true;
 
+    [SerializeField] private AudioSource musicSource;
+
     private void Awake()
     {
         Instance = this;
@@ -112,6 +114,7 @@ public class RV_GameManager : MonoBehaviour
                     return;
                 }
                 EndJetGuillotineDefeat();
+                musicSource.Stop();
                 return;
             }
             Turn++;
@@ -176,6 +179,7 @@ public class RV_GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         canvasGameOver.SetActive(true);
+        musicSource.Stop();
     }
 
     public void PassTurn() //when ending turn on action card

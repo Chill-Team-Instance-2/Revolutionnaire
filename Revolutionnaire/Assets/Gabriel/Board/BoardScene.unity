@@ -8431,6 +8431,7 @@ MonoBehaviour:
   PlayersClass: 
   PlayersName: []
   CanEndTurn: 1
+  musicSource: {fileID: 173225323}
 --- !u!4 &1027700631
 Transform:
   m_ObjectHideFlags: 0
@@ -8705,8 +8706,8 @@ MonoBehaviour:
   IsActive: 0
   TitleText: Soutien citoyen
   MilText: "De nouvelles troupes arrivent, gagnez 5 d\u2019influence."
-  ComText: "Quand le commer\xE7ant le souhaite, prends une carte qu\u2019il souhaite
-    de la pioche contre 6 d\u2019influence, m\xE9lange la pioche."
+  ComText: "Quand les commer\xE7ants le souhaitent, ils choisissent une des 3 cartes
+    propos\xE9es contre 6 d\u2019influence, la pioche est m\xE9lang\xE9e."
   IntText: "Les factions mettent en commun leurs ressources, ajoutez 5 au r\xE9sultat
     du prochain d\xE9 si le nombre de carte action d\xE9tenu par toutes les factions
     est sup\xE9rieur \xE0 3."
