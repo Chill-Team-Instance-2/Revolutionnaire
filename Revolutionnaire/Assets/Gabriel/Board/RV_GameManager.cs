@@ -10,6 +10,7 @@ public class RV_GameManager : MonoBehaviour
     public static RV_GameManager Instance;
     public RV_PickACardOnEndTour PickACardOnEndTour;
     public UnityEvent onendturn;
+    public UnityEvent onRealEndTurn;
     public UnityEvent OnChangePlayer;
     public AudioSource FlipCard;
     [SerializeField] private Image milicia_Image;
@@ -118,6 +119,7 @@ public class RV_GameManager : MonoBehaviour
                 return;
             }
             Turn++;
+            onRealEndTurn.Invoke();
             if (RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
             {
                 if (!revoltCard.HasBeenPlayed)
