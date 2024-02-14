@@ -8,6 +8,7 @@ public class RV_MainMenu : MonoBehaviour
     private void Start()
     {
         creditMenu.SetActive(false);
+        PlayerPrefs.SetInt("TutorialPassed", 0);
     }
 
     public void Play()
