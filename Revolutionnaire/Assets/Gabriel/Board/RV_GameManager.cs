@@ -153,6 +153,7 @@ public class RV_GameManager : MonoBehaviour
         canvasGameOver.SetActive(true);
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
+        textDescriptionResult.text = "lore victoire";
 
         tombstone.gameObject.SetActive(false);
         guillotineAnimator.gameObject.SetActive(true);
@@ -164,6 +165,7 @@ public class RV_GameManager : MonoBehaviour
         canvasGameOver.SetActive(true);
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
+        textDescriptionResult.text = "lore defaite";
 
         tombstone.gameObject.SetActive(true);
         guillotineAnimator.gameObject.SetActive(false);
