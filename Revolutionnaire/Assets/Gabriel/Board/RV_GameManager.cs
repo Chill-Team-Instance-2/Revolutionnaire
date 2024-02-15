@@ -49,6 +49,8 @@ public class RV_GameManager : MonoBehaviour
     public bool CanEndTurn = true;
 
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource victoryMusicSource;
+    [SerializeField] private AudioSource defeatMusicSource;
 
     private void Awake()
     {
@@ -157,7 +159,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndJetGuillotineVictory()
     {
         CanEndTurn = false;
-        StartCoroutine(showVictoryDefeat(1.5f));
+        StartCoroutine(showVictoryDefeat(1.5f, true));
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Vous avez réussi ensemble à détrôner le Roi ! Liberté, Égalité, Fraternité !";
@@ -168,7 +170,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndJetGuillotineDefeat()
     {
         CanEndTurn = false;
-        StartCoroutine(showVictoryDefeat(1.5f));
+        StartCoroutine(showVictoryDefeat(0.1f, false));
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
@@ -176,12 +178,20 @@ public class RV_GameManager : MonoBehaviour
         guillotineAnimator.gameObject.SetActive(false);
     }
 
-    public IEnumerator showVictoryDefeat(float delay)
+    public IEnumerator showVictoryDefeat(float delay, bool victory)
     {
         yield return new WaitForSeconds(delay);
         canvasGameOver.SetActive(true);
         guillotineAnimator.SetTrigger("Cut");
         musicSource.Stop();
+        if (victory)
+        {
+            victoryMusicSource.Play();
+        }
+        else
+        {
+            defeatMusicSource.Play();
+        }
     }
 
     public void PassTurn() //when ending turn on action card
