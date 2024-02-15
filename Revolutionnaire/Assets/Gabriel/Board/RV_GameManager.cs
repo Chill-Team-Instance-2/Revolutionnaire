@@ -170,7 +170,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndJetGuillotineDefeat()
     {
         CanEndTurn = false;
-        StartCoroutine(showVictoryDefeat(1.5f, false));
+        StartCoroutine(showVictoryDefeat(0.1f, false));
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
