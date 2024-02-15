@@ -165,10 +165,10 @@ public class RV_AC_Card10 : RV_AC_Parent
                     if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0)
                     {
                         RV_GameManager.Instance.EndTurn();
+                        IsActive = false;
+                        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                     }
                     turnCount++;
-                    IsActive = false;
-                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
                 }
                 break;
         }

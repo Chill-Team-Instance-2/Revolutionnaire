@@ -83,7 +83,17 @@ public class RV_AC_Card1 : RV_AC_Parent
             IsActive = true;
             gameManager.InfluencePlayer -= 2;
             RV_DiceManager.Instance.ResultBonus += 2;
-            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunch);
+            RV_DiceManager.Instance.onDiceEnd.AddListener(CheckDiceLaunchCom);
+        }
+    }
+
+    public void CheckDiceLaunchCom()
+    {
+        if (IsActive)
+        {
+            IsActive = false;
+            RV_DiceManager.Instance.ResultBonus -= 2;
+            RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
         }
     }
 
@@ -101,12 +111,6 @@ public class RV_AC_Card1 : RV_AC_Parent
                 }
                 break;
             case 1:
-                if (IsActive)
-                {
-                    IsActive = false;
-                    RV_DiceManager.Instance.ResultBonus -= 2;
-                    RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                }
                 break;
         }
     }
@@ -131,11 +135,11 @@ public class RV_AC_Card1 : RV_AC_Parent
         CanvaOddOrEven.SetActive(false);
         if ((OddOrEven == 0 && RV_DiceManager.Instance.DiceResult % 2 == 0) || (OddOrEven == 1 && RV_DiceManager.Instance.DiceResult % 2 != 0))
         {
-            gameManager.InfluencePlayer += 6;
+            gameManager.AddInfluenceWithDelay(6, RV_DiceManager.Instance.DiceTime);
         }
         else
         {
-            gameManager.InfluencePlayer -= 6;
+            gameManager.AddInfluenceWithDelay(-6, RV_DiceManager.Instance.DiceTime);
         }
     }
 
