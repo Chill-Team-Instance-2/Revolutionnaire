@@ -100,7 +100,7 @@ public class RV_AC_Card4 : RV_AC_Parent
             }
             else
             {
-                gameManager.AddInfluenceWithDelay(10, RV_DiceManager.Instance.DiceTime);
+                gameManager.AddInfluenceWithDelay(-10, RV_DiceManager.Instance.DiceTime);
             }
             IsActive = true;
         }

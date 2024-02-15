@@ -78,7 +78,7 @@ public class RV_AC_Card7 : RV_AC_Parent
             switch (RV_GameManager.Instance.PlayerTurn)
             {
                 case 0:
-                    
+                    IsActive = false;
                     break;
                 case 1:
                     

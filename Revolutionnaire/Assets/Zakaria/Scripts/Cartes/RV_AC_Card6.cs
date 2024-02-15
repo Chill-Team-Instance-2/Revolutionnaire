@@ -31,7 +31,7 @@ public class RV_AC_Card6 : RV_AC_Parent
         {
             case 0:
                 IsActive = true;
-                RV_GameManager.Instance.onendturn.AddListener(MiliceMalusOnEachTurn);
+                RV_GameManager.Instance.onRealEndTurn.AddListener(MiliceMalusOnEachTurn);
                 break;
             case 1:
                 break;
@@ -184,6 +184,7 @@ public class RV_AC_Card6 : RV_AC_Parent
 
     public void CheckDiceEndMalus()
     {
+        print(IsActive);
         if (IsActive)
         {
             RV_DiceManager.Instance.ResultBonus += 8;
