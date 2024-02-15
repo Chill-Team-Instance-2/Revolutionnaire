@@ -54,7 +54,13 @@ public class RV_AC_Card10 : RV_AC_Parent
             if (RV_GameManager.Instance.PlayerTurn == 2 && RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
             {
                 IsActive = false;
-                revoltCard.DisableAllJet();
+                //revoltCard.DisableAllJet();
+                //
+                RV_PickACardOnEndTour.Instance.ActualToDiscard();
+                RV_PickACardOnEndTour.Instance.PickACard();
+                RV_GameManager.Instance.Turn += 1;
+                RV_GameManager.Instance.NextPlayer();
+                //
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
             }
         }
