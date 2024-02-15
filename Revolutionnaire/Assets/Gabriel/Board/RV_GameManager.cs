@@ -52,6 +52,8 @@ public class RV_GameManager : MonoBehaviour
     [SerializeField] private AudioSource victoryMusicSource;
     [SerializeField] private AudioSource defeatMusicSource;
 
+    private float endDelay = 1.5f;
+
     private void Awake()
     {
         Instance = this;
@@ -109,14 +111,17 @@ public class RV_GameManager : MonoBehaviour
                 Turn = 15;
                 if (InfluencePlayer > InfluenceKing)
                 {
+                    endDelay = 0.01f;
                     EndJetGuillotineVictory();
                     return;
                 }
                 if ((InfluenceKing - InfluencePlayer) < 20)
                 {
+                    endDelay = 1.5f;
                     ActivateJetGuillotine();
                     return;
                 }
+                endDelay = 0.01f;
                 EndJetGuillotineDefeat();
                 musicSource.Stop();
                 return;
@@ -159,7 +164,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndJetGuillotineVictory()
     {
         CanEndTurn = false;
-        StartCoroutine(showVictoryDefeat(1.5f, true));
+        StartCoroutine(showVictoryDefeat(endDelay, true));
         textGameResult.text = "Victoire !";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Vous avez réussi ensemble à détrôner le Roi ! Liberté, Égalité, Fraternité !";
@@ -170,7 +175,7 @@ public class RV_GameManager : MonoBehaviour
     public void EndJetGuillotineDefeat()
     {
         CanEndTurn = false;
-        StartCoroutine(showVictoryDefeat(0.1f, false));
+        StartCoroutine(showVictoryDefeat(endDelay, false));
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
