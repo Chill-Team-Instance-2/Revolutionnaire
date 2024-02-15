@@ -96,11 +96,11 @@ public class RV_AC_Card4 : RV_AC_Parent
             RV_DiceManager.Instance.LaunchDice();
             if (RV_DiceManager.Instance.DiceResult >= 15)
             {
-                gameManager.InfluencePlayer += 15;
+                gameManager.AddInfluenceWithDelay(15, RV_DiceManager.Instance.DiceTime);
             }
             else
             {
-                gameManager.InfluencePlayer -= 10;
+                gameManager.AddInfluenceWithDelay(10, RV_DiceManager.Instance.DiceTime);
             }
             IsActive = true;
         }

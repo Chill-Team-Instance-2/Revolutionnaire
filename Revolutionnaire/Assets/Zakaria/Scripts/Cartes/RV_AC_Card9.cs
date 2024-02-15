@@ -40,8 +40,8 @@ public class RV_AC_Card9 : RV_AC_Parent
                 break;
             case 2:
                 CanBePickup = false;
-                RV_DiceManager.Instance.LaunchDice();
-                if (RV_DiceManager.Instance.DiceResult % 3 == 0)
+                int result = RV_DiceManager.Instance.LaunchDice();
+                if (result % 3 == 0)
                 {
                     gameManager.Bonus += 3;
                 }

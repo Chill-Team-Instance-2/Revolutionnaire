@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class RV_AC_Card7 : RV_AC_Parent
@@ -21,10 +22,7 @@ public class RV_AC_Card7 : RV_AC_Parent
                 break;
             case 2:
                 CanBePickup = false;
-                if (RV_GameManager.Instance.Turn > 0)
-                {
-                    RV_GameManager.Instance.Turn--;
-                }
+                
                 break;
         }
     }
@@ -87,6 +85,10 @@ public class RV_AC_Card7 : RV_AC_Parent
                     
                     break;
                 case 2:
+                    if (RV_GameManager.Instance.Turn > 0)
+                    {
+                        RV_GameManager.Instance.Turn--;
+                    }
                     break;
             }
         }
