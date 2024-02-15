@@ -23,6 +23,11 @@ public class RV_AC_Card10 : RV_AC_Parent
             case 1:
                 CanBePickup = false;
                 break;
+            case 2:
+                turnCount = 0;
+                IsActive = true;
+                gameManager.onendturn.AddListener(PassIntellectualTurn);
+                break;
         }
     }
 
@@ -38,9 +43,7 @@ public class RV_AC_Card10 : RV_AC_Parent
             case 1:
                 break;
             case 2:
-                turnCount = 0;
-                IsActive = true;
-                gameManager.onendturn.AddListener(PassIntellectualTurn);
+                
                 break;
         }
     }
@@ -49,10 +52,10 @@ public class RV_AC_Card10 : RV_AC_Parent
     {
         if (IsActive)
         {
-            if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0)
+            if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0 && RV_PickACardOnEndTour.Instance.CurrentCard.TryGetComponent<RV_RevoltCard>(out RV_RevoltCard revoltCard))
             {
-                RV_GameManager.Instance.EndTurn();
                 IsActive = false;
+                revoltCard.DisableAllJet();
                 RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
             }
             turnCount++;
