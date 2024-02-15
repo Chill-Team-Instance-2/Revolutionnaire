@@ -27,7 +27,6 @@ public class RV_AC_Card2 : RV_AC_Parent
                 {
                     gameManager.InfluencePlayer += 5;
                 }
-
                 CanBePickup = false;
             break;
         }
