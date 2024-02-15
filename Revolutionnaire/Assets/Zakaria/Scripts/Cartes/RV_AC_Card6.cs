@@ -31,13 +31,21 @@ public class RV_AC_Card6 : RV_AC_Parent
         {
             case 0:
                 IsActive = true;
-                RV_GameManager.Instance.onendturn.AddListener(CheckTurn);
+                RV_GameManager.Instance.onendturn.AddListener(MiliceMalusOnEachTurn);
                 break;
             case 1:
                 break;
             case 2:
                 RV_GameManager.Instance.onendturn.AddListener(CheckTurn);
                 break;
+        }
+    }
+
+    public void MiliceMalusOnEachTurn()
+    {
+        if (IsActive)
+        {
+            gameManager.InfluencePlayer -= 1;
         }
     }
 
@@ -160,10 +168,7 @@ public class RV_AC_Card6 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 0:
-                if (IsActive)
-                {
-                    gameManager.InfluencePlayer -= 1;
-                }
+                
                 break;
             case 1:
                 break;

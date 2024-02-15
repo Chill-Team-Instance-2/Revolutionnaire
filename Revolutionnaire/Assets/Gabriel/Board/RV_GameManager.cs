@@ -163,7 +163,6 @@ public class RV_GameManager : MonoBehaviour
         textDescriptionResult.text = "Vous avez réussi ensemble à détrôner le Roi ! Liberté, Égalité, Fraternité !";
         tombstone.gameObject.SetActive(false);
         guillotineAnimator.gameObject.SetActive(true);
-        guillotineAnimator.SetTrigger("Cut");
     } 
     
     public void EndJetGuillotineDefeat()
@@ -173,7 +172,6 @@ public class RV_GameManager : MonoBehaviour
         textGameResult.text = "Défaite";
         textEndInfluence.text = "Influence: " + InfluencePlayer.ToString();
         textDescriptionResult.text = "Le Roi a déjoué vos plans et mis fin à la Révolution.";
-
         tombstone.gameObject.SetActive(true);
         guillotineAnimator.gameObject.SetActive(false);
     }
@@ -182,6 +180,7 @@ public class RV_GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         canvasGameOver.SetActive(true);
+        guillotineAnimator.SetTrigger("Cut");
         musicSource.Stop();
     }
 

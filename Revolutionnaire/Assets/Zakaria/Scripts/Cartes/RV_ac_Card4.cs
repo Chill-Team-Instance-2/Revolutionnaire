@@ -10,6 +10,21 @@ public class RV_AC_Card4 : RV_AC_Parent
     {
         gameManager = GameObject.Find("GameManager").GetComponent<RV_GameManager>();
     }
+
+    public override void OnReveal()
+    {
+        switch (gameManager.PlayerTurn)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                CanBePickup = false;
+                break;
+        }
+    }
+
     public override void Action()
     {
         RV_ActionCard_Holder cardHolder = RV_ActionCard_Holder.Instance;
@@ -24,7 +39,7 @@ public class RV_AC_Card4 : RV_AC_Parent
                     ActionCom();
                     break;
                 case 2:
-                    ActionInt();
+                    
                     break;
                 default:
                     break;
@@ -40,6 +55,7 @@ public class RV_AC_Card4 : RV_AC_Parent
                 case 1:
                     break;
                 case 2:
+                    ActionInt();
                     break;
                 default:
                     break;
@@ -75,16 +91,19 @@ public class RV_AC_Card4 : RV_AC_Parent
 
     public void ActionInt()
     {
-        RV_DiceManager.Instance.LaunchDice();
-        if (RV_DiceManager.Instance.DiceResult >= 15)
+        if (!IsActive)
         {
-            gameManager.InfluencePlayer += 15;
+            RV_DiceManager.Instance.LaunchDice();
+            if (RV_DiceManager.Instance.DiceResult >= 15)
+            {
+                gameManager.AddInfluenceWithDelay(15, RV_DiceManager.Instance.DiceTime);
+            }
+            else
+            {
+                gameManager.AddInfluenceWithDelay(10, RV_DiceManager.Instance.DiceTime);
+            }
+            IsActive = true;
         }
-        else
-        {
-            gameManager.InfluencePlayer -= 10;
-        }
-        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
     }
 
     public void CheckDiceLaunch()

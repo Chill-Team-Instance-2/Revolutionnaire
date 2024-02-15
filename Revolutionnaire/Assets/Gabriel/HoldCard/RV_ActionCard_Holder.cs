@@ -76,7 +76,7 @@ public class RV_ActionCard_Holder : MonoBehaviour
         OnDiscard.Invoke();
     }
 
-    public IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination, float duration = 1)
+    public IEnumerator AnimationPlaceCardInHand(Transform card, Vector3 destination, float duration = 0.5f)
     {
         float timer = 0;
         while (timer < duration)
