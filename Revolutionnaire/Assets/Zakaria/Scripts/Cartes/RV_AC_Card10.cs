@@ -42,8 +42,22 @@ public class RV_AC_Card10 : RV_AC_Parent
             case 2:
                 turnCount = 0;
                 IsActive = true;
-                gameManager.onendturn.AddListener(CheckTurn);
+                gameManager.onendturn.AddListener(PassIntellectualTurn);
                 break;
+        }
+    }
+
+    public void PassIntellectualTurn()
+    {
+        if (IsActive)
+        {
+            if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0)
+            {
+                RV_GameManager.Instance.EndTurn();
+                IsActive = false;
+                RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
+            }
+            turnCount++;
         }
     }
 
@@ -161,16 +175,7 @@ public class RV_AC_Card10 : RV_AC_Parent
                 }
                 break;
             case 2:
-                if (turnCount != -1 && IsActive)
-                {
-                    if (RV_GameManager.Instance.PlayerTurn == 2 && turnCount > 0)
-                    {
-                        RV_GameManager.Instance.EndTurn();
-                        IsActive = false;
-                        RV_ActionCard_Holder.Instance.DiscardCardInHand(gameObject);
-                    }
-                    turnCount++;
-                }
+                
                 break;
         }
     }
