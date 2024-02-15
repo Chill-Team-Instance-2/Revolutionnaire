@@ -8735,7 +8735,7 @@ MonoBehaviour:
   textEndInfluence: {fileID: 3647139733144344841}
   guillotineAnimator: {fileID: 3647139733144344843}
   tombstone: {fileID: 3647139733144344844}
-  cheatUsePlayerClass: 2
+  cheatUsePlayerClass: -1
   Turn: 0
   MaxTurn: 15
   Bonus: 0
