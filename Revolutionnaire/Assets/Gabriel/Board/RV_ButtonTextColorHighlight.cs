@@ -23,7 +23,12 @@ public class RV_ButtonTextColorHighlight : MonoBehaviour, IPointerEnterHandler, 
     {
         mouseOnButton = false;
     }
-    
+
+    private void OnDisable()
+    {
+        mouseOnButton = false;
+    }
+
     private void Update()
     {
         if (mouseOnButton)
