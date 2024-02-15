@@ -141,6 +141,7 @@ public class RV_AC_Card8 : RV_AC_Parent
         switch (cardHolder.GetPlayerFromList(cardHolder.GetListOfCard(transform)))
         {
             case 2:
+                print(IsActive);
                 if (IsActive)
                 {
                     gameManager.Multiplier += 0.5f;
