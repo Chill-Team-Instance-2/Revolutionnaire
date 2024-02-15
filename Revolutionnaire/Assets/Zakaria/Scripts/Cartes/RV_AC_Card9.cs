@@ -43,7 +43,7 @@ public class RV_AC_Card9 : RV_AC_Parent
                 int result = RV_DiceManager.Instance.LaunchDice();
                 if (result % 3 == 0)
                 {
-                    gameManager.Bonus += 3;
+                    gameManager.AddInfluenceWithDelay(3, RV_DiceManager.Instance.DiceTime);
                 }
                 break;
         }
